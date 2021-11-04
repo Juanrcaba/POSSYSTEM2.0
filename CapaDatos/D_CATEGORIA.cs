@@ -14,7 +14,7 @@ namespace CapaDatos
     {
         SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
 
-        public DataTable Mostrar(string buscar)
+        public DataTable MostrarCategoria(string buscar)
         {
             DataTable Dt = new DataTable();
 
@@ -41,7 +41,7 @@ namespace CapaDatos
             conexion.Close();
         }
 
-        public void EditartarCategoria(E_CATEGORIA categoria)
+        public void EditarCategoria(E_CATEGORIA categoria)
         {
             SqlCommand cmd = new SqlCommand("SP_EDITARCATEGORIA");
             cmd.CommandType = CommandType.StoredProcedure;
