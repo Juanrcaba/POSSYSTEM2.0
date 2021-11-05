@@ -32,5 +32,47 @@ namespace CapaPresentacion
         {
             Application.Exit();
         }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnDashboard.Top;
+          
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnProductos.Top;
+           
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnVentas.Top;
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnCompras.Top;
+        }
+
+        private void btnTrabajadores_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnTrabajadores.Top;
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnClientes.Top;
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnProveedores.Top;
+        }
+
+        private void btnGanancias_Click(object sender, EventArgs e)
+        {
+            Puntero.Top = btnGanancias.Top;
+        }
     }
 }
