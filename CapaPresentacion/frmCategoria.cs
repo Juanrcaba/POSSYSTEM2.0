@@ -93,7 +93,7 @@ namespace CapaPresentacion
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            MostrarBuscarDatos(txtBuscar.Text);
+            MostrarBuscarDatos(txtBuscar.Text.Trim());
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -117,7 +117,8 @@ namespace CapaPresentacion
             }
             else
             {
-                MessageBox.Show("Debes seleccionar una categoria.");
+                frmAlerta alerta = new frmAlerta("Debes seleccionar una categoria.", frmAlerta.Alerta.Información);
+                alerta.ShowDialog();               
             }
             
 
@@ -126,7 +127,7 @@ namespace CapaPresentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            MostrarBuscarDatos(txtBuscar.Text);
+           
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
