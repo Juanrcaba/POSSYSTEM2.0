@@ -18,7 +18,7 @@ namespace CapaDatos
         {
             DataTable Dt = new DataTable();
 
-            SqlCommand cmd = new SqlCommand("SP_BUSCARCATEGORIA");
+            SqlCommand cmd = new SqlCommand("SP_BUSCARCATEGORIA",conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@BUSCAR",buscar);
 
@@ -30,7 +30,7 @@ namespace CapaDatos
 
         public void InsertarCategoria(E_CATEGORIA categoria)
         {
-            SqlCommand cmd = new SqlCommand("SP_INSERTARCATEGORIA");
+            SqlCommand cmd = new SqlCommand("SP_INSERTARCATEGORIA",conexion);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@NOMBRE",categoria.Nombre);
@@ -43,7 +43,7 @@ namespace CapaDatos
 
         public void EditarCategoria(E_CATEGORIA categoria)
         {
-            SqlCommand cmd = new SqlCommand("SP_EDITARCATEGORIA");
+            SqlCommand cmd = new SqlCommand("SP_EDITARCATEGORIA",conexion);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@IDCATEGORIA",categoria.Idcategoria);
@@ -57,7 +57,7 @@ namespace CapaDatos
 
         public void EliminarCategoria(E_CATEGORIA categoria)
         {
-            SqlCommand cmd = new SqlCommand("SP_ELIMINARCATEGORIA");
+            SqlCommand cmd = new SqlCommand("SP_ELIMINARCATEGORIA",conexion);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@IDCATEGORIA", categoria.Idcategoria);
