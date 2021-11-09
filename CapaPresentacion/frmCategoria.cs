@@ -21,7 +21,7 @@ namespace CapaPresentacion
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void frmCategoria_Load(object sender, EventArgs e)

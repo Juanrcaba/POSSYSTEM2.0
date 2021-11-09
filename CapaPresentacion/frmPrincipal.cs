@@ -74,5 +74,16 @@ namespace CapaPresentacion
         {
             Puntero.Top = btnGanancias.Top;
         }
+
+        Form FormActivo = null;
+
+        void ActivarForm(Form FormHijo)
+        {
+            if (FormActivo == null)
+                FormActivo = FormHijo;
+
+        }
+
+       
     }
 }
