@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="D_CATEGORIA.cs" />
     <Compile Include="D_MARCA.cs" />
+    <Compile Include="D_PRODUCTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

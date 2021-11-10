@@ -95,15 +95,31 @@ namespace CapaPresentacion
 
         private void OpenForm(Form form)
         {
+
             if (ActiveForm != null)
-                ActiveForm.Close();
-            ActiveForm = form;
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            container.Controls.Add(form);
-            container.Tag = form;
-            form.BringToFront();
-            form.Show();
+            {
+                if (ActiveForm.Name != form.Name)
+                {
+                    ActiveForm.Close();
+                    ActiveForm = form;
+                    form.TopLevel = false;
+                    form.Dock = DockStyle.Fill;
+                    container.Controls.Add(form);
+                    container.Tag = form;
+                    form.BringToFront();
+                    form.Show();
+                }
+            }
+            else
+            {
+                ActiveForm = form;
+                form.TopLevel = false;
+                form.Dock = DockStyle.Fill;
+                container.Controls.Add(form);
+                container.Tag = form;
+                form.BringToFront();
+                form.Show();
+            }
         }
     }
 }

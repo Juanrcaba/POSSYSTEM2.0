@@ -8,11 +8,19 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmAlerta : Form
+    public partial class frmMantenimientoProducto : Form
     {
+        public frmMantenimientoProducto()
+        {
+            InitializeComponent();
+            CargarCategoria();
+            CargarMarca();
+        }
 
         #region Shadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -108,49 +116,102 @@ namespace CapaPresentacion
         }
 
         #endregion
-        public frmAlerta(string mensaje, Alerta type)
+
+        public bool IsUpdate = false;
+        public int Idproducto = 0;
+        private void CargarCategoria()
         {
-            InitializeComponent();
-            icon.Image = lstImage.Images[0];
-            lblmensaje.Text = mensaje;
-            switch (type)
-            {
-                case Alerta.Exitoso:
-                    icon.Image = lstImage.Images[0];
-                    lblmensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.SeaGreen;
-                    break;
-                case Alerta.Error:
-                    icon.Image = lstImage.Images[1];
-                    lblmensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.FromArgb(244, 67, 54);
-                    break;
-                case Alerta.Información:
-                    icon.Image = lstImage.Images[2];
-                    lblmensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.FromArgb(255, 202, 40);
-                    break;
-                default:
-                    break;
-            }
+            N_CATEGORIA objCategoria = new N_CATEGORIA();
+            cmbCategoria.DataSource = objCategoria.MostrarCategoria("");
+            cmbCategoria.ValueMember = "IDCATEGORIA";
+            cmbCategoria.DisplayMember = "NOMBRE";
         }
 
-        private void frmAlerta_Load(object sender, EventArgs e)
+        private void CargarMarca()
         {
-            
+            N_MARCA objCategoria = new N_MARCA();
+            cmbMarca.DataSource = objCategoria.MostrarMarca("");
+            cmbMarca.ValueMember = "IDMARCA";
+            cmbMarca.DisplayMember = "NOMBRE";
         }
 
-        public enum Alerta
+        private void Limpiar()
         {
-            Exitoso, Error, Información
+            txtCodigo.Clear();
+            txtPcompra.Clear();
+            txtProducto.Clear();
+            txtPventa.Clear();
+            txtStock.Clear();
+            cmbCategoria.SelectedValue = 1;
+            cmbMarca.SelectedValue = 1;
+            txtProducto.Focus();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarProducto();
+        }
+
+        private void GuardarProducto()
+        {
+            E_PRODUCTO entidadProducto = new E_PRODUCTO();
+            N_PRODUCTO objProducto = new N_PRODUCTO();
+            frmAlerta alerta;
+
+            if (txtProducto.Text != string.Empty)
+            {
+                string nombreProducto = txtProducto.Text;
+                double precioCompra = 0.0d;
+                double precioVenta = 0.0d;
+                double stock = 0.0d;
+                int idcategoria = Int32.Parse(cmbCategoria.SelectedValue.ToString());
+                int idmarca = Int32.Parse(cmbMarca.SelectedValue.ToString());
+
+                Double.TryParse(txtPcompra.Text, out precioCompra);
+                Double.TryParse(txtPventa.Text, out precioVenta);
+                Double.TryParse(txtStock.Text, out stock);
+
+                entidadProducto.Idproducto = Idproducto;
+                entidadProducto.Producto = nombreProducto.ToUpper();
+                entidadProducto.Precio_compra = precioCompra;
+                entidadProducto.Precio_venta = precioVenta;
+                entidadProducto.Stock = stock;
+                entidadProducto.Idcategoria = idcategoria;
+                entidadProducto.Idmarca = idmarca;
+
+
+                if (IsUpdate)
+                {
+                    objProducto.EditarProducto(entidadProducto);
+                    IsUpdate = false;
+                    alerta = new frmAlerta("El producto se Actualizo Correctamente", frmAlerta.Alerta.Exitoso);
+                    alerta.ShowDialog();
+                    this.Close();
+                    
+                }
+                else
+                {
+                    objProducto.InsertarProducto(entidadProducto);
+                    alerta = new frmAlerta("El producto se guardo Correctamente", frmAlerta.Alerta.Exitoso);
+                    alerta.ShowDialog();
+                    Limpiar();
+                }                   
+
+               
+                
+            }
+            else
+            {
+                alerta = new frmAlerta("El producto debe tener un Nombre",frmAlerta.Alerta.Error);
+                alerta.ShowDialog();
+                txtProducto.Focus();
+            }
+                
         }
     }
 }
