@@ -106,5 +106,67 @@ namespace CapaDatos
             return Count;
             
         }
+
+        public int ContarCategoria()
+        {
+            SqlCommand cmd = new SqlCommand("select count(*) categoria from Categoria", conexion);
+            conexion.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            int Count = 0;
+
+            if (reader.Read())
+            {
+                Count = Convert.ToInt32(reader["categoria"]);
+            }
+            else
+            {
+                return 0;
+            }
+            conexion.Close();
+            return Count;
+
+        }
+        public int ContarProducto()
+        {
+            SqlCommand cmd = new SqlCommand("select count(*) producto from PRODUCTOS", conexion);
+            conexion.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            int Count = 0;
+
+            if (reader.Read())
+            {
+                Count = Convert.ToInt32(reader["producto"]);
+            }
+            else
+            {
+                return 0;
+            }
+            conexion.Close();
+            return Count;
+
+        }
+
+        public int ContarTotalProducto()
+        {
+            SqlCommand cmd = new SqlCommand("select sum(stock) producto from PRODUCTOS", conexion);
+            conexion.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            int Count = 0;
+
+            if (reader.Read() && !(reader["producto"] is DBNull))
+            {
+                
+                Count = Convert.ToInt32(reader["producto"]);
+            }
+            else
+            {
+                return 0;
+            }
+            conexion.Close();
+            return Count;
+
+        }
+
+
     }
 }

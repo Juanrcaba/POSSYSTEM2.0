@@ -40,5 +40,17 @@ namespace CapaNegocio
         {
             return objDatos.ContarMarca();
         }
+        public int ContarCategoria()
+        {
+            return objDatos.ContarCategoria();
+        }
+        public int ContarProducto()
+        {
+            return objDatos.ContarProducto();
+        }
+        public int ContarTotalProducto()
+        {
+            return objDatos.ContarTotalProducto();
+        }
     }
 }

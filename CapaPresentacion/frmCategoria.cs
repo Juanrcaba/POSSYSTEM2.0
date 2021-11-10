@@ -55,8 +55,8 @@ namespace CapaPresentacion
             N_CATEGORIA NegocioCategoria = new N_CATEGORIA();
             
            
-                EntidadCategoria.Nombre = txtNombre.Text.ToUpper();
-                EntidadCategoria.Descripcion = txtDescripcion.Text.ToUpper();
+                EntidadCategoria.Nombre = txtNombre.Text;
+                EntidadCategoria.Descripcion = txtDescripcion.Text;
 
                 NegocioCategoria.InsertarCategoria(EntidadCategoria);                 
                 
@@ -68,8 +68,8 @@ namespace CapaPresentacion
             N_CATEGORIA NegocioCategoria = new N_CATEGORIA();
 
             EntidadCategoria.Idcategoria = Convert.ToInt32(txtCodigo.Text.Substring(2).Trim());
-            EntidadCategoria.Nombre = txtNombre.Text.ToUpper();
-            EntidadCategoria.Descripcion = txtDescripcion.Text.ToUpper();
+            EntidadCategoria.Nombre = txtNombre.Text;
+            EntidadCategoria.Descripcion = txtDescripcion.Text;
 
             NegocioCategoria.EditarCategoria(EntidadCategoria);
         }

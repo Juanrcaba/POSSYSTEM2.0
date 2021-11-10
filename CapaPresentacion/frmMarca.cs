@@ -146,8 +146,8 @@ namespace CapaPresentacion
             //N_MARCA NegocioMarca = new N_MARCA();
 
 
-            EntidadMarca.Nombre = txtNombre.Text.ToUpper();
-            EntidadMarca.Descripcion = txtDescripcion.Text.ToUpper();
+            EntidadMarca.Nombre = txtNombre.Text;
+            EntidadMarca.Descripcion = txtDescripcion.Text;
 
             NegocioMarca.InsertarMarca(EntidadMarca);
 
@@ -159,8 +159,8 @@ namespace CapaPresentacion
             //N_CATEGORIA NegocioCategoria = new N_CATEGORIA();
 
             EntidadMarca.Idmarca = Convert.ToInt32(txtCodigo.Text.Substring(2).Trim());
-            EntidadMarca.Nombre = txtNombre.Text.ToUpper();
-            EntidadMarca.Descripcion = txtDescripcion.Text.ToUpper();
+            EntidadMarca.Nombre = txtNombre.Text;
+            EntidadMarca.Descripcion = txtDescripcion.Text;
 
             NegocioMarca.EditarMarca(EntidadMarca);
         }

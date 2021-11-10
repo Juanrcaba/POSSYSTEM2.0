@@ -177,7 +177,7 @@ namespace CapaPresentacion
                 Double.TryParse(txtStock.Text, out stock);
 
                 entidadProducto.Idproducto = Idproducto;
-                entidadProducto.Producto = nombreProducto.ToUpper();
+                entidadProducto.Producto = nombreProducto;
                 entidadProducto.Precio_compra = precioCompra;
                 entidadProducto.Precio_venta = precioVenta;
                 entidadProducto.Stock = stock;

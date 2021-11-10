@@ -24,8 +24,7 @@ namespace CapaPresentacion
         {
             MostrarProductos();
             RedimencionCeldas();
-            Alineamiento();
-            ContarMarca();
+            Alineamiento();    
             
         }
 
@@ -57,7 +56,26 @@ namespace CapaPresentacion
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
 
+            worksheet = workbook.Sheets[1];
+            worksheet.Name = "Products";
+
+            for (int i = 3; i < tablaProductos.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = tablaProductos.Columns[i - 1].HeaderText;
+            }
+
+            for (int i = 0; i < tablaProductos.Rows.Count; i++)
+            {
+                for (int j = 2; j < tablaProductos.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = tablaProductos.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            app.Visible = true;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -79,6 +97,11 @@ namespace CapaPresentacion
             tablaProductos.Columns[1].DisplayIndex = 11;
 
             tablaProductos.ClearSelection();
+
+            ContarMarca();
+            ContarCategoria();
+            ContarProducto();
+            ContarTotalProducto();
         }
 
         private void RedimencionCeldas()
@@ -107,6 +130,21 @@ namespace CapaPresentacion
             N_PRODUCTO objDatos = new N_PRODUCTO();
             lblmarca.Text = objDatos.ContarMarca().ToString();
         }
+        private void ContarCategoria()
+        {
+            N_PRODUCTO objDatos = new N_PRODUCTO();
+            lblcategoria.Text = objDatos.ContarCategoria().ToString();
+        }
+        private void ContarProducto()
+        {
+            N_PRODUCTO objDatos = new N_PRODUCTO();
+            lblProducto.Text = objDatos.ContarProducto().ToString();
+        }
+        private void ContarTotalProducto()
+        {
+            N_PRODUCTO objDatos = new N_PRODUCTO();
+            lblstock.Text = objDatos.ContarTotalProducto().ToString();
+        }
         #endregion
 
         private void tablaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -121,7 +159,7 @@ namespace CapaPresentacion
                 form.txtCodigo.Text = tablaProductos.CurrentRow.Cells[3].Value.ToString();
                 form.txtProducto.Text = tablaProductos.CurrentRow.Cells[4].Value.ToString();
                 form.cmbCategoria.SelectedValue = Convert.ToInt32(tablaProductos.CurrentRow.Cells[5].Value);
-                form.cmbCategoria.SelectedValue = Convert.ToInt32(tablaProductos.CurrentRow.Cells[7].Value);
+                form.cmbMarca.SelectedValue = Convert.ToInt32(tablaProductos.CurrentRow.Cells[7].Value);
                 form.txtPcompra.Text = tablaProductos.CurrentRow.Cells[9].Value.ToString();
                 form.txtPventa.Text = tablaProductos.CurrentRow.Cells[10].Value.ToString();
                 form.txtStock.Text = tablaProductos.CurrentRow.Cells[11].Value.ToString();
@@ -141,10 +179,9 @@ namespace CapaPresentacion
                 alerta = new frmAlerta("Producto Eliminado",frmAlerta.Alerta.Exitoso);
                 alerta.ShowDialog();
                 MostrarProductos();
-            }
-                
-            
-            
+            }                         
         }
+
+        
     }
 }

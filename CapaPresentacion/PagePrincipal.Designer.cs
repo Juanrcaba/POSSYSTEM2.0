@@ -44,8 +44,8 @@ namespace CapaPresentacion
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.header = new System.Windows.Forms.Panel();
-            this.container = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.container = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -446,6 +446,16 @@ namespace CapaPresentacion
             this.header.Size = new System.Drawing.Size(793, 39);
             this.header.TabIndex = 1;
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Calisto MT", 12F);
+            this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTitulo.Location = new System.Drawing.Point(7, 13);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(0, 19);
+            this.lblTitulo.TabIndex = 0;
+            // 
             // container
             // 
             this.container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(243)))), ((int)(((byte)(240)))));
@@ -454,17 +464,6 @@ namespace CapaPresentacion
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(793, 545);
             this.container.TabIndex = 2;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Calisto MT", 12F);
-            this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTitulo.Location = new System.Drawing.Point(7, 13);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(48, 19);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "label1";
             // 
             // PagePrincipal
             // 
