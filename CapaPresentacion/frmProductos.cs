@@ -61,20 +61,24 @@ namespace CapaPresentacion
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
 
             worksheet = workbook.Sheets[1];
-            worksheet.Name = "Products";
+            worksheet.Name = "Productos";
+            int contador = 0;
 
-            for (int i = 3; i < tablaProductos.Columns.Count + 1; i++)
+            for (int i = 0; i < tablaProductos.Columns.Count -2 ; i++)
             {
-                worksheet.Cells[1, i] = tablaProductos.Columns[i - 1].HeaderText;
+                worksheet.Cells[1, i + 1] = tablaProductos.Columns[i + 2].HeaderText;
             }
 
             for (int i = 0; i < tablaProductos.Rows.Count; i++)
             {
                 for (int j = 2; j < tablaProductos.Columns.Count; j++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = tablaProductos.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[i + 2, contador + 1] = tablaProductos.Rows[i].Cells[j].Value.ToString();
+                    contador++;
                 }
-            }
+                contador = 0;
+            }                   
+           
             app.Visible = true;
         }
 
