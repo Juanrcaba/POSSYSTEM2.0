@@ -64,6 +64,7 @@ namespace CapaPresentacion
         private void btnVentas_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            OpenForm(new frmMesas());
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
@@ -120,6 +121,19 @@ namespace CapaPresentacion
                 form.BringToFront();
                 form.Show();
             }
+        }
+
+        private void picMenu_Click(object sender, EventArgs e)
+        {
+            if (sidebar.Visible)
+            {              
+                sidebar.Visible = false;
+            }
+            else
+            {
+                sidebar.Visible = true;             
+            }
+               
         }
     }
 }
