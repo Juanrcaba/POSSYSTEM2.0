@@ -63,8 +63,10 @@ namespace CapaPresentacion
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            OpenForm(new frmMesas());
+            SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);           
+            frmMesas form = new frmMesas();
+            form.Show();
+            this.Hide();
         }
 
         private void btnCompras_Click(object sender, EventArgs e)

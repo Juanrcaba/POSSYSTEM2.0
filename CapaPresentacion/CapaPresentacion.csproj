@@ -60,11 +60,23 @@
     <Compile Include="frmAlerta.Designer.cs">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCaja.Designer.cs">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComanda.Designer.cs">
+      <DependentUpon>frmComanda.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoProducto.cs">
       <SubType>Form</SubType>
@@ -113,8 +125,14 @@
     <EmbeddedResource Include="frmAlerta.resx">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCaja.resx">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComanda.resx">
+      <DependentUpon>frmComanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
@@ -176,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagenes\logoBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagenes\mesa_verde.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

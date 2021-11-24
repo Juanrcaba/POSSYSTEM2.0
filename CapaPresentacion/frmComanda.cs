@@ -10,42 +10,29 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    public partial class frmMesas : Form
+    public partial class frmComanda : Form
     {
-        public frmMesas()
+        public frmComanda()
         {
             InitializeComponent();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnMesas_Click(object sender, EventArgs e)
         {
-            PagePrincipal form = new PagePrincipal();
+            frmMesas form = new frmMesas();
             form.Show();
             this.Hide();
         }
+
         void pantallaOK()
         {
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
         }
 
-        private void frmMesas_Load(object sender, EventArgs e)
+        private void frmComanda_Load(object sender, EventArgs e)
         {
             pantallaOK();
-        }
-
-        private void btnCaja_Click(object sender, EventArgs e)
-        {
-            frmCaja form = new frmCaja();
-            form.Show();
-            this.Hide();
-        }
-
-        private void btnmesa1_Click(object sender, EventArgs e)
-        {
-            frmComanda form = new frmComanda();
-            form.Show();
-            this.Hide();
         }
     }
 }
