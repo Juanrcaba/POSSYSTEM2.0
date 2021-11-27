@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="E_CAJA.cs" />
     <Compile Include="E_CATEGORIA.cs" />
+    <Compile Include="E_CUADRE_CAJA.cs" />
     <Compile Include="E_MARCA.cs" />
     <Compile Include="E_PRODUCTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

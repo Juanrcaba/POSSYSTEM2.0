@@ -60,6 +60,12 @@
     <Compile Include="frmAlerta.Designer.cs">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAperturaCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAperturaCaja.Designer.cs">
+      <DependentUpon>frmAperturaCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAlerta.resx">
       <DependentUpon>frmAlerta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAperturaCaja.resx">
+      <DependentUpon>frmAperturaCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCaja.resx">
       <DependentUpon>frmCaja.cs</DependentUpon>

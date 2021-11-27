@@ -8,10 +8,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmAlerta : Form
+    public partial class frmAperturaCaja : Form
     {
 
         #region Shadow
@@ -108,65 +110,89 @@ namespace CapaPresentacion
         }
 
         #endregion
-        public frmAlerta(string mensaje, Alerta type)
-        {
-            InitializeComponent();
-            icon.Image = lstImage.Images[0];
-            txtMensaje.Text = mensaje;
-            switch (type)
-            {
-                case Alerta.Exitoso:
-                    icon.Image = lstImage.Images[0];
-                    txtMensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.SeaGreen;
-                    btnAceptar.Activecolor = Color.SeaGreen;
-                    btnAceptar.Normalcolor = Color.SeaGreen;
-                    btnAceptar.OnHovercolor = Color.FromArgb(102, 170, 132);
-                    break;
-                case Alerta.Error:
-                    icon.Image = lstImage.Images[1];
-                    txtMensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.FromArgb(244, 67, 54);
-                    btnAceptar.Activecolor = Color.FromArgb(244, 67, 54);
-                    btnAceptar.Normalcolor = Color.FromArgb(244, 67, 54);
-                    btnAceptar.OnHovercolor = Color.FromArgb(247, 129, 121);
-                    break;
-                case Alerta.Información:
-                    icon.Image = lstImage.Images[2];
-                    txtMensaje.Text = mensaje;
-                    lbltitulo.Text = type.ToString();
-                    pnlFranja.BackColor = Color.FromArgb(255, 202, 40);
-                    btnAceptar.Activecolor = Color.FromArgb(255, 202, 40);
-                    btnAceptar.Normalcolor = Color.FromArgb(255, 202, 40);
-                    btnAceptar.OnHovercolor = Color.FromArgb(255, 219, 111);
-                    break;
-                default:
-                    break;
-            }
-            btnAceptar.Focus();
-        }
 
-        private void frmAlerta_Load(object sender, EventArgs e)
+
+        E_CUADRE_CAJA objE_CuadreCaja = new E_CUADRE_CAJA();
+        N_CUADRE_CAJA objN_Cuadrecaja = new N_CUADRE_CAJA();
+        N_CAJAS objN_Cajas = new N_CAJAS();
+        int Idcaja = 0;
+        double saldo = 0;
+        public frmAperturaCaja()
         {
+            m_aeroEnabled = false;            
+            InitializeComponent();
             
         }
 
-        public enum Alerta
+        private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
-            Exitoso, Error, Información
+            lblFecha.Text = DateTime.Now.ToString();
+            CargarCajas();
+            
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            this.DialogResult = DialogResult.Cancel;
+            this.Close();          
+         
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnAbrir_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            try
+            {
+                if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))
+                    if (double.TryParse(txtSaldo.Text, out saldo))
+                        AbrirCaja(Idcaja, cmbCajas.Text, saldo);
+            }
+            catch (Exception ex)
+            {
+
+                frmAlerta form = new frmAlerta("No existe esta caja o el saldo es incorrecto", frmAlerta.Alerta.Error);
+                form.ShowDialog();
+
+            }
+
         }
+
+        //metodos
+        void AbrirCaja(int idCaja,string nCaja,double saldoCaja)
+        {
+            try
+            {
+                objE_CuadreCaja.Id_caja = idCaja;
+                objE_CuadreCaja.Saldo_apertura = saldoCaja;
+
+                objN_Cuadrecaja.AbrirCajas(objE_CuadreCaja);
+                frmAlerta form = new frmAlerta("Caja #"+ nCaja + " esta abierta", frmAlerta.Alerta.Exitoso);
+                form.ShowDialog();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                frmAlerta form = new frmAlerta("Error al intentar abrir la caja",frmAlerta.Alerta.Error);
+                form.ShowDialog();
+            }
+        }
+
+        private void CargarCajas()
+        {
+           
+            cmbCajas.DataSource = objN_Cajas.MostrarCajas();
+
+            if (cmbCajas.Items.Count > 0)
+            {
+                cmbCajas.ValueMember = "IDCAJA";
+                cmbCajas.DisplayMember = "NOMBRE";
+            }
+            else
+            {
+                cmbCajas.DataSource = null;
+                cmbCajas.Items.Add("No se encontraron cajas");
+            }
+        }
+
+      
     }
 }
