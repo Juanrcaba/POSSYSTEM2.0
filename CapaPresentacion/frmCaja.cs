@@ -21,6 +21,7 @@ namespace CapaPresentacion
 
         E_CUADRE_CAJA objE_CuadreCaja = new E_CUADRE_CAJA();
         N_CUADRE_CAJA objN_Cuadrecaja = new N_CUADRE_CAJA();
+        N_TURNO objN_Turnos = new N_TURNO();
 
         void pantallaOK()
         {
@@ -30,8 +31,8 @@ namespace CapaPresentacion
 
         private void frmCaja_Load(object sender, EventArgs e)
         {
-            pantallaOK();         
-            
+            pantallaOK();
+            CargarTurnos();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -122,6 +123,33 @@ namespace CapaPresentacion
             }
 
 
+        }
+
+        private void btnTurnos_Click(object sender, EventArgs e)
+        {
+            frmAperturaTurno form = new frmAperturaTurno();
+            form.ShowDialog();
+            CargarTurnos();
+        }
+
+        private void CargarTurnos()
+        {
+            DataTable Datos = objN_Turnos.MostrarTurnosAbiertos();
+            if (Datos.Rows.Count > 0) {
+                flowContainer.Controls.Clear();
+              foreach (DataRow item in Datos.Rows)
+              {
+                frmTurno form = new frmTurno();
+                form.lblFecha.Text = item[4].ToString();
+                form.lblTurno.Text = item[2].ToString();
+                form.lblUsuario.Text = "Juan ramon";
+                form.id = Convert.ToInt32(item[0]);
+
+                form.TopLevel = false;
+                flowContainer.Controls.Add(form);
+                form.Show();
+              }
+            }
         }
     }
 }

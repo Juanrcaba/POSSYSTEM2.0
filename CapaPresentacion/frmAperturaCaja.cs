@@ -141,9 +141,15 @@ namespace CapaPresentacion
         {
             try
             {
-                if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))
+                if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))                    
                     if (double.TryParse(txtSaldo.Text, out saldo))
                         AbrirCaja(Idcaja, cmbCajas.Text, saldo);
+                    else
+                    {
+                        frmAlerta form = new frmAlerta("Debe insertar datos numericos en el Saldo inicial",frmAlerta.Alerta.Error);
+                        form.ShowDialog();
+                        txtSaldo.Focus();
+                    }  
             }
             catch (Exception ex)
             {

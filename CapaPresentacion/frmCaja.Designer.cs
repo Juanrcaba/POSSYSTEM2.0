@@ -29,10 +29,10 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rbtTodas = new System.Windows.Forms.RadioButton();
             this.rbtCerrado = new System.Windows.Forms.RadioButton();
             this.rbtAbierto = new System.Windows.Forms.RadioButton();
@@ -41,13 +41,17 @@ namespace CapaPresentacion
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.btnAbrirCaja = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCerrarCaja = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnTraspasoCaja = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnTurnos = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnImprimir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tablaCajas = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.btnSalir = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCajas)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbtTodas
@@ -222,43 +226,44 @@ namespace CapaPresentacion
             this.btnCerrarCaja.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnCerrarCaja.Click += new System.EventHandler(this.btnCerrarCaja_Click);
             // 
-            // btnTraspasoCaja
+            // btnTurnos
             // 
-            this.btnTraspasoCaja.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspasoCaja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTraspasoCaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspasoCaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTraspasoCaja.BorderRadius = 7;
-            this.btnTraspasoCaja.ButtonText = "Traspaso Caja";
-            this.btnTraspasoCaja.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTraspasoCaja.DisabledColor = System.Drawing.Color.Gray;
-            this.btnTraspasoCaja.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
-            this.btnTraspasoCaja.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnTraspasoCaja.Iconimage = null;
-            this.btnTraspasoCaja.Iconimage_right = null;
-            this.btnTraspasoCaja.Iconimage_right_Selected = null;
-            this.btnTraspasoCaja.Iconimage_Selected = null;
-            this.btnTraspasoCaja.IconMarginLeft = 0;
-            this.btnTraspasoCaja.IconMarginRight = 0;
-            this.btnTraspasoCaja.IconRightVisible = true;
-            this.btnTraspasoCaja.IconRightZoom = 0D;
-            this.btnTraspasoCaja.IconVisible = true;
-            this.btnTraspasoCaja.IconZoom = 30D;
-            this.btnTraspasoCaja.IsTab = false;
-            this.btnTraspasoCaja.Location = new System.Drawing.Point(268, 543);
-            this.btnTraspasoCaja.Margin = new System.Windows.Forms.Padding(6);
-            this.btnTraspasoCaja.Name = "btnTraspasoCaja";
-            this.btnTraspasoCaja.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspasoCaja.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            this.btnTraspasoCaja.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnTraspasoCaja.selected = false;
-            this.btnTraspasoCaja.Size = new System.Drawing.Size(116, 45);
-            this.btnTraspasoCaja.TabIndex = 46;
-            this.btnTraspasoCaja.TabStop = false;
-            this.btnTraspasoCaja.Text = "Traspaso Caja";
-            this.btnTraspasoCaja.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnTraspasoCaja.Textcolor = System.Drawing.Color.White;
-            this.btnTraspasoCaja.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTurnos.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTurnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTurnos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTurnos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTurnos.BorderRadius = 7;
+            this.btnTurnos.ButtonText = "Turnos";
+            this.btnTurnos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTurnos.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTurnos.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
+            this.btnTurnos.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTurnos.Iconimage = null;
+            this.btnTurnos.Iconimage_right = null;
+            this.btnTurnos.Iconimage_right_Selected = null;
+            this.btnTurnos.Iconimage_Selected = null;
+            this.btnTurnos.IconMarginLeft = 0;
+            this.btnTurnos.IconMarginRight = 0;
+            this.btnTurnos.IconRightVisible = true;
+            this.btnTurnos.IconRightZoom = 0D;
+            this.btnTurnos.IconVisible = true;
+            this.btnTurnos.IconZoom = 30D;
+            this.btnTurnos.IsTab = false;
+            this.btnTurnos.Location = new System.Drawing.Point(268, 543);
+            this.btnTurnos.Margin = new System.Windows.Forms.Padding(6);
+            this.btnTurnos.Name = "btnTurnos";
+            this.btnTurnos.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTurnos.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.btnTurnos.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnTurnos.selected = false;
+            this.btnTurnos.Size = new System.Drawing.Size(116, 45);
+            this.btnTurnos.TabIndex = 46;
+            this.btnTurnos.TabStop = false;
+            this.btnTurnos.Text = "Turnos";
+            this.btnTurnos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnTurnos.Textcolor = System.Drawing.Color.White;
+            this.btnTurnos.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTurnos.Click += new System.EventHandler(this.btnTurnos_Click);
             // 
             // btnImprimir
             // 
@@ -302,52 +307,50 @@ namespace CapaPresentacion
             // 
             this.tablaCajas.AllowUserToAddRows = false;
             this.tablaCajas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tablaCajas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tablaCajas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaCajas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaCajas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaCajas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaCajas.BackgroundColor = System.Drawing.Color.White;
-            this.tablaCajas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.tablaCajas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaCajas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaCajas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaCajas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.tablaCajas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaCajas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaCajas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaCajas.DefaultCellStyle = dataGridViewCellStyle7;
             this.tablaCajas.DoubleBuffered = true;
             this.tablaCajas.EnableHeadersVisualStyles = false;
             this.tablaCajas.GridColor = System.Drawing.Color.White;
             this.tablaCajas.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.tablaCajas.HeaderForeColor = System.Drawing.Color.Black;
-            this.tablaCajas.Location = new System.Drawing.Point(12, 110);
+            this.tablaCajas.Location = new System.Drawing.Point(31, 3);
             this.tablaCajas.MultiSelect = false;
             this.tablaCajas.Name = "tablaCajas";
             this.tablaCajas.ReadOnly = true;
             this.tablaCajas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.tablaCajas.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.tablaCajas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.tablaCajas.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaCajas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCajas.Size = new System.Drawing.Size(992, 411);
+            this.tablaCajas.Size = new System.Drawing.Size(558, 366);
             this.tablaCajas.TabIndex = 48;
             // 
             // btnSalir
@@ -389,11 +392,49 @@ namespace CapaPresentacion
             this.btnSalir.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // Column1
+            // panel2
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tablaCajas);
+            this.panel2.Location = new System.Drawing.Point(410, 136);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(594, 385);
+            this.panel2.TabIndex = 50;
+            // 
+            // flowContainer
+            // 
+            this.flowContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowContainer.AutoScroll = true;
+            this.flowContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowContainer.Location = new System.Drawing.Point(30, 136);
+            this.flowContainer.Name = "flowContainer";
+            this.flowContainer.Padding = new System.Windows.Forms.Padding(10);
+            this.flowContainer.Size = new System.Drawing.Size(354, 385);
+            this.flowContainer.TabIndex = 51;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(27, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 25);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Turnos";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(405, 108);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 25);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Cajas";
             // 
             // frmCaja
             // 
@@ -401,10 +442,13 @@ namespace CapaPresentacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1020, 601);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.flowContainer);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.tablaCajas);
             this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.btnTraspasoCaja);
+            this.Controls.Add(this.btnTurnos);
             this.Controls.Add(this.btnCerrarCaja);
             this.Controls.Add(this.btnAbrirCaja);
             this.Controls.Add(this.panel1);
@@ -415,7 +459,9 @@ namespace CapaPresentacion
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCajas)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -429,10 +475,13 @@ namespace CapaPresentacion
         private System.Windows.Forms.DateTimePicker dtFecha;
         private Bunifu.Framework.UI.BunifuFlatButton btnAbrirCaja;
         private Bunifu.Framework.UI.BunifuFlatButton btnCerrarCaja;
-        private Bunifu.Framework.UI.BunifuFlatButton btnTraspasoCaja;
+        private Bunifu.Framework.UI.BunifuFlatButton btnTurnos;
         private Bunifu.Framework.UI.BunifuFlatButton btnImprimir;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaCajas;
         private Bunifu.Framework.UI.BunifuFlatButton btnSalir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowContainer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
