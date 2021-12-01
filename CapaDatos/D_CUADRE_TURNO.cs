@@ -12,21 +12,40 @@ namespace CapaDatos
 {
      public class D_CUADRE_TURNO
     {
-        SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);  
 
-        public DataTable MostrarCuadreCajas(E_CUADRE_CAJA cuadre)
+       
+
+        public void AbrirTurno(E_CUADRE_TURNO cuadre)
         {
-            DataTable Dt = new DataTable();
-
-            SqlCommand cmd = new SqlCommand("SP_BUSCAR_CUADRE_CAJAS", conexion);
+            SqlCommand cmd = new SqlCommand("SP_ABRIR_TURNO", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ESTADO", cuadre.Estado);
-            cmd.Parameters.AddWithValue("@FECHA", cuadre.Fecha);
 
-            SqlDataAdapter Da = new SqlDataAdapter(cmd);
-            Da.Fill(Dt);
+            cmd.Parameters.AddWithValue("@IDTURNO", cuadre.Id_Turno);
+            cmd.Parameters.AddWithValue("@ID_CUADRE_CAJA", cuadre.Id_cuadre_caja);
+            cmd.Parameters.AddWithValue("@ID_USUARIO", cuadre.Id_Usuario);
+            cmd.Parameters.AddWithValue("@SALDO_INICIAL", cuadre.Saldo_Inicial);
 
-            return Dt;
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
         }
+
+        public void CerrarTurno(E_CUADRE_TURNO cuadre)
+        {
+            SqlCommand cmd = new SqlCommand("SP_CIERRE_TURNO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+           
+            cmd.Parameters.AddWithValue("@ID_TURNO", cuadre.Id_Turno);
+
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+
     }
 }

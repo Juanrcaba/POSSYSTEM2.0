@@ -27,6 +27,10 @@ namespace CapaNegocio
             objDatos.CerrarCajas(cuadre);
         }
        
+        public int Id_CajaAbierta()
+        {
+            return objDatos.Id_CajaAbierta();
+        }
 
     }
 }

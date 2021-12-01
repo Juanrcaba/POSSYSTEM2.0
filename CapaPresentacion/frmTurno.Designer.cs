@@ -43,32 +43,32 @@ namespace CapaPresentacion
             // lblTurno
             // 
             this.lblTurno.AutoSize = true;
-            this.lblTurno.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTurno.Location = new System.Drawing.Point(163, 70);
+            this.lblTurno.Font = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTurno.Location = new System.Drawing.Point(115, 70);
             this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(38, 22);
+            this.lblTurno.Size = new System.Drawing.Size(32, 20);
             this.lblTurno.TabIndex = 48;
             this.lblTurno.Text = "# 1";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
-            this.lblUsuario.Location = new System.Drawing.Point(163, 48);
+            this.lblUsuario.Font = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.Location = new System.Drawing.Point(115, 48);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(114, 22);
+            this.lblUsuario.Size = new System.Drawing.Size(94, 20);
             this.lblUsuario.TabIndex = 49;
             this.lblUsuario.Text = "Juan ramon";
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
-            this.lblFecha.Location = new System.Drawing.Point(163, 26);
+            this.lblFecha.Font = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.lblFecha.Location = new System.Drawing.Point(115, 26);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(112, 22);
+            this.lblFecha.Size = new System.Drawing.Size(185, 20);
             this.lblFecha.TabIndex = 50;
-            this.lblFecha.Text = "29/11/2021";
+            this.lblFecha.Text = "29/11/2021 12:12:00 PM";
             // 
             // btnCerrarTurno
             // 

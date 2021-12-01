@@ -20,8 +20,14 @@ namespace CapaPresentacion
         }
 
         E_CUADRE_CAJA objE_CuadreCaja = new E_CUADRE_CAJA();
+        E_CUADRE_TURNO objE_CuadreTurno = new E_CUADRE_TURNO();
         N_CUADRE_CAJA objN_Cuadrecaja = new N_CUADRE_CAJA();
         N_TURNO objN_Turnos = new N_TURNO();
+        N_CUADRE_TURNO objN_cuadreTurno = new N_CUADRE_TURNO();
+        frmAlerta form;
+
+       // int IdTurno = 0;
+        int estado = 0;
 
         void pantallaOK()
         {
@@ -33,6 +39,7 @@ namespace CapaPresentacion
         {
             pantallaOK();
             CargarTurnos();
+          
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -43,13 +50,25 @@ namespace CapaPresentacion
         }
 
         //metodos
-        private void MostrarCajas(int estado,string fecha)
+        private void MostrarCajas()
         {
             try
             {
+                
+                string fecha = dtFecha.Value.ToString();
+                if (rbtAbierto.Checked)
+                    estado = 1;
+
+                if (rbtCerrado.Checked)
+                    estado = 0;
+                if (rbtTodas.Checked)
+                    estado = 2;
+
                 objE_CuadreCaja.Estado = estado;
                 objE_CuadreCaja.Fecha = fecha;
                 tablaCajas.DataSource = objN_Cuadrecaja.MostrarCuadreCajas(objE_CuadreCaja);
+                tablaCajas.Columns[0].Visible = false;
+                tablaCajas.Columns[7].Visible = false;
                 tablaCajas.ClearSelection();
                 btnBuscar.Focus();
             }
@@ -67,25 +86,16 @@ namespace CapaPresentacion
             objE_CuadreCaja.Id_cuadre_caja = IdCuadreCaja;
             objE_CuadreCaja.Id_caja = IdCaja;
             objN_Cuadrecaja.CerrarCajas(objE_CuadreCaja);
-            frmAlerta form = new frmAlerta("La Caja fue Cerrada con exito!!",frmAlerta.Alerta.Exitoso);
+
+            form = new frmAlerta("La Caja fue Cerrada con exito!!",frmAlerta.Alerta.Exitoso);
             form.ShowDialog();
             form.Dispose();
 
         }
         //fin metodos
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            int estado = 0;
-            string fecha = dtFecha.Value.ToString();
-            if (rbtAbierto.Checked)
-                estado = 1;
-
-            if (rbtCerrado.Checked)
-                estado = 0;
-            if (rbtTodas.Checked)
-                estado = 2;
-
-            MostrarCajas(estado,fecha);
+        {   
+             MostrarCajas();
         }
 
         private void btnAbrirCaja_Click(object sender, EventArgs e)
@@ -93,6 +103,7 @@ namespace CapaPresentacion
             frmAperturaCaja form = new frmAperturaCaja();
             form.ShowDialog();
             form.Dispose();
+            MostrarCajas();
         }
 
         private void btnCerrarCaja_Click(object sender, EventArgs e)
@@ -101,23 +112,48 @@ namespace CapaPresentacion
             {
                 if (Convert.ToInt32(tablaCajas.CurrentRow.Cells[7].Value.ToString()) != 0)
                 {
+                    DataTable Dt = objN_Turnos.MostrarTurnosAbiertos();             
+                   
                     string nCaja = tablaCajas.CurrentRow.Cells[1].Value.ToString();
 
-                    frmAlerta form = new frmAlerta("Esta apunto de cerrar la caja #" + nCaja + ", esta seguro?", frmAlerta.Alerta.Información);
+                    form = new frmAlerta("Esta apunto de cerrar la caja #" + nCaja + ", esta seguro?", frmAlerta.Alerta.Información);
+                  
                     if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        if (Dt.Rows.Count > 0)
+                        {
+                            form = new frmAlerta("Existen turnos abiertos, deseas cerrarlos para continuar?", frmAlerta.Alerta.Información);
+                            if (form.ShowDialog() == DialogResult.OK)
+                            {
+                                foreach (DataRow item in Dt.Rows)
+                                {
+                                    objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["IDTURNOS"]);
+                                    objN_cuadreTurno.CerrarTurno(objE_CuadreTurno);
+                                }
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
                         CerrarCaja(Convert.ToInt32(tablaCajas.CurrentRow.Cells[0].Value.ToString()),
                                    Convert.ToInt32(tablaCajas.CurrentRow.Cells[1].Value.ToString()));
+                        CargarTurnos();
+                        MostrarCajas();
+                    }                     
+                    
+                   
                 }
                 else
                 {
-                    frmAlerta form = new frmAlerta("Ya esta caja esta cerrada.", frmAlerta.Alerta.Información);
+                    form = new frmAlerta("Ya esta caja esta cerrada.", frmAlerta.Alerta.Información);
                     form.ShowDialog();
                     form.Dispose();
                 }
             }
             else
             {
-                frmAlerta form = new frmAlerta("Debes Seleccionar una caja a cerrar.", frmAlerta.Alerta.Información);
+                form = new frmAlerta("Debes Seleccionar una caja a cerrar.", frmAlerta.Alerta.Información);
                 form.ShowDialog();
                 form.Dispose();
             }
@@ -132,18 +168,19 @@ namespace CapaPresentacion
             CargarTurnos();
         }
 
-        private void CargarTurnos()
+        public void CargarTurnos()
         {
             DataTable Datos = objN_Turnos.MostrarTurnosAbiertos();
-            if (Datos.Rows.Count > 0) {
-                flowContainer.Controls.Clear();
+            flowContainer.Controls.Clear();
+            if (Datos.Rows.Count > 0) {            
               foreach (DataRow item in Datos.Rows)
               {
                 frmTurno form = new frmTurno();
+                    AddOwnedForm(form);
                 form.lblFecha.Text = item[4].ToString();
                 form.lblTurno.Text = item[2].ToString();
                 form.lblUsuario.Text = "Juan ramon";
-                form.id = Convert.ToInt32(item[0]);
+                form.id_turno = Convert.ToInt32(item[0]);
 
                 form.TopLevel = false;
                 flowContainer.Controls.Add(form);

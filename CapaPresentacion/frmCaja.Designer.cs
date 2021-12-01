@@ -339,7 +339,7 @@ namespace CapaPresentacion
             this.tablaCajas.GridColor = System.Drawing.Color.White;
             this.tablaCajas.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.tablaCajas.HeaderForeColor = System.Drawing.Color.Black;
-            this.tablaCajas.Location = new System.Drawing.Point(31, 3);
+            this.tablaCajas.Location = new System.Drawing.Point(3, 3);
             this.tablaCajas.MultiSelect = false;
             this.tablaCajas.Name = "tablaCajas";
             this.tablaCajas.ReadOnly = true;
@@ -350,7 +350,7 @@ namespace CapaPresentacion
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.tablaCajas.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaCajas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaCajas.Size = new System.Drawing.Size(558, 366);
+            this.tablaCajas.Size = new System.Drawing.Size(586, 366);
             this.tablaCajas.TabIndex = 48;
             // 
             // btnSalir
@@ -480,8 +480,8 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaCajas;
         private Bunifu.Framework.UI.BunifuFlatButton btnSalir;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.FlowLayoutPanel flowContainer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.FlowLayoutPanel flowContainer;
     }
 }

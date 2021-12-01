@@ -34,15 +34,15 @@ namespace CapaPresentacion
             this.label1 = new System.Windows.Forms.Label();
             this.MoverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAbrir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.lblTurno = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.btnAbrir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -73,21 +73,8 @@ namespace CapaPresentacion
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(324, 36);
+            this.TopPanel.Size = new System.Drawing.Size(319, 36);
             this.TopPanel.TabIndex = 69;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::CapaPresentacion.Properties.Resources.Close;
-            this.btnCerrar.Location = new System.Drawing.Point(285, 1);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 32);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCerrar.TabIndex = 1;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // bunifuElipse1
             // 
@@ -127,6 +114,51 @@ namespace CapaPresentacion
             this.label2.TabIndex = 75;
             this.label2.Text = "# TURNO";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(30, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 18);
+            this.label6.TabIndex = 71;
+            this.label6.Text = "SALDO INICIAL";
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.BackColor = System.Drawing.Color.White;
+            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaldo.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldo.Location = new System.Drawing.Point(27, 179);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.Size = new System.Drawing.Size(267, 32);
+            this.txtSaldo.TabIndex = 72;
+            // 
+            // lblTurno
+            // 
+            this.lblTurno.AutoSize = true;
+            this.lblTurno.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTurno.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTurno.Location = new System.Drawing.Point(144, 111);
+            this.lblTurno.Name = "lblTurno";
+            this.lblTurno.Size = new System.Drawing.Size(81, 18);
+            this.lblTurno.TabIndex = 78;
+            this.lblTurno.Text = "# TURNO";
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::CapaPresentacion.Properties.Resources.Close;
+            this.btnCerrar.Location = new System.Drawing.Point(280, 1);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(32, 32);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // btnAbrir
             // 
             this.btnAbrir.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -165,43 +197,11 @@ namespace CapaPresentacion
             this.btnAbrir.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(30, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 18);
-            this.label6.TabIndex = 71;
-            this.label6.Text = "SALDO INICIAL";
-            // 
-            // txtSaldo
-            // 
-            this.txtSaldo.BackColor = System.Drawing.Color.White;
-            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSaldo.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldo.Location = new System.Drawing.Point(27, 179);
-            this.txtSaldo.Name = "txtSaldo";
-            this.txtSaldo.Size = new System.Drawing.Size(267, 32);
-            this.txtSaldo.TabIndex = 72;
-            // 
-            // lblTurno
-            // 
-            this.lblTurno.AutoSize = true;
-            this.lblTurno.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTurno.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTurno.Location = new System.Drawing.Point(144, 111);
-            this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(81, 18);
-            this.lblTurno.TabIndex = 78;
-            this.lblTurno.Text = "# TURNO";
-            // 
             // frmAperturaTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 294);
+            this.ClientSize = new System.Drawing.Size(319, 296);
             this.Controls.Add(this.lblTurno);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.label6);

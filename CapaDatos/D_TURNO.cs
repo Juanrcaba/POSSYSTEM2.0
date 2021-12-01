@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidades;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -40,6 +41,37 @@ namespace CapaDatos
             Da.Fill(Dt);
 
             return Dt;
+        }
+      
+
+        
+
+        public void AbrirTurnos(E_CUADRE_TURNO cuadre)
+        {
+            SqlCommand cmd = new SqlCommand("SP_ABRIR_TURNO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@IDTURNO", cuadre.Id_Turno);
+            cmd.Parameters.AddWithValue("@ID_CUADRE_CAJA", cuadre.Id_cuadre_caja);
+            cmd.Parameters.AddWithValue("@ID_USUARIO", cuadre.Id_Usuario);
+            cmd.Parameters.AddWithValue("@SALDO_INICIAL", cuadre.Saldo_Inicial);
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void CerrarTurno(E_CUADRE_TURNO cuadre)
+        {
+            SqlCommand cmd = new SqlCommand("SP_CIERRE_TURNO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ID_CUADRE_TURNO", cuadre.Id_Turno);
+            
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }

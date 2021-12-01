@@ -56,5 +56,21 @@ namespace CapaDatos
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public int Id_CajaAbierta()
+        {
+            int id = 0;
+            SqlCommand cmd = new SqlCommand("SP_CAJA_ABIERTA",conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                id = Convert.ToInt32(reader["ID_CUADRE_CAJA"].ToString());
+            }
+            return id;
+        }
     }
 }
