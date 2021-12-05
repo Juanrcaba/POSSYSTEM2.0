@@ -40,7 +40,7 @@ namespace CapaPresentacion
             this.btnGrupos = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnFacturar = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMesa = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tablaProductos = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +51,7 @@ namespace CapaPresentacion
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -63,7 +64,7 @@ namespace CapaPresentacion
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblMesa);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -233,15 +234,15 @@ namespace CapaPresentacion
             this.btnFacturar.Textcolor = System.Drawing.Color.White;
             this.btnFacturar.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             // 
-            // label1
+            // lblMesa
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(125, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 25);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Mesas # 1";
+            this.lblMesa.AutoSize = true;
+            this.lblMesa.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.lblMesa.Location = new System.Drawing.Point(125, 53);
+            this.lblMesa.Name = "lblMesa";
+            this.lblMesa.Size = new System.Drawing.Size(111, 25);
+            this.lblMesa.TabIndex = 42;
+            this.lblMesa.Text = "Mesas # 1";
             // 
             // pictureBox1
             // 
@@ -264,6 +265,7 @@ namespace CapaPresentacion
             this.tablaProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaProductos.BackgroundColor = System.Drawing.Color.White;
+            this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -355,9 +357,9 @@ namespace CapaPresentacion
             this.label2.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(35, 381);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 25);
+            this.label2.Size = new System.Drawing.Size(79, 25);
             this.label2.TabIndex = 42;
-            this.label2.Text = "Mesas # 1";
+            this.label2.Text = "Total: ";
             // 
             // panel3
             // 
@@ -370,6 +372,17 @@ namespace CapaPresentacion
             this.panel3.Size = new System.Drawing.Size(677, 658);
             this.panel3.TabIndex = 40;
             // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(120, 381);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(94, 25);
+            this.lblTotal.TabIndex = 42;
+            this.lblTotal.Text = "1,000.00";
+            // 
             // frmComanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +391,7 @@ namespace CapaPresentacion
             this.ClientSize = new System.Drawing.Size(1254, 775);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tablaProductos);
             this.Controls.Add(this.panel1);
@@ -408,7 +422,6 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuFlatButton btnGrupos;
         private System.Windows.Forms.Panel panel12;
         private Bunifu.Framework.UI.BunifuFlatButton btnFacturar;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
@@ -419,5 +432,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Label lblMesa;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

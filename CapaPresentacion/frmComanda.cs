@@ -20,7 +20,7 @@ namespace CapaPresentacion
         private void btnMesas_Click(object sender, EventArgs e)
         {
             frmMesas form = new frmMesas();
-            form.Show();
+            form.Show();           
             this.Hide();
         }
 

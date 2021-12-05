@@ -29,20 +29,17 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMesas));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCaja = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnTickets = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnTraspaso = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnSalir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCaja = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnmesa1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnTickets = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnSalir = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnTraspaso = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.flowContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,6 +55,16 @@ namespace CapaPresentacion
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1290, 87);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(125, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 25);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "MESAS";
             // 
             // btnCaja
             // 
@@ -98,6 +105,16 @@ namespace CapaPresentacion
             this.btnCaja.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logoBar;
+            this.pictureBox1.Location = new System.Drawing.Point(40, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 78);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnTickets
             // 
             this.btnTickets.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -135,44 +152,6 @@ namespace CapaPresentacion
             this.btnTickets.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnTickets.Textcolor = System.Drawing.Color.White;
             this.btnTickets.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            // 
-            // btnTraspaso
-            // 
-            this.btnTraspaso.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspaso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTraspaso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspaso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTraspaso.BorderRadius = 7;
-            this.btnTraspaso.ButtonText = "Traspaso";
-            this.btnTraspaso.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTraspaso.DisabledColor = System.Drawing.Color.Gray;
-            this.btnTraspaso.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.btnTraspaso.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnTraspaso.Iconimage = null;
-            this.btnTraspaso.Iconimage_right = null;
-            this.btnTraspaso.Iconimage_right_Selected = null;
-            this.btnTraspaso.Iconimage_Selected = null;
-            this.btnTraspaso.IconMarginLeft = 0;
-            this.btnTraspaso.IconMarginRight = 0;
-            this.btnTraspaso.IconRightVisible = true;
-            this.btnTraspaso.IconRightZoom = 0D;
-            this.btnTraspaso.IconVisible = true;
-            this.btnTraspaso.IconZoom = 30D;
-            this.btnTraspaso.IsTab = false;
-            this.btnTraspaso.Location = new System.Drawing.Point(931, 6);
-            this.btnTraspaso.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.btnTraspaso.Name = "btnTraspaso";
-            this.btnTraspaso.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnTraspaso.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            this.btnTraspaso.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnTraspaso.selected = false;
-            this.btnTraspaso.Size = new System.Drawing.Size(164, 71);
-            this.btnTraspaso.TabIndex = 39;
-            this.btnTraspaso.TabStop = false;
-            this.btnTraspaso.Text = "Traspaso";
-            this.btnTraspaso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnTraspaso.Textcolor = System.Drawing.Color.White;
-            this.btnTraspaso.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             // 
             // btnSalir
             // 
@@ -213,74 +192,52 @@ namespace CapaPresentacion
             this.btnSalir.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // label1
+            // btnTraspaso
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(125, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 25);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Mesas";
+            this.btnTraspaso.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTraspaso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraspaso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTraspaso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTraspaso.BorderRadius = 7;
+            this.btnTraspaso.ButtonText = "Traspaso";
+            this.btnTraspaso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTraspaso.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTraspaso.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.btnTraspaso.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTraspaso.Iconimage = null;
+            this.btnTraspaso.Iconimage_right = null;
+            this.btnTraspaso.Iconimage_right_Selected = null;
+            this.btnTraspaso.Iconimage_Selected = null;
+            this.btnTraspaso.IconMarginLeft = 0;
+            this.btnTraspaso.IconMarginRight = 0;
+            this.btnTraspaso.IconRightVisible = true;
+            this.btnTraspaso.IconRightZoom = 0D;
+            this.btnTraspaso.IconVisible = true;
+            this.btnTraspaso.IconZoom = 30D;
+            this.btnTraspaso.IsTab = false;
+            this.btnTraspaso.Location = new System.Drawing.Point(931, 6);
+            this.btnTraspaso.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnTraspaso.Name = "btnTraspaso";
+            this.btnTraspaso.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTraspaso.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.btnTraspaso.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnTraspaso.selected = false;
+            this.btnTraspaso.Size = new System.Drawing.Size(164, 71);
+            this.btnTraspaso.TabIndex = 39;
+            this.btnTraspaso.TabStop = false;
+            this.btnTraspaso.Text = "Traspaso";
+            this.btnTraspaso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnTraspaso.Textcolor = System.Drawing.Color.White;
+            this.btnTraspaso.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             // 
-            // pictureBox1
+            // flowContainer
             // 
-            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logoBar;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 78);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnmesa1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 87);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(30, 20, 30, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1290, 609);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btnmesa1
-            // 
-            this.btnmesa1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnmesa1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmesa1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnmesa1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmesa1.BorderRadius = 7;
-            this.btnmesa1.ButtonText = "Mesa # 2";
-            this.btnmesa1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnmesa1.DisabledColor = System.Drawing.Color.Gray;
-            this.btnmesa1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.btnmesa1.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnmesa1.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnmesa1.Iconimage")));
-            this.btnmesa1.Iconimage_right = null;
-            this.btnmesa1.Iconimage_right_Selected = null;
-            this.btnmesa1.Iconimage_Selected = null;
-            this.btnmesa1.IconMarginLeft = 10;
-            this.btnmesa1.IconMarginRight = 0;
-            this.btnmesa1.IconRightVisible = true;
-            this.btnmesa1.IconRightZoom = 0D;
-            this.btnmesa1.IconVisible = true;
-            this.btnmesa1.IconZoom = 45D;
-            this.btnmesa1.IsTab = false;
-            this.btnmesa1.Location = new System.Drawing.Point(39, 28);
-            this.btnmesa1.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.btnmesa1.Name = "btnmesa1";
-            this.btnmesa1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnmesa1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
-            this.btnmesa1.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnmesa1.selected = false;
-            this.btnmesa1.Size = new System.Drawing.Size(182, 104);
-            this.btnmesa1.TabIndex = 37;
-            this.btnmesa1.TabStop = false;
-            this.btnmesa1.Text = "Mesa # 2";
-            this.btnmesa1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmesa1.Textcolor = System.Drawing.Color.White;
-            this.btnmesa1.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.btnmesa1.Click += new System.EventHandler(this.btnmesa1_Click);
+            this.flowContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowContainer.Location = new System.Drawing.Point(0, 87);
+            this.flowContainer.Name = "flowContainer";
+            this.flowContainer.Padding = new System.Windows.Forms.Padding(30, 20, 30, 10);
+            this.flowContainer.Size = new System.Drawing.Size(1290, 609);
+            this.flowContainer.TabIndex = 1;
             // 
             // panel2
             // 
@@ -296,7 +253,7 @@ namespace CapaPresentacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1290, 730);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowContainer);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -306,7 +263,6 @@ namespace CapaPresentacion
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,7 +270,7 @@ namespace CapaPresentacion
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowContainer;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuFlatButton btnCaja;
         private Bunifu.Framework.UI.BunifuFlatButton btnSalir;
@@ -322,6 +278,5 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuFlatButton btnTraspaso;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuFlatButton btnmesa1;
     }
 }

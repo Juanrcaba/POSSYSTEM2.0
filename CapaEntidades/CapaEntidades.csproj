@@ -46,6 +46,7 @@
     <Compile Include="E_CUADRE_CAJA.cs" />
     <Compile Include="E_CUADRE_TURNO.cs" />
     <Compile Include="E_MARCA.cs" />
+    <Compile Include="E_MESAS.cs" />
     <Compile Include="E_PRODUCTO.cs" />
     <Compile Include="E_TURNO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
