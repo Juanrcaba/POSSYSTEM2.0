@@ -90,11 +90,23 @@
     <Compile Include="frmComanda.Designer.cs">
       <DependentUpon>frmComanda.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmControlCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControlCategorias.Designer.cs">
+      <DependentUpon>frmControlCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmControlMesa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmControlMesa.Designer.cs">
       <DependentUpon>frmControlMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControlProductos.Designer.cs">
+      <DependentUpon>frmControlProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoProducto.cs">
       <SubType>Form</SubType>
@@ -164,8 +176,14 @@
     <EmbeddedResource Include="frmComanda.resx">
       <DependentUpon>frmComanda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmControlCategorias.resx">
+      <DependentUpon>frmControlCategorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmControlMesa.resx">
       <DependentUpon>frmControlMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmControlProductos.resx">
+      <DependentUpon>frmControlProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>

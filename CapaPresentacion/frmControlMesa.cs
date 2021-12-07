@@ -35,7 +35,7 @@ namespace CapaPresentacion
             frmMesas formMesas = Owner as frmMesas;
             frmComanda form = new frmComanda();
             form.lblMesa.Text = this.lblMesa.Text;
-
+            form.idmesa = id_mesa;
             form.Show();
             formMesas.Hide();
         }

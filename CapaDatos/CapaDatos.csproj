@@ -46,6 +46,7 @@
     <Compile Include="D_CATEGORIA.cs" />
     <Compile Include="D_CUADRE_CAJA.cs" />
     <Compile Include="D_CUADRE_TURNO.cs" />
+    <Compile Include="D_DETALLE_MESA.cs" />
     <Compile Include="D_MARCA.cs" />
     <Compile Include="D_MESAS.cs" />
     <Compile Include="D_PRODUCTO.cs" />

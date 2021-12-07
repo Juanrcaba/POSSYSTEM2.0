@@ -40,6 +40,20 @@ namespace CapaDatos
             return Dt;
         }
 
+        public DataTable BuscarProductoCategoria(int buscar)
+        {
+            DataTable Dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("SP_BUSCARPRODUCTO_CATEGORIA", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdCateogria", buscar);
+
+            SqlDataAdapter Da = new SqlDataAdapter(cmd);
+            Da.Fill(Dt);
+
+            return Dt;
+        }
+
         public void InsertarProductos(E_PRODUCTO producto)
         {
             SqlCommand cmd = new SqlCommand("SP_INSERTARPRODUCTO", conexion);

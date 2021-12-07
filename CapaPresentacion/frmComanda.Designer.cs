@@ -32,6 +32,8 @@ namespace CapaPresentacion
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -51,6 +53,7 @@ namespace CapaPresentacion
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.flowContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,6 +62,7 @@ namespace CapaPresentacion
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -186,6 +190,7 @@ namespace CapaPresentacion
             this.btnGrupos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGrupos.Textcolor = System.Drawing.Color.White;
             this.btnGrupos.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGrupos.Click += new System.EventHandler(this.btnGrupos_Click);
             // 
             // panel12
             // 
@@ -301,7 +306,17 @@ namespace CapaPresentacion
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaProductos.RowHeadersVisible = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.tablaProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.tablaProductos.Size = new System.Drawing.Size(424, 263);
             this.tablaProductos.TabIndex = 38;
@@ -367,10 +382,20 @@ namespace CapaPresentacion
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.flowContainer);
             this.panel3.Location = new System.Drawing.Point(565, 105);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(677, 658);
             this.panel3.TabIndex = 40;
+            // 
+            // flowContainer
+            // 
+            this.flowContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowContainer.Location = new System.Drawing.Point(0, 0);
+            this.flowContainer.Name = "flowContainer";
+            this.flowContainer.Padding = new System.Windows.Forms.Padding(30, 20, 30, 10);
+            this.flowContainer.Size = new System.Drawing.Size(675, 656);
+            this.flowContainer.TabIndex = 2;
             // 
             // lblTotal
             // 
@@ -407,6 +432,7 @@ namespace CapaPresentacion
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,11 +445,9 @@ namespace CapaPresentacion
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuFlatButton btnMesas;
         private System.Windows.Forms.Panel panel11;
-        private Bunifu.Framework.UI.BunifuFlatButton btnGrupos;
         private System.Windows.Forms.Panel panel12;
         private Bunifu.Framework.UI.BunifuFlatButton btnFacturar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid tablaProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
@@ -434,5 +458,8 @@ namespace CapaPresentacion
         private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.Label lblMesa;
         private System.Windows.Forms.Label lblTotal;
+        public System.Windows.Forms.FlowLayoutPanel flowContainer;
+        public Bunifu.Framework.UI.BunifuFlatButton btnGrupos;
+        public Bunifu.Framework.UI.BunifuCustomDataGrid tablaProductos;
     }
 }

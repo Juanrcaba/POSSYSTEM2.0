@@ -77,12 +77,7 @@ namespace CapaPresentacion
             
         }
 
-        private void Mostrarmensaje(int id,string mesa)
-        {
-            frmComanda form = new frmComanda();
-            form.Show();
-            this.Hide();
-        }
+       
 
         private void btnCaja_Click(object sender, EventArgs e)
         {

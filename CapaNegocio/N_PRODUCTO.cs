@@ -23,6 +23,11 @@ namespace CapaNegocio
             return objDatos.BuscarProducto(buscar);
         }
 
+        public DataTable BuscarProdutoCategoria(int buscar)
+        {
+            return objDatos.BuscarProductoCategoria(buscar);
+        }
+
         public void InsertarProducto(E_PRODUCTO producto)
         {
             objDatos.InsertarProductos(producto);
