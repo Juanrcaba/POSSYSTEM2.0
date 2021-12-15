@@ -50,6 +50,7 @@
     <Compile Include="N_MESAS.cs" />
     <Compile Include="N_PRODUCTO.cs" />
     <Compile Include="N_TURNO.cs" />
+    <Compile Include="N_VENTA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

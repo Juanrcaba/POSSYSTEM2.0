@@ -13,11 +13,13 @@ namespace CapaEntidades
         private int _Cantidad;
         private double _Precio;
         private int _Id_producto;
+        private double _Total;
 
         public int Id_detalle_mesa { get => _Id_detalle_mesa; set => _Id_detalle_mesa = value; }
         public int Id_mesa { get => _Id_mesa; set => _Id_mesa = value; }
         public int Cantidad { get => _Cantidad; set => _Cantidad = value; }
         public double Precio { get => _Precio; set => _Precio = value; }
         public int Id_producto { get => _Id_producto; set => _Id_producto = value; }
+        public double Total { get => _Total; set => _Total = value; }
     }
 }

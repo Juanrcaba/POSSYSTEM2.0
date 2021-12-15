@@ -238,6 +238,7 @@ namespace CapaPresentacion
             this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnFacturar.Textcolor = System.Drawing.Color.White;
             this.btnFacturar.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // lblMesa
             // 

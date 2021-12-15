@@ -19,9 +19,12 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+        N_TURNO objTurno = new N_TURNO();
         N_MESAS objMesas = new N_MESAS();
         E_MESAS objE_mesas = new E_MESAS();
         frmAlerta formAlerta;
+
+        int idTurno = 0;
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -38,7 +41,9 @@ namespace CapaPresentacion
         private void frmMesas_Load(object sender, EventArgs e)
         {
             pantallaOK();
+            if(ValidarTurno())
             CargarMesas();
+
         }
 
         private void CargarMesas()
@@ -60,7 +65,7 @@ namespace CapaPresentacion
                         else
                             Balance = "0.00";
 
-                        frmControlMesa btn = new frmControlMesa(Convert.ToInt32(item["ID_MESA"]), item["NOMBRE"].ToString(), Balance);
+                        frmControlMesa btn = new frmControlMesa(Convert.ToInt32(item["ID_MESA"]), item["NOMBRE"].ToString(), Balance,idTurno);
                         AddOwnedForm(btn);
                         btn.TopLevel = false;
                         flowContainer.Controls.Add(btn);
@@ -77,7 +82,17 @@ namespace CapaPresentacion
             
         }
 
-       
+        private bool ValidarTurno()
+        {
+            DataTable dt = objTurno.MostrarTurnosAbiertos();
+            if (dt.Rows.Count > 0)
+            {
+                idTurno = Convert.ToInt32(dt.Rows[0][0]);
+                return true;
+            }              
+            else
+                return false;
+        }
 
         private void btnCaja_Click(object sender, EventArgs e)
         {

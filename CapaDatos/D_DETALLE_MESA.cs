@@ -53,6 +53,8 @@ namespace CapaDatos
 
             cmd.Parameters.AddWithValue("@id_mesa", Dmesa.Id_mesa);
             cmd.Parameters.AddWithValue("@id_producto", Dmesa.Id_producto);
+            cmd.Parameters.AddWithValue("@cantidad", Dmesa.Cantidad);
+            cmd.Parameters.AddWithValue("@total", Dmesa.Total);
 
             conexion.Open();
             cmd.ExecuteNonQuery();
