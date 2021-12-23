@@ -73,5 +73,22 @@ namespace CapaDatos
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public int MesasOcupadas()
+        {
+            int estado = 0;
+
+            SqlCommand cmd = new SqlCommand("SP_ESTADO_MESA", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;         
+            cmd.Parameters.Add("@estado", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+
+            estado = Convert.ToInt32(cmd.Parameters["@estado"].Value);
+
+            return estado;
+        }
     }
 }

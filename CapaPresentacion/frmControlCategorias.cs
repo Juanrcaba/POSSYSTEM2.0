@@ -48,15 +48,15 @@ namespace CapaPresentacion
             if (Dt != null)
                 if (Dt.Rows.Count > 0)
                 {
+                    formComanda.flowContainer.Controls.Clear();
                     foreach (DataRow item in Dt.Rows)
                     {
                         
-                        frmControlProductos btn = new frmControlProductos(Convert.ToInt32(item["IDPRODUCTO"]),Convert.ToDouble(item["PRECIO_VENTA"]),item["PRODUCTO"].ToString());
-                        //AddOwnedForm(btn);
+                        frmControlProductos btn = new frmControlProductos(Convert.ToInt32(item["IDPRODUCTO"]),Convert.ToDouble(item["PRECIO_VENTA"]),item["PRODUCTO"].ToString());                      
                         formComanda.AddOwnedForm(btn);
                         btn.TopLevel = false;
                         formComanda.btnGrupos.Enabled = true;
-                        formComanda.flowContainer.Controls.Clear();
+                       
                         formComanda.flowContainer.Controls.Add(btn);
                         btn.Show();
                     }

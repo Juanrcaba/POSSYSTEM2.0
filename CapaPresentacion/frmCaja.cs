@@ -125,11 +125,22 @@ namespace CapaPresentacion
                             form = new frmAlerta("Existen turnos abiertos, deseas cerrarlos para continuar?", frmAlerta.Alerta.Información);
                             if (form.ShowDialog() == DialogResult.OK)
                             {
-                                foreach (DataRow item in Dt.Rows)
+
+                                if (objN_Turnos.MesasOcupadas() == 0)
                                 {
-                                    objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["IDTURNOS"]);
-                                    objN_cuadreTurno.CerrarTurno(objE_CuadreTurno);
+                                    foreach (DataRow item in Dt.Rows)
+                                    {
+                                        objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["IDTURNOS"]);
+                                        objN_cuadreTurno.CerrarTurno(objE_CuadreTurno);
+                                    }
                                 }
+                                else
+                                {
+                                    form = new frmAlerta("Existen mesas Ocupadas, debes facturar antes de cerrar el turno", frmAlerta.Alerta.Información);
+                                    form.ShowDialog();
+                                    return;
+                                }
+                               
                             }
                             else
                             {

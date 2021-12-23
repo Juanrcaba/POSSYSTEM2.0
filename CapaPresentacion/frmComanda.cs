@@ -30,6 +30,8 @@ namespace CapaPresentacion
         double calculo = 0;
         public int idmesa = 0;
         public int Idturno = 0;
+        int carga = 0;
+        int indexFila = -1;
         private void btnMesas_Click(object sender, EventArgs e)
         {
             VolverAMesa();
@@ -51,7 +53,8 @@ namespace CapaPresentacion
             pantallaOK();
             CargarGrupos();
             CargarComanda();
-            tablaProductos.ClearSelection();
+            tablaProductos.ClearSelection();            
+            btnMesas.Focus();
         }
 
         private void CargarGrupos()
@@ -97,24 +100,31 @@ namespace CapaPresentacion
                 {
                     if (Convert.ToInt32(item.Cells["idProducto"].Value) == id_producto)
                     {
+
+                        indexFila = item.Index;
                         item.Cells["Cantidad"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) + 1;
-                        item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
-                        //update tabla en la base de datos
-                        objE_detalle_mesa.Id_mesa = idmesa;
-                        objE_detalle_mesa.Id_producto = id_producto;
-                        objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells["Cantidad"].Value);
-                        objE_detalle_mesa.Total = Convert.ToDouble(item.Cells["Total"].Value);
-                        objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+                        carga = 2;
+                        item.Cells["Precio"].Value = precio;
+                       //item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
+                       
+                        // update tabla en la base de datos
+                        //objE_detalle_mesa.Id_mesa = idmesa;
+                        //objE_detalle_mesa.Id_producto = id_producto;
+                        //objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells["Cantidad"].Value);
+                        //objE_detalle_mesa.Precio = precio;
+                        //objE_detalle_mesa.Total = Convert.ToDouble(item.Cells["Total"].Value);
+                        //objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
                         return;
                     }
                     
                 }
+                carga = 1;
                 tablaProductos.Rows.Add(id_producto, nombre, 1, precio, (1 * precio));
                 //insert en la base de datos
                 objE_detalle_mesa.Id_mesa = idmesa;
                 objE_detalle_mesa.Id_producto = id_producto;              
                 objE_detalle_mesa.Precio = precio;
-                
+                tablaProductos.ClearSelection();
                 objDetalle_mesa.InsertarDetalleMesa(objE_detalle_mesa);
             }
             else
@@ -127,21 +137,23 @@ namespace CapaPresentacion
 
                 objDetalle_mesa.InsertarDetalleMesa(objE_detalle_mesa);
 
-            }        
+            }
+            this.Focus();
 
-           
         }
         private void CargarComanda()
         {
+           
             objE_detalle_mesa.Id_mesa = idmesa;
             DataTable Dt = objDetalle_mesa.MostrarDetalleMesa(objE_detalle_mesa);
+            tablaProductos.Rows.Clear();
             if (Dt.Rows.Count > 0)
             {
                 foreach (DataRow item in Dt.Rows)
                 {
                     tablaProductos.Rows.Add(item["ID_PRODUCTO"], item["NOMBRE"], item["CANTIDAD"],item["PRECIO"], item["TOTAL"]);
                 }
-
+                tablaProductos.ClearSelection();
                 CalcularComanda();
             }
             
@@ -162,33 +174,38 @@ namespace CapaPresentacion
         {
             if (tablaProductos.Rows.Count > 0)
             {
-                DataTable dt = new DataTable();
-
-
-                dt.Columns.Add("Idproducto", typeof(int));
-                dt.Columns.Add("Cantidad", typeof(double));
-                dt.Columns.Add("Precio", typeof(double));
-
-
-                foreach (DataGridViewRow item in tablaProductos.Rows)
+                formAlerta = new frmAlerta("Desea Proceder con la Facturacion?",frmAlerta.Alerta.Información);
+                if ( formAlerta.ShowDialog() == DialogResult.OK)
                 {
-                    DataRow dr = dt.NewRow();
-                    dr["Idproducto"] = Convert.ToInt32(item.Cells[0].Value);
-                    dr["Cantidad"] = Convert.ToDouble(item.Cells[2].Value);
-                    dr["Precio"] = Convert.ToInt32(item.Cells[3].Value);
-                    dt.Rows.Add(dr);
+                    DataTable dt = new DataTable();
+                    CreaTicket Ticket1 = new CreaTicket();
+
+
+                    dt.Columns.Add("Idproducto", typeof(int));
+                    dt.Columns.Add("Cantidad", typeof(double));
+                    dt.Columns.Add("Precio", typeof(double));                     
+                    
+
+                    foreach (DataGridViewRow item in tablaProductos.Rows)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Idproducto"] = Convert.ToInt32(item.Cells[0].Value);
+                        dr["Cantidad"] = Convert.ToDouble(item.Cells[2].Value);
+                        dr["Precio"] = Convert.ToInt32(item.Cells[3].Value);
+                        dt.Rows.Add(dr);                      
+                    }
+                    
+                    objE_venta.Id_mesa = idmesa;
+                    objE_venta.Id_Turno = Idturno;
+                    objE_venta.Venta_total = Convert.ToDouble(lblTotal.Text);
+                    objVenta.InsertarVenta(objE_venta, dt);
+
+                    formAlerta = new frmAlerta("Venta Registrada Satisfactoriamente!!", frmAlerta.Alerta.Exitoso);
+                    formAlerta.ShowDialog();
+
+                    VolverAMesa();
                 }
-                objE_venta.Id_mesa = idmesa;
-                objE_venta.Id_Turno = Idturno;
-                objE_venta.Venta_total = Convert.ToDouble(lblTotal.Text);
-                objVenta.InsertarVenta(objE_venta, dt);
-
-                formAlerta = new frmAlerta("Venta Registrada Satisfactoriamente!!", frmAlerta.Alerta.Exitoso);
-                formAlerta.ShowDialog();
-
-                VolverAMesa();
-                //tablaProductos.Rows.Clear();
-                //lblTotal.Text = "0.00";
+                
             }
             else
             {
@@ -197,6 +214,114 @@ namespace CapaPresentacion
             }
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCuenta_Click(object sender, EventArgs e)
+        {
+            
+            CreaTicket Ticket = new CreaTicket();   
+
+
+            Ticket.AbreCajon();  //abre el cajon
+            Ticket.TextoIzquierda("Empleado 1");
+            Ticket.TextoDerecha(lblMesa.Text);
+            Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
+            Ticket.TextoExtremos("Fecha "+ DateTime.Now.ToShortDateString(), "Hora: "+ DateTime.Now.ToString("hh:mm:ss tt"));
+            Ticket.LineasGuion(); // imprime una linea de guiones
+            Ticket.EncabezadoVenta(); // imprime encabezados 
+            Ticket.TextoCentro("");
+
+            foreach (DataGridViewRow item in tablaProductos.Rows)
+            {      
+                Ticket.AgregaArticulo(Convert.ToString(item.Cells[1].Value), Convert.ToInt32(item.Cells[2].Value), Convert.ToDouble(item.Cells[3].Value), Convert.ToDouble(item.Cells[4].Value)); //imprime una linea de descripcion
+            }
+            Ticket.LineasTotales(); // imprime linea
+            Ticket.AgregaTotales("Total", Convert.ToDouble(lblTotal.Text)); // imprime linea con total
+            Ticket.TextoCentro("");
+            Ticket.TextoCentro("Bar Santa");
+            Ticket.TextoCentro("Gracias por Preferirnos!!");
+
+            Ticket.CortaTicket(); // corta el ticket
+            
+
+            VolverAMesa();
+        }
+
+        private void tablaProductos_SelectionChanged(object sender, EventArgs e)
+        {
+            tablaProductos.CurrentCell = tablaProductos.CurrentRow.Cells["Cantidad"];
+            tablaProductos.BeginEdit(true);
+        }
+
+        private void frmComanda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F3)
+            {
+               
+            }
+        }
+
+        private void tablaProductos_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void btnMesas_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void tablaProductos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (tablaProductos.CurrentCell.ColumnIndex == 2)
+            {
+                e.Control.KeyPress -= PermitirSoloNumeros;
+                e.Control.KeyPress += PermitirSoloNumeros;
+            }
+                
+        }
+
+        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tablaProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (carga == 2)
+            {
+                carga = 0;
+                objE_detalle_mesa.Id_mesa = idmesa;
+                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["idProducto"].Value);
+                objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
+                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value);
+                tablaProductos.Rows[indexFila].Cells["Total"].Value = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
+                objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Total"].Value);
+                objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+                CargarComanda();
+
+            }
+            if (tablaProductos.SelectedRows.Count > 0)
+            {
+                objE_detalle_mesa.Id_mesa = idmesa;
+                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells["idProducto"].Value);
+                objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value);
+                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value);
+                objE_detalle_mesa.Total = Convert.ToDouble(Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value));
+                objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+                CargarComanda();
+            }
+        
+           
+        }
+
         
     }
 }
+//seleccionar datagrid con F2 para editar
+//dar enter o presionar boton editar para guardar los cambios

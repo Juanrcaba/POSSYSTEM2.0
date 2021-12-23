@@ -21,5 +21,10 @@ namespace CapaNegocio
         {
             return objDatos.MostrarTurnosAbiertos();
         }
+
+        public int MesasOcupadas()
+        {
+            return objDatos.MesasOcupadas();
+        }
     }
 }
