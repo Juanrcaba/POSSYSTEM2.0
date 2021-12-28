@@ -30,7 +30,7 @@ namespace CapaPresentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagePrincipal));
             this.sidebar = new System.Windows.Forms.Panel();
             this.btnSalir = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -43,18 +43,19 @@ namespace CapaPresentacion
             this.btnProducto = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnDashboard = new Bunifu.Framework.UI.BunifuFlatButton();
             this.logo = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.LogoPic = new System.Windows.Forms.PictureBox();
             this.header = new System.Windows.Forms.Panel();
             this.picMenu = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.container = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.bunifuColorTransition1 = new Bunifu.Framework.UI.BunifuColorTransition(this.components);
             this.AnimationSidebar = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lstImage = new System.Windows.Forms.ImageList(this.components);
             this.sidebar.SuspendLayout();
             this.logo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPic)).BeginInit();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
             this.container.SuspendLayout();
@@ -426,8 +427,8 @@ namespace CapaPresentacion
             // 
             // logo
             // 
-            this.logo.Controls.Add(this.label3);
-            this.logo.Controls.Add(this.pictureBox1);
+            this.logo.Controls.Add(this.lblUsuario);
+            this.logo.Controls.Add(this.LogoPic);
             this.AnimationSidebar.SetDecoration(this.logo, BunifuAnimatorNS.DecorationType.None);
             this.logo.Dock = System.Windows.Forms.DockStyle.Top;
             this.logo.Location = new System.Drawing.Point(0, 0);
@@ -435,28 +436,27 @@ namespace CapaPresentacion
             this.logo.Size = new System.Drawing.Size(185, 173);
             this.logo.TabIndex = 0;
             // 
-            // label3
+            // lblUsuario
             // 
-            this.label3.AutoSize = true;
-            this.AnimationSidebar.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
-            this.label3.Font = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label3.Location = new System.Drawing.Point(42, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Juan Ramón";
+            this.lblUsuario.AutoSize = true;
+            this.AnimationSidebar.SetDecoration(this.lblUsuario, BunifuAnimatorNS.DecorationType.None);
+            this.lblUsuario.Font = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblUsuario.Location = new System.Drawing.Point(42, 116);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(100, 20);
+            this.lblUsuario.TabIndex = 3;
+            this.lblUsuario.Text = "Juan Ramón";
             // 
-            // pictureBox1
+            // LogoPic
             // 
-            this.AnimationSidebar.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(19, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(146, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.AnimationSidebar.SetDecoration(this.LogoPic, BunifuAnimatorNS.DecorationType.None);
+            this.LogoPic.Location = new System.Drawing.Point(19, 15);
+            this.LogoPic.Name = "LogoPic";
+            this.LogoPic.Size = new System.Drawing.Size(146, 98);
+            this.LogoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogoPic.TabIndex = 2;
+            this.LogoPic.TabStop = false;
             // 
             // header
             // 
@@ -504,34 +504,6 @@ namespace CapaPresentacion
             this.container.Size = new System.Drawing.Size(996, 778);
             this.container.TabIndex = 2;
             // 
-            // bunifuColorTransition1
-            // 
-            this.bunifuColorTransition1.Color1 = System.Drawing.Color.White;
-            this.bunifuColorTransition1.Color2 = System.Drawing.Color.White;
-            this.bunifuColorTransition1.ProgessValue = 0;
-            // 
-            // AnimationSidebar
-            // 
-            this.AnimationSidebar.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
-            this.AnimationSidebar.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 1;
-            animation2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 2F;
-            animation2.TransparencyCoeff = 0F;
-            this.AnimationSidebar.DefaultAnimation = animation2;
-            this.AnimationSidebar.MaxAnimationTime = 500;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -543,6 +515,42 @@ namespace CapaPresentacion
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // bunifuColorTransition1
+            // 
+            this.bunifuColorTransition1.Color1 = System.Drawing.Color.White;
+            this.bunifuColorTransition1.Color2 = System.Drawing.Color.White;
+            this.bunifuColorTransition1.ProgessValue = 0;
+            // 
+            // AnimationSidebar
+            // 
+            this.AnimationSidebar.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
+            this.AnimationSidebar.Cursor = null;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 1;
+            animation4.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 2F;
+            animation4.TransparencyCoeff = 0F;
+            this.AnimationSidebar.DefaultAnimation = animation4;
+            this.AnimationSidebar.MaxAnimationTime = 500;
+            // 
+            // lstImage
+            // 
+            this.lstImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("lstImage.ImageStream")));
+            this.lstImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.lstImage.Images.SetKeyName(0, "user-male.png");
+            this.lstImage.Images.SetKeyName(1, "user-female.png");
             // 
             // PagePrincipal
             // 
@@ -560,7 +568,7 @@ namespace CapaPresentacion
             this.sidebar.ResumeLayout(false);
             this.logo.ResumeLayout(false);
             this.logo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPic)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
@@ -573,8 +581,8 @@ namespace CapaPresentacion
         #endregion
         private System.Windows.Forms.Panel logo;
         private System.Windows.Forms.Panel container;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.PictureBox LogoPic;
         private Bunifu.Framework.UI.BunifuFlatButton btnDashboard;
         private Bunifu.Framework.UI.BunifuFlatButton btnTrabajador;
         private Bunifu.Framework.UI.BunifuFlatButton btnCompras;
@@ -591,5 +599,6 @@ namespace CapaPresentacion
         public System.Windows.Forms.Panel sidebar;
         public System.Windows.Forms.Panel header;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ImageList lstImage;
     }
 }

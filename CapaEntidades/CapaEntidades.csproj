@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatosUsuario.cs" />
     <Compile Include="E_CAJA.cs" />
     <Compile Include="E_CATEGORIA.cs" />
     <Compile Include="E_CUADRE_CAJA.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="E_MESAS.cs" />
     <Compile Include="E_PRODUCTO.cs" />
     <Compile Include="E_TURNO.cs" />
+    <Compile Include="E_USUARIO.cs" />
     <Compile Include="E_VENTA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

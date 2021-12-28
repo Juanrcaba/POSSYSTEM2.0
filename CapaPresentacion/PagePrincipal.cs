@@ -7,15 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace CapaPresentacion
 {
     public partial class PagePrincipal : Form
     {
+
+        public int _Image = DatosUsuario.sexo - 1;
+        public string _Usuario;
+        E_USUARIO objUsuario = new E_USUARIO();
         public PagePrincipal()
         {
             InitializeComponent();
         }
+       
         void pantallaOK()
         {
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
@@ -24,11 +31,21 @@ namespace CapaPresentacion
         private void PagePrincipal_Load(object sender, EventArgs e)
         {
             pantallaOK();
+            if(_Image == 1)
+                LogoPic.Load(Application.StartupPath + "\\image\\user-female.png");
+            else
+                LogoPic.Load(Application.StartupPath + "\\image\\user-male.png");
+            LogoPic.SizeMode = PictureBoxSizeMode.Zoom;
+            lblUsuario.Text = DatosUsuario.Nombre;
+
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            frmLogin form = new frmLogin();
+            form.Show();
+            this.Hide();
         }
 
         void SeleccionarBoton(Bunifu.Framework.UI.BunifuFlatButton sender)
@@ -77,6 +94,8 @@ namespace CapaPresentacion
         private void btnTrabajador_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            frmUsuarios form = new frmUsuarios();
+            form.ShowDialog();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -136,6 +155,11 @@ namespace CapaPresentacion
                 sidebar.Visible = true;             
             }
                
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
