@@ -104,7 +104,7 @@ namespace CapaPresentacion
                         indexFila = item.Index;
                         item.Cells["Cantidad"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) + 1;
                         carga = 2;
-                        item.Cells["Precio"].Value = precio;
+                        item.Cells[3].Value = precio;
                        //item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
                        
                         // update tabla en la base de datos
@@ -197,6 +197,7 @@ namespace CapaPresentacion
                     
                     objE_venta.Id_mesa = idmesa;
                     objE_venta.Id_Turno = Idturno;
+                    objE_venta.Id_usuario = DatosUsuario.Id_usuario;
                     objE_venta.Venta_total = Convert.ToDouble(lblTotal.Text);
                     objVenta.InsertarVenta(objE_venta, dt);
 

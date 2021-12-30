@@ -115,6 +115,7 @@ namespace CapaPresentacion
         E_CUADRE_CAJA objE_CuadreCaja = new E_CUADRE_CAJA();
         N_CUADRE_CAJA objN_Cuadrecaja = new N_CUADRE_CAJA();
         N_CAJAS objN_Cajas = new N_CAJAS();
+        frmAlerta form;
         int Idcaja = 0;
         double saldo = 0;
         public frmAperturaCaja()
@@ -143,7 +144,7 @@ namespace CapaPresentacion
             {
                 if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))                    
                     if (double.TryParse(txtSaldo.Text, out saldo))
-                        AbrirCaja(Idcaja, cmbCajas.Text, saldo);
+                        AbrirCaja(Idcaja, cmbCajas.Text, saldo, lblFecha.Text);
                     else
                     {
                         frmAlerta form = new frmAlerta("Debe insertar datos numericos en el Saldo inicial",frmAlerta.Alerta.Error);
@@ -162,16 +163,29 @@ namespace CapaPresentacion
         }
 
         //metodos
-        void AbrirCaja(int idCaja,string nCaja,double saldoCaja)
+        void AbrirCaja(int idCaja,string nCaja,double saldoCaja,string fecha)
         {
             try
             {
                 objE_CuadreCaja.Id_caja = idCaja;
                 objE_CuadreCaja.Saldo_apertura = saldoCaja;
-
-                objN_Cuadrecaja.AbrirCajas(objE_CuadreCaja);
-                frmAlerta form = new frmAlerta("Caja #"+ nCaja + " esta abierta", frmAlerta.Alerta.Exitoso);
-                form.ShowDialog();
+                objE_CuadreCaja.Fecha = fecha;
+                int resultado = objN_Cuadrecaja.AbrirCajas(objE_CuadreCaja);
+                if ( resultado == 0)
+                {
+                    form = new frmAlerta("Caja #" + nCaja + " ya esta cerrada, debe abrir un dia superior", frmAlerta.Alerta.Exitoso);
+                    form.ShowDialog();
+                }else if (resultado == 1)
+                {
+                    form = new frmAlerta("La fecha de Apertura es menor a la ultima apertura de caja", frmAlerta.Alerta.Exitoso);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    form = new frmAlerta("Caja #" + nCaja + " esta abierta", frmAlerta.Alerta.Exitoso);
+                    form.ShowDialog();
+                }
+                
                 this.Close();
             }
             catch (Exception)

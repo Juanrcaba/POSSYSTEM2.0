@@ -17,6 +17,7 @@ namespace CapaPresentacion
         public frmTurno()
         {
             InitializeComponent();
+            
         }
         public int id_turno = 0;
 

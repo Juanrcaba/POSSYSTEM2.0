@@ -39,7 +39,8 @@ namespace CapaPresentacion
         {
             pantallaOK();
             CargarTurnos();
-          
+            MostrarCajas();
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -130,13 +131,13 @@ namespace CapaPresentacion
                                 {
                                     foreach (DataRow item in Dt.Rows)
                                     {
-                                        objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["IDTURNOS"]);
+                                        objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["ID_TURNO"]);
                                         objN_cuadreTurno.CerrarTurno(objE_CuadreTurno);
                                     }
                                 }
                                 else
                                 {
-                                    form = new frmAlerta("Existen mesas Ocupadas, debes facturar antes de cerrar el turno", frmAlerta.Alerta.Información);
+                                    form = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
                                     form.ShowDialog();
                                     return;
                                 }
@@ -147,6 +148,14 @@ namespace CapaPresentacion
                                 return;
                             }
                         }
+                        else if (objN_Turnos.MesasOcupadas() != 0)
+                        {
+                            form = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
+                            form.ShowDialog();
+                            return;
+                        }
+                       
+
                         CerrarCaja(Convert.ToInt32(tablaCajas.CurrentRow.Cells[0].Value.ToString()),
                                    Convert.ToInt32(tablaCajas.CurrentRow.Cells[1].Value.ToString()));
                         CargarTurnos();
@@ -188,9 +197,9 @@ namespace CapaPresentacion
               {
                 frmTurno form = new frmTurno();
                     AddOwnedForm(form);
-                form.lblFecha.Text = item[4].ToString();
-                form.lblTurno.Text = item[2].ToString();
-                form.lblUsuario.Text = "Juan ramon";
+                form.lblFecha.Text = item[3].ToString();
+                form.lblTurno.Text = item[0].ToString();
+                form.lblUsuario.Text = item[2].ToString();
                 form.id_turno = Convert.ToInt32(item[0]);
 
                 form.TopLevel = false;

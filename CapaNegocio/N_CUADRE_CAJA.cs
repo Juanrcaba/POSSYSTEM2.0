@@ -18,9 +18,9 @@ namespace CapaNegocio
             return objDatos.MostrarCuadreCajas(cuadre);
         }
 
-        public void AbrirCajas(E_CUADRE_CAJA cuadre)
+        public int AbrirCajas(E_CUADRE_CAJA cuadre)
         {
-            objDatos.AbrirCajas(cuadre);
+            return objDatos.AbrirCajas(cuadre);
         }
         public void CerrarCajas(E_CUADRE_CAJA cuadre)
         {

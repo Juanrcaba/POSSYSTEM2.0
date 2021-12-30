@@ -28,8 +28,16 @@ namespace CapaPresentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            PagePrincipal form = new PagePrincipal();
-            form.Show();
+            if (DatosUsuario.perfil == 1)
+            {
+                PagePrincipal form = new PagePrincipal();
+                form.Show();
+            }
+            else
+            {
+                frmLogin form = new frmLogin();
+                form.Show();
+            }           
             this.Hide();
         }
         void pantallaOK()

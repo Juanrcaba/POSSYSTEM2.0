@@ -184,7 +184,7 @@ namespace CapaPresentacion
                 {
                     id_cuadrecaja = objNcuadre_caja.Id_CajaAbierta();
                     if (id_cuadrecaja != 0)
-                        AbrirTurno(idTurno, saldo, 1, id_cuadrecaja);
+                        AbrirTurno(idTurno, saldo,DatosUsuario.Id_usuario, id_cuadrecaja);
                     else
                     {
                         frmAlerta form = new frmAlerta("Se debe abrir la caja antes que el turno", frmAlerta.Alerta.Error);

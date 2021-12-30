@@ -355,6 +355,7 @@ namespace CapaPresentacion
             this.tablaProductos.Location = new System.Drawing.Point(40, 105);
             this.tablaProductos.MultiSelect = false;
             this.tablaProductos.Name = "tablaProductos";
+            this.tablaProductos.ReadOnly = true;
             this.tablaProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -366,8 +367,6 @@ namespace CapaPresentacion
             this.tablaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaProductos.RowHeadersVisible = false;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Empty;
             this.tablaProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaProductos.Size = new System.Drawing.Size(573, 192);
@@ -396,6 +395,7 @@ namespace CapaPresentacion
             this.Cantidad.FillWeight = 58.51381F;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // Precio
             // 
@@ -501,7 +501,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton14.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton14.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton14.Visible = false;
             // 
             // panel5
             // 
@@ -549,7 +548,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton15.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton15.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton15.Visible = false;
             // 
             // panel6
             // 
@@ -597,7 +595,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton16.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton16.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton16.Visible = false;
             // 
             // panel7
             // 
@@ -692,7 +689,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton10.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton10.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton10.Visible = false;
             // 
             // panel9
             // 
@@ -740,7 +736,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton11.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton11.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton11.Visible = false;
             // 
             // panel13
             // 
@@ -788,7 +783,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton12.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton12.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton12.Visible = false;
             // 
             // panel14
             // 
@@ -884,7 +878,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton6.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton6.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton6.Visible = false;
             // 
             // panel16
             // 
@@ -932,7 +925,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton7.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton7.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton7.Visible = false;
             // 
             // panel17
             // 
@@ -980,7 +972,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton8.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton8.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton8.Visible = false;
             // 
             // panel18
             // 
@@ -1076,7 +1067,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton2.Visible = false;
             // 
             // panel20
             // 
@@ -1124,7 +1114,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton3.Visible = false;
             // 
             // panel21
             // 
@@ -1172,7 +1161,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton4.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton4.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton4.Visible = false;
             // 
             // panel22
             // 
@@ -1219,7 +1207,6 @@ namespace CapaPresentacion
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton5.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton5.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
-            this.bunifuFlatButton5.Visible = false;
             // 
             // label2
             // 

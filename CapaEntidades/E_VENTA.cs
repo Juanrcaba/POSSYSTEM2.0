@@ -17,6 +17,7 @@ namespace CapaEntidades
         private int _Id_producto;
         private double _Cantidad_producto;
         private double _Precio_producto;
+        private int _Id_usuario;
 
         public int Id_venta { get => _Id_venta; set => _Id_venta = value; }
         public int Id_Turno { get => _Id_Turno; set => _Id_Turno = value; }
@@ -25,5 +26,6 @@ namespace CapaEntidades
         public double Cantidad_producto { get => _Cantidad_producto; set => _Cantidad_producto = value; }
         public double Precio_producto { get => _Precio_producto; set => _Precio_producto = value; }
         public int Id_mesa { get => _Id_mesa; set => _Id_mesa = value; }
+        public int Id_usuario { get => _Id_usuario; set => _Id_usuario = value; }
     }
 }

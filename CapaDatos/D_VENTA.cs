@@ -34,6 +34,7 @@ namespace CapaDatos
             
             SqlCommand cmd = new SqlCommand("SP_INSERTAR_VENTA", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id_usuario",venta.Id_usuario);
             cmd.Parameters.AddWithValue("@id_turno", venta.Id_Turno);
             cmd.Parameters.AddWithValue("@venta_total", venta.Venta_total);
             cmd.Parameters.AddWithValue("@id_mesa", venta.Id_mesa);

@@ -29,18 +29,22 @@ namespace CapaDatos
             return Dt;
         }
 
-        public void AbrirCajas(E_CUADRE_CAJA cuadre)
+        public int AbrirCajas(E_CUADRE_CAJA cuadre)
         {
             SqlCommand cmd = new SqlCommand("SP_ABRIR_CAJA", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@IDCAJA", cuadre.Id_caja);
             cmd.Parameters.AddWithValue("@SALDO_APERTURA", cuadre.Saldo_apertura);
-
+            cmd.Parameters.AddWithValue("@fecha",cuadre.Fecha);
+            cmd.Parameters.Add("@resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             conexion.Open();
             cmd.ExecuteNonQuery();
             conexion.Close();
+
+
+            return  Convert.ToInt32(cmd.Parameters["@resultado"].Value);
         }
 
         public void CerrarCajas(E_CUADRE_CAJA cuadre)

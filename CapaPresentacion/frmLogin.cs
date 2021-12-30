@@ -52,9 +52,18 @@ namespace CapaPresentacion
                     DatosUsuario.sexo = Convert.ToInt32(Dt.Rows[0][7]);
                     DatosUsuario.Nombre = Dt.Rows[0][2].ToString();
 
-                    PagePrincipal form = new PagePrincipal();                 
-                  
-                    form.Show();
+                    if(DatosUsuario.perfil == 1)
+                    {
+                        PagePrincipal form = new PagePrincipal();
+                        form.Show();
+                    }
+                    else
+                    {
+                        frmMesas form = new frmMesas();
+                        form.Show();
+                    }
+                                     
+                   
                     this.Hide();
 
                 }

@@ -52,6 +52,7 @@ namespace CapaPresentacion
             this.txtCon.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCon.Location = new System.Drawing.Point(133, 153);
             this.txtCon.Name = "txtCon";
+            this.txtCon.PasswordChar = '*';
             this.txtCon.Size = new System.Drawing.Size(267, 32);
             this.txtCon.TabIndex = 23;
             // 
@@ -143,6 +144,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.txtCon);
             this.Controls.Add(this.txtUsuario);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
