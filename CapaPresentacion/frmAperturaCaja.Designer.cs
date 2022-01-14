@@ -58,6 +58,8 @@ namespace CapaPresentacion
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.Size = new System.Drawing.Size(267, 32);
             this.txtSaldo.TabIndex = 62;
+            this.txtSaldo.Text = "0";
+            this.txtSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldo_KeyPress);
             // 
             // label6
             // 

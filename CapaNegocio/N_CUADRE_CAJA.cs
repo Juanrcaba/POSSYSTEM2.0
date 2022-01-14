@@ -17,7 +17,15 @@ namespace CapaNegocio
         {
             return objDatos.MostrarCuadreCajas(cuadre);
         }
+        public bool MostrarCuadreCajas()
+        {
+            return objDatos.MostrarCuadreCajas();
+        }
 
+        public bool EstadoCajaDia()
+        {
+            return objDatos.EstadoCajaDia();
+        }
         public int AbrirCajas(E_CUADRE_CAJA cuadre)
         {
             return objDatos.AbrirCajas(cuadre);

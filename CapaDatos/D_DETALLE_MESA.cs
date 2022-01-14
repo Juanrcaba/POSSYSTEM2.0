@@ -62,5 +62,18 @@ namespace CapaDatos
             conexion.Close();
         }
 
+        public void EliminarProductoDetalleMesa(E_DETALLE_MESA Dmesa)
+        {
+            SqlCommand cmd = new SqlCommand("SP_ELIMINAR_PRODUCTO_DETALLE_MESA", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@id_producto", Dmesa.Id_producto);
+            cmd.Parameters.AddWithValue("@id_mesa", Dmesa.Id_mesa);
+
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }

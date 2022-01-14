@@ -32,7 +32,11 @@ namespace CapaPresentacion
 
         private void frmControlCategorias_Load(object sender, EventArgs e)
         {
-            lblCategoria.Text = Nombre_Categoria;
+            string[] partes = Nombre_Categoria.Split(' ');
+            foreach (string item in partes)
+            {
+                lblCategoria.Text += item + "\n";
+            }
         }
 
         private void frmControlCategorias_Click(object sender, EventArgs e)

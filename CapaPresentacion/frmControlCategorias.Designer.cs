@@ -44,11 +44,10 @@ namespace CapaPresentacion
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.lblCategoria.ForeColor = System.Drawing.Color.White;
-            this.lblCategoria.Location = new System.Drawing.Point(12, 40);
+            this.lblCategoria.Location = new System.Drawing.Point(12, 31);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(110, 25);
+            this.lblCategoria.Size = new System.Drawing.Size(0, 25);
             this.lblCategoria.TabIndex = 2;
-            this.lblCategoria.Text = "Categoria";
             this.lblCategoria.Click += new System.EventHandler(this.frmControlCategorias_Click);
             // 
             // frmControlCategorias

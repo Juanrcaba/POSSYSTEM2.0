@@ -152,6 +152,7 @@ namespace CapaPresentacion
             this.btnTickets.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnTickets.Textcolor = System.Drawing.Color.White;
             this.btnTickets.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTickets.Click += new System.EventHandler(this.btnTickets_Click);
             // 
             // btnSalir
             // 

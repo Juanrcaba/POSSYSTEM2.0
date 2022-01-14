@@ -29,6 +29,40 @@ namespace CapaDatos
             return Dt;
         }
 
+        public bool MostrarCuadreCajas()
+        {
+            DataTable Dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("SP_BUSCAR_CAJAS_ABIERTA", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+           
+           
+
+            SqlDataAdapter Da = new SqlDataAdapter(cmd);
+            Da.Fill(Dt);
+
+            if (Dt.Rows.Count > 0 && Dt != null)
+                return true;
+            else
+            return false;
+        }
+
+        public bool EstadoCajaDia()
+        {
+            DataTable Dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("SP_ESTADO_CAJA_DIA", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter Da = new SqlDataAdapter(cmd);
+            Da.Fill(Dt);
+
+            if (Dt.Rows.Count > 0 && Dt != null)
+                return true;
+            else
+                return false;
+        }
+
         public int AbrirCajas(E_CUADRE_CAJA cuadre)
         {
             SqlCommand cmd = new SqlCommand("SP_ABRIR_CAJA", conexion);

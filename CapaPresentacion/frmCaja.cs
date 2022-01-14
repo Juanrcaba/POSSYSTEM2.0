@@ -39,8 +39,16 @@ namespace CapaPresentacion
         {
             pantallaOK();
             CargarTurnos();
-            MostrarCajas();
+            if (EstadoCaja())
+                btnAbrirCaja.Enabled = false;
+            else
+                btnAbrirCaja.Enabled = true;
 
+        }
+
+        private bool EstadoCaja()
+        {
+            return objN_Cuadrecaja.MostrarCuadreCajas();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -56,7 +64,7 @@ namespace CapaPresentacion
             try
             {
                 
-                string fecha = dtFecha.Value.ToString();
+                string fecha = dtFecha.Value.ToString("yyyy/MM/dd");
                 if (rbtAbierto.Checked)
                     estado = 1;
 
@@ -117,6 +125,8 @@ namespace CapaPresentacion
                    
                     string nCaja = tablaCajas.CurrentRow.Cells[1].Value.ToString();
 
+                    int turno = 0;
+
                     form = new frmAlerta("Esta apunto de cerrar la caja #" + nCaja + ", esta seguro?", frmAlerta.Alerta.Información);
                   
                     if (form.ShowDialog() == DialogResult.OK)
@@ -126,8 +136,12 @@ namespace CapaPresentacion
                             form = new frmAlerta("Existen turnos abiertos, deseas cerrarlos para continuar?", frmAlerta.Alerta.Información);
                             if (form.ShowDialog() == DialogResult.OK)
                             {
+                                foreach (DataRow item in Dt.Rows)
+                                {
+                                   turno = Convert.ToInt32(item["ID_TURNO"]);                                    
+                                }
 
-                                if (objN_Turnos.MesasOcupadas() == 0)
+                                if (objN_Turnos.MesasOcupadas() == 0 && turno!= 3)
                                 {
                                     foreach (DataRow item in Dt.Rows)
                                     {
@@ -160,6 +174,10 @@ namespace CapaPresentacion
                                    Convert.ToInt32(tablaCajas.CurrentRow.Cells[1].Value.ToString()));
                         CargarTurnos();
                         MostrarCajas();
+                        if (EstadoCaja())
+                            btnAbrirCaja.Enabled = false;
+                        else
+                            btnAbrirCaja.Enabled = true;
                     }                     
                     
                    
@@ -192,6 +210,7 @@ namespace CapaPresentacion
         {
             DataTable Datos = objN_Turnos.MostrarTurnosAbiertos();
             flowContainer.Controls.Clear();
+            btnTurnos.Enabled = true;
             if (Datos.Rows.Count > 0) {            
               foreach (DataRow item in Datos.Rows)
               {
@@ -206,6 +225,8 @@ namespace CapaPresentacion
                 flowContainer.Controls.Add(form);
                 form.Show();
               }
+                btnTurnos.Enabled = false;
+
             }
         }
     }

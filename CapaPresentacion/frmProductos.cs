@@ -19,7 +19,7 @@ namespace CapaPresentacion
             InitializeComponent();
             
         }
-
+        frmAlerta alerta;
         private void frmProductos_Load(object sender, EventArgs e)
         {
             MostrarProductos();
@@ -175,14 +175,22 @@ namespace CapaPresentacion
             }
             else if (tablaProductos.CurrentRow.Cells["Delete"].Selected)
             {
-                N_PRODUCTO objDatos = new N_PRODUCTO();
-                E_PRODUCTO entidadProductos = new E_PRODUCTO();
-                frmAlerta alerta;
-                entidadProductos.Idproducto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[2].Value);
-                objDatos.EliminarProducto(entidadProductos);
-                alerta = new frmAlerta("Producto Eliminado",frmAlerta.Alerta.Exitoso);
-                alerta.ShowDialog();
-                MostrarProductos();
+
+                alerta = new frmAlerta("Desea Eliminar el producto?", frmAlerta.Alerta.Información);
+                if (alerta.ShowDialog() == DialogResult.OK)
+                {
+                    N_PRODUCTO objDatos = new N_PRODUCTO();
+                    E_PRODUCTO entidadProductos = new E_PRODUCTO();
+
+                    entidadProductos.Idproducto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[2].Value);
+                    objDatos.EliminarProducto(entidadProductos);
+                    alerta = new frmAlerta("Producto Eliminado.", frmAlerta.Alerta.Exitoso);
+                    alerta.ShowDialog();
+                    MostrarProductos();
+
+                }
+
+               
             }                         
         }
 

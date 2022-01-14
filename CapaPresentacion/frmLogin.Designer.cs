@@ -33,6 +33,8 @@ namespace CapaPresentacion
             this.txtCon = new System.Windows.Forms.TextBox();
             this.btnAcceder = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCancelar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lblMesa = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -50,7 +52,7 @@ namespace CapaPresentacion
             this.txtCon.BackColor = System.Drawing.Color.White;
             this.txtCon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCon.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCon.Location = new System.Drawing.Point(133, 153);
+            this.txtCon.Location = new System.Drawing.Point(133, 175);
             this.txtCon.Name = "txtCon";
             this.txtCon.PasswordChar = '*';
             this.txtCon.Size = new System.Drawing.Size(267, 32);
@@ -134,15 +136,38 @@ namespace CapaPresentacion
             this.btnCancelar.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblMesa
+            // 
+            this.lblMesa.AutoSize = true;
+            this.lblMesa.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.lblMesa.Location = new System.Drawing.Point(128, 62);
+            this.lblMesa.Name = "lblMesa";
+            this.lblMesa.Size = new System.Drawing.Size(91, 25);
+            this.lblMesa.TabIndex = 47;
+            this.lblMesa.Text = "Usuario";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(138, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 25);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Contraseña";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 354);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMesa);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.txtCon);
             this.Controls.Add(this.txtUsuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
@@ -157,5 +182,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox txtCon;
         private Bunifu.Framework.UI.BunifuFlatButton btnAcceder;
         private Bunifu.Framework.UI.BunifuFlatButton btnCancelar;
+        public System.Windows.Forms.Label lblMesa;
+        public System.Windows.Forms.Label label1;
     }
 }

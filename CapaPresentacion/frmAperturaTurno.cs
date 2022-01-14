@@ -180,23 +180,21 @@ namespace CapaPresentacion
             try
             {
 
-                if (double.TryParse(txtSaldo.Text, out saldo))
+                if (txtSaldo.Text == string.Empty)                
+                    saldo = 0;
+                
+                else
                 {
+                    saldo = Convert.ToDouble(txtSaldo.Text);
                     id_cuadrecaja = objNcuadre_caja.Id_CajaAbierta();
                     if (id_cuadrecaja != 0)
-                        AbrirTurno(idTurno, saldo,DatosUsuario.Id_usuario, id_cuadrecaja);
+                        AbrirTurno(idTurno, saldo, DatosUsuario.Id_usuario, id_cuadrecaja);
                     else
                     {
                         frmAlerta form = new frmAlerta("Se debe abrir la caja antes que el turno", frmAlerta.Alerta.Error);
                         form.ShowDialog();
                         this.Close();
                     }
-                }
-                else
-                {
-                    frmAlerta form = new frmAlerta("Debe insertar datos numericos en el Saldo inicial", frmAlerta.Alerta.Error);
-                    form.ShowDialog();
-                    txtSaldo.Focus();
                 }
             }
             catch (Exception ex)
@@ -205,6 +203,26 @@ namespace CapaPresentacion
                 frmAlerta form = new frmAlerta("El saldo es incorrecto", frmAlerta.Alerta.Error);
                 form.ShowDialog();
 
+            }
+        }
+
+        private void txtSaldo_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= 32 && e.KeyChar <= 47 || e.KeyChar >= 58 && e.KeyChar <= 255)
+            {
+                e.Handled = true;
+                return;
             }
         }
     }

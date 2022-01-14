@@ -29,7 +29,14 @@ namespace CapaPresentacion
 
         private void frmControlProductos_Load(object sender, EventArgs e)
         {
-            lblProducto.Text = Nombre_producto;
+                       
+                string[] partes = Nombre_producto.Split(' ');
+                foreach (string item in partes)
+                {
+                    lblProducto.Text += item + "\n";
+                }
+         
+            
         }
 
         private void frmControlProductos_Click(object sender, EventArgs e)

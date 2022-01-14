@@ -141,21 +141,25 @@ namespace CapaPresentacion
         private void btnAbrir_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))                    
-                    if (double.TryParse(txtSaldo.Text, out saldo))
+            {   
+                if (Int32.TryParse(cmbCajas.SelectedValue.ToString(), out Idcaja))
+                {
+                    saldo = Convert.ToDouble(txtSaldo.Text);
+                    if (objN_Cuadrecaja.EstadoCajaDia() == false)
                         AbrirCaja(Idcaja, cmbCajas.Text, saldo, lblFecha.Text);
                     else
                     {
-                        frmAlerta form = new frmAlerta("Debe insertar datos numericos en el Saldo inicial",frmAlerta.Alerta.Error);
+                        form = new frmAlerta("Este Dia ya fue aperturado, favor ponerse en contacto con el administrador", frmAlerta.Alerta.Error);
                         form.ShowDialog();
-                        txtSaldo.Focus();
-                    }  
+                        this.Close();
+                    }
+                }
+                   
             }
             catch (Exception ex)
             {
 
-                frmAlerta form = new frmAlerta("No existe esta caja o el saldo es incorrecto", frmAlerta.Alerta.Error);
+                form = new frmAlerta("No existe esta caja o el saldo es incorrecto", frmAlerta.Alerta.Error);
                 form.ShowDialog();
 
             }
@@ -213,6 +217,13 @@ namespace CapaPresentacion
             }
         }
 
-      
+        private void txtSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= 32 && e.KeyChar <= 47 || e.KeyChar >= 58 && e.KeyChar <= 255)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }

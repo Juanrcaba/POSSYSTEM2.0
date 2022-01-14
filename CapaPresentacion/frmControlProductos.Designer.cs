@@ -40,11 +40,10 @@ namespace CapaPresentacion
             this.lblProducto.AutoSize = true;
             this.lblProducto.Font = new System.Drawing.Font("Calisto MT", 14F, System.Drawing.FontStyle.Bold);
             this.lblProducto.ForeColor = System.Drawing.Color.White;
-            this.lblProducto.Location = new System.Drawing.Point(29, 36);
+            this.lblProducto.Location = new System.Drawing.Point(25, 25);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(88, 22);
+            this.lblProducto.Size = new System.Drawing.Size(0, 22);
             this.lblProducto.TabIndex = 3;
-            this.lblProducto.Text = "Producto";
             this.lblProducto.Click += new System.EventHandler(this.frmControlProductos_Click);
             // 
             // bunifuElipse1

@@ -34,6 +34,7 @@ namespace CapaPresentacion
             this.label1 = new System.Windows.Forms.Label();
             this.MoverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@ namespace CapaPresentacion
             this.label6 = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.lblTurno = new System.Windows.Forms.Label();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnAbrir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
@@ -75,6 +75,19 @@ namespace CapaPresentacion
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(319, 36);
             this.TopPanel.TabIndex = 69;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::CapaPresentacion.Properties.Resources.Close;
+            this.btnCerrar.Location = new System.Drawing.Point(280, 1);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(32, 32);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // bunifuElipse1
             // 
@@ -134,6 +147,9 @@ namespace CapaPresentacion
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.Size = new System.Drawing.Size(267, 32);
             this.txtSaldo.TabIndex = 72;
+            this.txtSaldo.Text = "0";
+            this.txtSaldo.TextChanged += new System.EventHandler(this.txtSaldo_TextChanged);
+            this.txtSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldo_KeyPress);
             // 
             // lblTurno
             // 
@@ -145,19 +161,6 @@ namespace CapaPresentacion
             this.lblTurno.Size = new System.Drawing.Size(81, 18);
             this.lblTurno.TabIndex = 78;
             this.lblTurno.Text = "# TURNO";
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::CapaPresentacion.Properties.Resources.Close;
-            this.btnCerrar.Location = new System.Drawing.Point(280, 1);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 32);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCerrar.TabIndex = 1;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnAbrir
             // 

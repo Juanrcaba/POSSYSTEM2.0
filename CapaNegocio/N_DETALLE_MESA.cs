@@ -27,5 +27,10 @@ namespace CapaNegocio
         {
             objDetalleMesa.EditarDetalleMesa(Dmesa);
         }
+
+        public void EliminarProductoDetalleMesa(E_DETALLE_MESA Dmesa)
+        {
+            objDetalleMesa.EliminarProductoDetalleMesa(Dmesa);
+        }
     }
 }

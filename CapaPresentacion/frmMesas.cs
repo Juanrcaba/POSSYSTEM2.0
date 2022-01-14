@@ -109,8 +109,9 @@ namespace CapaPresentacion
             this.Hide();
         }
 
-       
+        private void btnTickets_Click(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }

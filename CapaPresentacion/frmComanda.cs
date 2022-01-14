@@ -25,6 +25,7 @@ namespace CapaPresentacion
         E_DETALLE_MESA objE_detalle_mesa = new E_DETALLE_MESA();
         E_VENTA objE_venta = new E_VENTA();
         N_DETALLE_MESA objDetalle_mesa = new N_DETALLE_MESA();
+        public int cantidadEditada = 0;
 
 
         double calculo = 0;
@@ -105,15 +106,15 @@ namespace CapaPresentacion
                         item.Cells["Cantidad"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) + 1;
                         carga = 2;
                         item.Cells[3].Value = precio;
-                       //item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
-                       
-                        // update tabla en la base de datos
-                        //objE_detalle_mesa.Id_mesa = idmesa;
-                        //objE_detalle_mesa.Id_producto = id_producto;
-                        //objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells["Cantidad"].Value);
-                        //objE_detalle_mesa.Precio = precio;
-                        //objE_detalle_mesa.Total = Convert.ToDouble(item.Cells["Total"].Value);
-                        //objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+                        item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
+
+                        //update tabla en la base de datos
+                        objE_detalle_mesa.Id_mesa = idmesa;
+                        objE_detalle_mesa.Id_producto = id_producto;
+                        objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells["Cantidad"].Value);
+                        objE_detalle_mesa.Precio = precio;
+                        objE_detalle_mesa.Total = Convert.ToDouble(item.Cells["Total"].Value);
+                        objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
                         return;
                     }
                     
@@ -217,52 +218,83 @@ namespace CapaPresentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            
+            if (tablaProductos.SelectedRows.Count > 0)
+            {
+                frmEditar_Comanda form = new frmEditar_Comanda();
+                AddOwnedForm(form);
+                form._Idproducto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[0].Value);
+                form._NombreProducto = tablaProductos.CurrentRow.Cells[1].Value.ToString();
+                form._CantidadProducto = tablaProductos.CurrentRow.Cells[2].Value.ToString();                
+                form.ShowDialog();
+
+                tablaProductos.CurrentRow.Cells[2].Value = cantidadEditada;
+                tablaProductos.CurrentRow.Cells[4].Value = cantidadEditada * Convert.ToDouble(tablaProductos.CurrentRow.Cells[3].Value);
+
+                //-----------------
+                objE_detalle_mesa.Id_mesa = idmesa;
+                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[0].Value);
+                objE_detalle_mesa.Cantidad = cantidadEditada;
+                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.CurrentRow.Cells[3].Value);
+                objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.CurrentRow.Cells[4].Value);
+                objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+                //-----------------
+
+                CargarComanda();
+
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto");
+            }
         }
 
         private void btnCuenta_Click(object sender, EventArgs e)
         {
-            
-            CreaTicket Ticket = new CreaTicket();   
+            if (tablaProductos.Rows.Count > 0)
+            {
+                CreaTicket Ticket = new CreaTicket();
 
 
-            Ticket.AbreCajon();  //abre el cajon
-            Ticket.TextoIzquierda("Empleado 1");
-            Ticket.TextoDerecha(lblMesa.Text);
-            Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
-            Ticket.TextoExtremos("Fecha "+ DateTime.Now.ToShortDateString(), "Hora: "+ DateTime.Now.ToString("hh:mm:ss tt"));
-            Ticket.LineasGuion(); // imprime una linea de guiones
-            Ticket.EncabezadoVenta(); // imprime encabezados 
-            Ticket.TextoCentro("");
+                Ticket.AbreCajon();  //abre el cajon
+                Ticket.TextoIzquierda(DatosUsuario.Nombre);
+                Ticket.TextoDerecha(lblMesa.Text);
+                Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
+                Ticket.TextoExtremos("Fecha " + DateTime.Now.ToShortDateString(), "Hora: " + DateTime.Now.ToString("hh:mm:ss tt"));
+                Ticket.LineasGuion(); // imprime una linea de guiones
+                Ticket.EncabezadoVenta(); // imprime encabezados 
+                Ticket.TextoCentro("");
 
-            foreach (DataGridViewRow item in tablaProductos.Rows)
-            {      
-                Ticket.AgregaArticulo(Convert.ToString(item.Cells[1].Value), Convert.ToInt32(item.Cells[2].Value), Convert.ToDouble(item.Cells[3].Value), Convert.ToDouble(item.Cells[4].Value)); //imprime una linea de descripcion
+                foreach (DataGridViewRow item in tablaProductos.Rows)
+                {
+                    Ticket.AgregaArticulo(Convert.ToString(item.Cells[1].Value), Convert.ToInt32(item.Cells[2].Value), Convert.ToDouble(item.Cells[3].Value), Convert.ToDouble(item.Cells[4].Value)); //imprime una linea de descripcion
+                }
+                Ticket.LineasTotales(); // imprime linea
+                Ticket.AgregaTotales("Total", Convert.ToDouble(lblTotal.Text)); // imprime linea con total
+                Ticket.TextoCentro("");
+                Ticket.TextoCentro("Bar Santa");
+                Ticket.TextoCentro("Gracias por Preferirnos!!");
+
+                Ticket.CortaTicket(); // corta el ticket
+
+
+                VolverAMesa();
             }
-            Ticket.LineasTotales(); // imprime linea
-            Ticket.AgregaTotales("Total", Convert.ToDouble(lblTotal.Text)); // imprime linea con total
-            Ticket.TextoCentro("");
-            Ticket.TextoCentro("Bar Santa");
-            Ticket.TextoCentro("Gracias por Preferirnos!!");
-
-            Ticket.CortaTicket(); // corta el ticket
-            
-
-            VolverAMesa();
+            else
+            {
+                formAlerta = new frmAlerta("Esta mesa esta vacia.",frmAlerta.Alerta.Error);
+                formAlerta.ShowDialog();
+            }
+           
         }
 
         private void tablaProductos_SelectionChanged(object sender, EventArgs e)
         {
-            tablaProductos.CurrentCell = tablaProductos.CurrentRow.Cells["Cantidad"];
-            tablaProductos.BeginEdit(true);
+          
         }
 
         private void frmComanda_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.F3)
-            {
-               
-            }
+            
         }
 
         private void tablaProductos_KeyDown(object sender, KeyEventArgs e)
@@ -316,13 +348,24 @@ namespace CapaPresentacion
                 objE_detalle_mesa.Total = Convert.ToDouble(Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value));
                 objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
                 CargarComanda();
-            }
-        
+            }       
            
         }
 
-        
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (tablaProductos.SelectedRows.Count > 0)
+            {
+                objE_detalle_mesa.Id_mesa = idmesa;
+                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[0].Value);
+                objDetalle_mesa.EliminarProductoDetalleMesa(objE_detalle_mesa);
+                CargarComanda();
+            }
+            else
+            {
+                formAlerta = new frmAlerta("Debes Seleccionar un elemento de la comanda",frmAlerta.Alerta.Error);
+                formAlerta.ShowDialog();
+            }
+        }
     }
 }
-//seleccionar datagrid con F2 para editar
-//dar enter o presionar boton editar para guardar los cambios
