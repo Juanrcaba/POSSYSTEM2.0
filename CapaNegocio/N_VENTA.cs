@@ -16,5 +16,20 @@ namespace CapaNegocio
         {
             objVenta.InsertarVenta(venta,Dtable);
         }
+
+        public DataTable MostrarVentas(E_VENTA venta)
+        {
+            return objVenta.MostrarVentas(venta);
+        }
+
+        public DataTable MostrarTickets()
+        {
+            return objVenta.MostrarTickets();
+        }
+
+        public void CancelarTicket(E_VENTA venta)
+        {
+            objVenta.CancelarTicket(venta);
+        }
     }
 }

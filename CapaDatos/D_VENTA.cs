@@ -15,13 +15,27 @@ namespace CapaDatos
         SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
 
         //aun no funciona
-        public DataTable MostrarVentas()
+        public DataTable MostrarVentas(E_VENTA venta)
         {
             DataTable Dt = new DataTable();
 
-            SqlCommand cmd = new SqlCommand("SP_BUSCARCAJA", conexion);
+            SqlCommand cmd = new SqlCommand("SP_BUSCAR_VENTAS", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FECHA_INI", venta.Fecha_ini);
+            cmd.Parameters.AddWithValue("@FECHA_FIN", venta.Fecha_fin);
 
+            SqlDataAdapter Da = new SqlDataAdapter(cmd);
+            Da.Fill(Dt);
+
+            return Dt;
+        }
+
+        public DataTable MostrarTickets()
+        {
+            DataTable Dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("SP_MOSTRAR_TICKETS", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;            
 
             SqlDataAdapter Da = new SqlDataAdapter(cmd);
             Da.Fill(Dt);
@@ -77,5 +91,18 @@ namespace CapaDatos
                 conexion.Dispose();
             }
         }
+
+        public void CancelarTicket(E_VENTA venta)
+        {
+            SqlCommand cmd = new SqlCommand("SP_CANCELAR_TICKET", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id_venta", venta.Id_venta);
+            cmd.Parameters.AddWithValue("@comentario", venta.Comentario);
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
     }
 }

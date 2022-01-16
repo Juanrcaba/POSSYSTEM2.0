@@ -111,7 +111,8 @@ namespace CapaPresentacion
 
         private void btnTickets_Click(object sender, EventArgs e)
         {
-
+            frmTicket form = new frmTicket();
+            form.ShowDialog();
         }
     }
 }
