@@ -83,7 +83,7 @@ namespace CapaPresentacion
                     formAlerta.Dispose();
                 }
 
-            //seguir trabajando con generador de excel
+            
         }
 
         private void btnGrupos_Click(object sender, EventArgs e)
@@ -99,21 +99,21 @@ namespace CapaPresentacion
             {
                 foreach (DataGridViewRow item in tablaProductos.Rows)
                 {
-                    if (Convert.ToInt32(item.Cells["idProducto"].Value) == id_producto)
+                    if (Convert.ToInt32(item.Cells[0].Value) == id_producto)
                     {
 
                         indexFila = item.Index;
-                        item.Cells["Cantidad"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) + 1;
+                        item.Cells[2].Value = Convert.ToInt32(item.Cells[2].Value) + 1;
                         carga = 2;
                         item.Cells[3].Value = precio;
-                        item.Cells["Total"].Value = Convert.ToInt32(item.Cells["Cantidad"].Value) * precio;
+                        item.Cells[4].Value = Convert.ToInt32(item.Cells[2].Value) * precio;
 
                         //update tabla en la base de datos
                         objE_detalle_mesa.Id_mesa = idmesa;
                         objE_detalle_mesa.Id_producto = id_producto;
-                        objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells["Cantidad"].Value);
+                        objE_detalle_mesa.Cantidad = Convert.ToInt32(item.Cells[2].Value);
                         objE_detalle_mesa.Precio = precio;
-                        objE_detalle_mesa.Total = Convert.ToDouble(item.Cells["Total"].Value);
+                        objE_detalle_mesa.Total = Convert.ToDouble(item.Cells[4].Value);
                         objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
                         return;
                     }
@@ -220,6 +220,7 @@ namespace CapaPresentacion
         {
             if (tablaProductos.SelectedRows.Count > 0)
             {
+                int fila = tablaProductos.CurrentRow.Index;
                 frmEditar_Comanda form = new frmEditar_Comanda();
                 AddOwnedForm(form);
                 form._Idproducto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[0].Value);
@@ -227,15 +228,15 @@ namespace CapaPresentacion
                 form._CantidadProducto = tablaProductos.CurrentRow.Cells[2].Value.ToString();                
                 form.ShowDialog();
 
-                tablaProductos.CurrentRow.Cells[2].Value = cantidadEditada;
-                tablaProductos.CurrentRow.Cells[4].Value = cantidadEditada * Convert.ToDouble(tablaProductos.CurrentRow.Cells[3].Value);
+                tablaProductos.Rows[fila].Cells[2].Value = cantidadEditada;
+                tablaProductos.Rows[fila].Cells[4].Value = cantidadEditada * Convert.ToDouble(tablaProductos.Rows[fila].Cells[3].Value);
 
                 //-----------------
                 objE_detalle_mesa.Id_mesa = idmesa;
-                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells[0].Value);
+                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.Rows[fila].Cells[0].Value);
                 objE_detalle_mesa.Cantidad = cantidadEditada;
-                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.CurrentRow.Cells[3].Value);
-                objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.CurrentRow.Cells[4].Value);
+                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.Rows[fila].Cells[3].Value);
+                objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.Rows[fila].Cells[4].Value);
                 objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
                 //-----------------
 

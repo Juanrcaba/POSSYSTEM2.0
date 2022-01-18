@@ -32,7 +32,7 @@ namespace CapaDatos
 
             SqlCommand cmd = new SqlCommand("SP_BUSCARPRODUCTO", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@PRODUCTO", buscar);
+            cmd.Parameters.AddWithValue("@BUSCAR", buscar);
 
             SqlDataAdapter Da = new SqlDataAdapter(cmd);
             Da.Fill(Dt);

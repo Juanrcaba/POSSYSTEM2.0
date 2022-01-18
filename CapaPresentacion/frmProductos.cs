@@ -27,7 +27,7 @@ namespace CapaPresentacion
         frmAlerta alerta;
         private void frmProductos_Load(object sender, EventArgs e)
         {
-            MostrarProductos();
+            MostrarProductos("");
             RedimencionCeldas();
             Alineamiento();    
             
@@ -37,21 +37,21 @@ namespace CapaPresentacion
         {
             frmCategoria form = new frmCategoria();
             form.ShowDialog();
-            MostrarProductos();
+            MostrarProductos("");
         }
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
             frmMarca form = new frmMarca();
             form.ShowDialog();
-            MostrarProductos();
+            MostrarProductos("");
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             frmMantenimientoProducto form = new frmMantenimientoProducto();
             form.ShowDialog();
-            MostrarProductos();
+            MostrarProductos("");
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -74,15 +74,15 @@ namespace CapaPresentacion
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-
+            MostrarProductos(txtBuscar.Text);
         }
 
         #region Metodos
 
-        private void MostrarProductos()
+        private void MostrarProductos(string buscar)
         {
             N_PRODUCTO objDatos = new N_PRODUCTO();
-            tablaProductos.DataSource = objDatos.MostrarProduto();
+            tablaProductos.DataSource = objDatos.BuscarProduto(buscar);
             tablaProductos.Columns[2].Visible = false;
             tablaProductos.Columns[5].Visible = false;
             tablaProductos.Columns[7].Visible = false;
@@ -159,7 +159,7 @@ namespace CapaPresentacion
                 form.txtStock.Text = tablaProductos.CurrentRow.Cells[11].Value.ToString();
 
                 form.ShowDialog();
-                MostrarProductos();
+                MostrarProductos("");
                 
 
             }
@@ -176,7 +176,7 @@ namespace CapaPresentacion
                     objDatos.EliminarProducto(entidadProductos);
                     alerta = new frmAlerta("Producto Eliminado.", frmAlerta.Alerta.Exitoso);
                     alerta.ShowDialog();
-                    MostrarProductos();
+                    MostrarProductos("");
 
                 }
 
@@ -227,13 +227,15 @@ namespace CapaPresentacion
             saveFileDialog.Filter = "Libro de Excel|*.xlsx";
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.FileName = "Inventario Productos";
+
             
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                workbook.SaveAs(saveFileDialog.FileName);
+                workbook.SaveAs("Inventario Productos");
                 app.Visible = true;
             }
-            
+
 
         }
 
