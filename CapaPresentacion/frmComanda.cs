@@ -83,7 +83,7 @@ namespace CapaPresentacion
                     formAlerta.Dispose();
                 }
 
-
+            //seguir trabajando con generador de excel
         }
 
         private void btnGrupos_Click(object sender, EventArgs e)

@@ -193,7 +193,7 @@ namespace CapaNegocio
         public void AbreCajon()
         {
             string cajon0 = "\x1B" + "p" + "\x00" + "\x0F" + "\x96";                  // caracteres de apertura cajon 0
-            string cajon1 = "\x1B" + "p" + "\x01" + "\x0F" + "\x96";                 // caracteres de apertura cajon 1
+           /* string cajon1 = "\x1B" + "p" + "\x01" + "\x0F" + "\x96";  */               // caracteres de apertura cajon 1
             RawPrinterHelper.SendStringToPrinter(impresora, cajon0); // abre cajon0
             //RawPrinterHelper.SendStringToPrinter(impresora, cajon1); // abre cajon1
         }

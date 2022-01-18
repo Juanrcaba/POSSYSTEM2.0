@@ -22,9 +22,9 @@ namespace CapaPresentacion
 
         string user;
         string password;
-        int perfil;
-        int sexo;
-        string nombre;
+        //int perfil;
+        //int sexo;
+        //string nombre;
 
         N_USUARIO objUsuario = new N_USUARIO();
         E_USUARIO E_objUsuario = new E_USUARIO();
