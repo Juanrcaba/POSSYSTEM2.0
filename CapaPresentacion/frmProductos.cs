@@ -14,6 +14,7 @@ using SpreadsheetLight;
 using Microsoft.Office.Interop;
 using Excel = Microsoft.Office.Interop.Excel;
 
+
 namespace CapaPresentacion
 {
     public partial class frmProductos : Form
@@ -60,34 +61,15 @@ namespace CapaPresentacion
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-
-
-            //Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            //Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Open(Application.StartupPath + "\\Reports\\Plantilla_reporte_productos.xlsx");
-            //Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-
-            //worksheet = workbook.Sheets[1];
-            //worksheet.Name = "Productos";
-            //int contador = 0;
-
-            //for (int i = 0; i < tablaProductos.Columns.Count - 2; i++)
-            //{
-            //    worksheet.Cells[1, i + 1] = tablaProductos.Columns[i + 2].HeaderText;
-            //}
-
-            //for (int i = 0; i < tablaProductos.Rows.Count; i++)
-            //{
-            //    for (int j = 2; j < tablaProductos.Columns.Count; j++)
-            //    {
-            //        worksheet.Cells[i + 2, contador + 1] = tablaProductos.Rows[i].Cells[j].Value.ToString();
-            //        contador++;
-            //    }
-            //    contador = 0;
-            //}
-
-            //app.Visible = true;
-
-          
+            try
+            {
+                ExportarDatosExcel(tablaProductos);
+            }
+            catch (Exception ex)
+            {
+                frmAlerta form = new frmAlerta(ex.Message,frmAlerta.Alerta.Error);
+                form.ShowDialog();
+            }   
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -201,69 +183,58 @@ namespace CapaPresentacion
                
             }                         
         }
-        private void ExportarDatos(DataGridView datalistado)
+        private void ExportarDatosExcel(DataGridView datalistado)
         {
-            //try
-            //{
-            //    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application(); // Instancia a la libreria de Microsoft Office
-            //    excel.Visible = true;
-            //    excel.DisplayAlerts = false;
 
-            //    Excel.Workbook oWorkbook = excel.Workbooks.Open(Application.StartupPath + "\\Reports\\Plantilla_reporte_productos.xlsx");
-            //    Microsoft.Office.Interop.Excel.Sheets oSheet = oWorkbook.Sheets[1];
-            //    // excel.Application.Workbooks.Add(true); //Con esto añadimos una hoja en el Excel para exportar los archivos
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Open(Application.StartupPath + "\\Reports\\Plantilla_reporte_productos.xlsx");
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
 
-                
+            worksheet = workbook.Sheets[1];
+            worksheet.Name = "Productos";
+           
+            worksheet.Cells[3, 8] = DateTime.Today.ToString("dd-MM-yyyy");
 
-            //    oSheet.Cells[3, 7] = "FECHA";
-            //    oSheet.Cells[3, 8] = DateTime.Today.ToString("dd-MM-yyyy");
-            //    oSheet.Cells[3, 7] = "FECHA";
-                
-                
+            
+            int countCol = 0;      
+            int positionCol = 2;
+            int positionRow = 7;
+            foreach (DataGridViewRow row in datalistado.Rows)
+            {
+               
+                foreach (DataGridViewColumn column in datalistado.Columns)
+                {
+                    if (countCol > 2 && countCol != 5 && countCol != 7)
+                    {
+                        worksheet.Cells[positionRow, positionCol] = row.Cells[column.Name].Value;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeLeft].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 2d;
+                        positionCol++;
+                    }
+                    countCol++;
+                }
+                positionRow++;
+                positionCol = 2;
+                countCol = 0;
+            }
 
-            //    int IndiceColumna = 0;
-            //    int posicionCol = 1;
-                
-            //    foreach (DataGridViewColumn columna in datalistado.Columns) //Aquí empezamos a leer las columnas del listado a exportar
-            //    {
-            //        IndiceColumna++;
-            //        if (IndiceColumna > 2 && IndiceColumna != 6 && IndiceColumna != 8)
-            //        {
-            //             excel.Cells[1, posicionCol] = columna.Name;
-            //            posicionCol++;
-            //        }
-                   
-            //    }
-            //    int IndiceFila = 0;
-            //    int posicionFil = 2;
+            //Columns("H:H").EntireColumn.AutoFit
 
-            //    foreach (DataGridViewRow fila in datalistado.Rows) //Aquí leemos las filas de las columnas leídas
-            //    {
-            //        IndiceFila++;
-            //        if (IndiceFila >= 1 )
-            //        {
-            //            IndiceColumna = 0;
-            //            posicionCol = 1;
-            //            foreach (DataGridViewColumn columna in datalistado.Columns)
-            //            {
-            //                IndiceColumna++;
-            //                if (IndiceColumna > 2 && IndiceColumna != 6 && IndiceColumna != 8)
-            //                {
-            //                    excel.Cells[posicionFil, posicionCol] = fila.Cells[columna.Name].Value;
-            //                    posicionCol++;                              
-            //                }
 
-            //            }
-            //            posicionFil++;
-            //        }
-                   
-            //    }
-            //    excel.Visible = true;
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("No hay Registros a Exportar.");
-            //}
+            worksheet.Columns.AutoFit();
+            saveFileDialog.Filter = "Libro de Excel|*.xlsx";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.FileName = "Inventario Productos";
+            
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName);
+                app.Visible = true;
+            }
+            
+
         }
 
     }
