@@ -17,13 +17,14 @@ namespace CapaPresentacion
         public int id_turno = 0;
         
 
-        public frmControlMesa(int id,string nombre_mesa,string Saldo,int idturno)
+        public frmControlMesa(int id,string nombre_mesa,double Saldo,int idturno)
         {
             InitializeComponent();
             this.lblMesa.Text = nombre_mesa;
             this.id_mesa = id;
             this.id_turno = idturno;
-            this.lblTotal.Text = Saldo; //ToString("#,###.###")
+            this.lblTotal.Text =  String.Format("{0:C2}",Saldo);
+            //Saldo.ToString("#,###.##");
         }
         public frmControlMesa()
         {

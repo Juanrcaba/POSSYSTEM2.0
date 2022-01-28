@@ -8,23 +8,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using CapaEntidades;
 using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmTicket : Form
+    public partial class frmTraspasoMesa : Form
     {
-        public frmTicket()
+        public frmTraspasoMesa()
         {
             InitializeComponent();
         }
-
-        E_VENTA e_venta = new E_VENTA();
-        N_VENTA oNventa = new N_VENTA(); 
-        public string _Comentario = "";
-
 
         #region Shadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -121,97 +114,63 @@ namespace CapaPresentacion
 
         #endregion
 
+        N_MESAS oNmesas = new N_MESAS();
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void frmTicket_Load(object sender, EventArgs e)
+        private void frmTraspasoMesa_Load(object sender, EventArgs e)
         {
-            MostrarTickets();
+            LlenarCombobox(cmbDesde);
+            LlenarCombobox(cmbHasta);
         }
 
-        private void MostrarTickets()
-        {                      
+        private void LlenarCombobox(ComboBox combo)
+        {
+            DataTable Dt = oNmesas.MostrarMesas();
 
-            tablaTickets.DataSource = oNventa.MostrarTickets();
-            tablaTickets.Columns[0].DisplayIndex = 5;
-            tablaTickets.Columns[1].DisplayIndex = 5;
-            tablaTickets.ClearSelection();
-
-            tablaTickets.Columns[2].Visible = false;
-
+            combo.ValueMember = "ID_MESA";
+            combo.DisplayMember = "NOMBRE";
+            DataRow TopItem = Dt.NewRow();
+            TopItem[0] = 0;
+            TopItem[1] = "-Select-";
+            Dt.Rows.InsertAt(TopItem, 0);
+            combo.DataSource = Dt;
         }
 
-        private void tablaTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (tablaTickets.CurrentRow.Cells["Delete"].Selected)
+            int Iddesde = Int32.Parse(cmbDesde.SelectedValue.ToString());
+            int Idhasta = Int32.Parse(cmbHasta.SelectedValue.ToString());
+
+            try
             {
-                int id_venta = Convert.ToInt32(tablaTickets.CurrentRow.Cells[1].Value);
-                var formAlert = new frmAlerta("Deseas Cancelar este ticket?", frmAlerta.Alerta.Información);
-                if (formAlert.ShowDialog() == DialogResult.OK)
-                {
-                    var formCancelarTicket = new frmCancelarTicket();
-                    AddOwnedForm(formCancelarTicket);
-                    formCancelarTicket.ShowDialog();
-
-                    e_venta.Comentario = _Comentario;
-                    e_venta.Id_venta = id_venta;
-
-                    oNventa.CancelarTicket(e_venta);
-                    MostrarTickets();
-
-                    formCancelarTicket.Dispose();
-                }
-                formAlert.Dispose();
-            } else if (tablaTickets.CurrentRow.Cells["print"].Selected) 
+                if(Iddesde != 0 && Idhasta != 0)
+                GenerarTraspaso(Iddesde,Idhasta);
+            }
+            catch (Exception)
             {
-                try
+
+                throw;
+            }
+        }
+
+        private void GenerarTraspaso(int _IdDesde, int _IdHasta)
+        {
+            try
+            {
+                if (_IdDesde != _IdHasta)
                 {
-                    int idVenta = Convert.ToInt32(tablaTickets.CurrentRow.Cells[2].Value);
-
-                    DataTable Dt = oNventa.GenerarTicket(idVenta);
-
-                    CreaTicket Ticket = new CreaTicket();
-                    string mesa, usuario, fecha, hora;
-                    double total = 0;
-
-                    usuario = Dt.Rows[0][0].ToString();
-                    mesa = Dt.Rows[0][1].ToString();
-                    fecha = Dt.Rows[0][2].ToString();
-                    hora = Dt.Rows[0][3].ToString();
-
-                    //Ticket.AbreCajon();  //abre el cajon
-                    Ticket.TextoIzquierda(usuario);
-                    Ticket.TextoDerecha(mesa);
-                    Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
-                    Ticket.TextoExtremos("Fecha " +fecha, "Hora: " + hora);
-                    Ticket.LineasGuion(); // imprime una linea de guiones
-                    Ticket.EncabezadoVenta(); // imprime encabezados 
-                    Ticket.TextoCentro("");
-
-                    foreach (DataRow item in Dt.Rows)
-                    {
-                        Ticket.AgregaArticulo(item[4].ToString(),Convert.ToInt32(item[5]),Convert.ToDouble(item[6]), Convert.ToDouble(item[7])); //imprime una linea de descripcion
-                        total += Convert.ToDouble(item[7].ToString());                        
-                    }
-
-                    Ticket.LineasTotales(); // imprime linea
-                    Ticket.AgregaTotales("Total", total); // imprime linea con total
-                    Ticket.TextoCentro("");
-                    Ticket.TextoCentro("Bar Santa");
-                    Ticket.TextoCentro("Gracias por Preferirnos!!");
-
-                    Ticket.Imprimir();
-
-                    Ticket.CortaTicket(); // corta el ticket
-
+                    oNmesas.TraspasoMesa(_IdDesde,_IdHasta);
                 }
-                catch (Exception)
-                {
 
-                    throw;
-                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                frmAlerta alerta = new frmAlerta(ex.Message,frmAlerta.Alerta.Error);
+                alerta.ShowDialog();                
             }
         }
     }

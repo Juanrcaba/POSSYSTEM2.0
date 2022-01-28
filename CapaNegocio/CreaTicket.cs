@@ -14,6 +14,8 @@ namespace CapaNegocio
         string impresora = ""; //"\\Microsoft Print to PDF"; // nombre exacto de la impresora como esta en el panel de control
         int max, cort;
 
+        System.Text.StringBuilder sb = new
+            System.Text.StringBuilder();
         public CreaTicket()
         {
             getImpresoraPorDefecto();
@@ -31,27 +33,32 @@ namespace CapaNegocio
         public void LineasGuion()
         {
             ticket = "----------------------------------------\n";   // agrega lineas separadoras -
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime linea
+            sb.Append(ticket);
+           // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void LineasAsterisco()
         {
             ticket = "****************************************\n";   // agrega lineas separadoras *
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime linea
+            sb.Append(ticket);
+           // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void LineasIgual()
         {
             ticket = "========================================\n";   // agrega lineas separadoras =
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime linea
+            sb.Append(ticket);
+           // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void LineasTotales()
         {
             ticket = "                             -----------\n"; ;   // agrega lineas de total
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime linea
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void EncabezadoVenta()
         {
             ticket = "Articulo        Can    P.Unit    Importe\n";   // agrega lineas de  encabezados
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void TextoIzquierda(string par1)                          // agrega texto a la izquierda
         {
@@ -63,7 +70,8 @@ namespace CapaNegocio
             }
             else { parte1 = par1; }                      // **********
             ticket = parte1 + "\n";
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void TextoDerecha(string par1)
         {
@@ -81,7 +89,8 @@ namespace CapaNegocio
                 ticket += " ";                          // agrega espacios para alinear a la derecha
             }
             ticket += parte1 + "\n";                    //Agrega el texto
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void TextoCentro(string par1)
         {
@@ -99,7 +108,8 @@ namespace CapaNegocio
                 ticket += " ";                           // Agrega espacios antes del texto a centrar
             }                                            // **********
             ticket += parte1 + "\n";
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void TextoExtremos(string par1, string par2)
         {
@@ -124,7 +134,8 @@ namespace CapaNegocio
                 ticket += " ";                            // Agrega espacios para poner par2 al final
             }                                             // **********
             ticket += parte2 + "\n";                     // agrega el segundo parametro al final
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void AgregaTotales(string par1, double total)
         {
@@ -143,7 +154,8 @@ namespace CapaNegocio
                 ticket += " ";                           // Agrega espacios para poner el valor de moneda al final
             }                                            // **********
             ticket += parte2 + "\n";
-            RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+            sb.Append(ticket);
+            // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void AgregaArticulo(string par1, int cant, double precio, double total)
         {
@@ -175,13 +187,19 @@ namespace CapaNegocio
                     ticket += " ";                           // Agrega espacios
                 }                                            // **********
                 ticket += total.ToString("c") + "\n"; // agrega precio
-                RawPrinterHelper.SendStringToPrinter(impresora, ticket); // imprime texto
+                sb.Append(ticket);
+                // RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
             }
             else
             {
                 //MessageBox.Show("Valores fuera de rango");
                 RawPrinterHelper.SendStringToPrinter(impresora, "Error, valor fuera de rango\n"); // imprime texto
             }
+        }
+
+        public void Imprimir()
+        {          
+            RawPrinterHelper.SendStringToPrinter(impresora, sb.ToString()); // imprime linea
         }
         public void CortaTicket()
         {

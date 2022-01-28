@@ -49,8 +49,12 @@ namespace CapaPresentacion
         private void frmMesas_Load(object sender, EventArgs e)
         {
             pantallaOK();
-            if(ValidarTurno())
-            CargarMesas();
+            if (ValidarTurno())
+            {
+                CargarMesas();
+                btnTraspaso.Enabled = true;
+            }
+            
 
         }
 
@@ -58,8 +62,8 @@ namespace CapaPresentacion
         {
             DataTable DtMesas = objMesas.MostrarMesas();
             DataTable DtBalance;
-            string Balance = "0.00";
-
+            double Balance = 0.00d;
+            flowContainer.Controls.Clear();
             if (DtMesas != null)
                 if(DtMesas.Rows.Count > 0)
                 {
@@ -69,9 +73,9 @@ namespace CapaPresentacion
                         DtBalance = objMesas.BalanceMesas(objE_mesas);
                        
                         if (DtBalance.Rows.Count > 0 && DtBalance.Rows[0][0].ToString() != "")
-                            Balance =(DtBalance.Rows[0][0].ToString());
+                            Balance =Convert.ToDouble(DtBalance.Rows[0][0].ToString());
                         else
-                            Balance = "0.00";
+                            Balance = 0.00d;
 
                         frmControlMesa btn = new frmControlMesa(Convert.ToInt32(item["ID_MESA"]), item["NOMBRE"].ToString(), Balance,idTurno);
                         AddOwnedForm(btn);
@@ -113,6 +117,13 @@ namespace CapaPresentacion
         {
             frmTicket form = new frmTicket();
             form.ShowDialog();
+        }
+
+        private void btnTraspaso_Click(object sender, EventArgs e)
+        { 
+            frmTraspasoMesa form = new frmTraspasoMesa();
+            form.ShowDialog();
+            CargarMesas();
         }
     }
 }

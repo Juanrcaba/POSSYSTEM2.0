@@ -165,10 +165,10 @@ namespace CapaPresentacion
             calculo = 0.00d;
             foreach (DataGridViewRow item in tablaProductos.Rows)
             {
-                calculo += Convert.ToDouble(item.Cells["Total"].Value);
+                calculo += Convert.ToDouble(item.Cells[4].Value);
             }
 
-            lblTotal.Text = calculo.ToString("#,###.###");
+            lblTotal.Text = string.Format("{0:C2}", calculo);
         }
 
         private void btnFacturar_Click(object sender, EventArgs e)
@@ -199,11 +199,14 @@ namespace CapaPresentacion
                     objE_venta.Id_mesa = idmesa;
                     objE_venta.Id_Turno = Idturno;
                     objE_venta.Id_usuario = DatosUsuario.Id_usuario;
-                    objE_venta.Venta_total = Convert.ToDouble(lblTotal.Text);
+                    objE_venta.Venta_total = Convert.ToDouble(lblTotal.Text.Substring(1));
+                    objE_venta.Hora_venta = DateTime.Now.ToString("hh:mm:ss tt");
                     objVenta.InsertarVenta(objE_venta, dt);
 
                     formAlerta = new frmAlerta("Venta Registrada Satisfactoriamente!!", frmAlerta.Alerta.Exitoso);
                     formAlerta.ShowDialog();
+
+                    ImprimirTicket("");
 
                     VolverAMesa();
                 }
@@ -251,12 +254,18 @@ namespace CapaPresentacion
 
         private void btnCuenta_Click(object sender, EventArgs e)
         {
+            ImprimirTicket("Bill");
+           
+        }
+
+        private void ImprimirTicket(string v)
+        {
             if (tablaProductos.Rows.Count > 0)
             {
                 CreaTicket Ticket = new CreaTicket();
 
 
-                Ticket.AbreCajon();  //abre el cajon
+                //Ticket.AbreCajon();  //abre el cajon
                 Ticket.TextoIzquierda(DatosUsuario.Nombre);
                 Ticket.TextoDerecha(lblMesa.Text);
                 Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
@@ -270,7 +279,7 @@ namespace CapaPresentacion
                     Ticket.AgregaArticulo(Convert.ToString(item.Cells[1].Value), Convert.ToInt32(item.Cells[2].Value), Convert.ToDouble(item.Cells[3].Value), Convert.ToDouble(item.Cells[4].Value)); //imprime una linea de descripcion
                 }
                 Ticket.LineasTotales(); // imprime linea
-                Ticket.AgregaTotales("Total", Convert.ToDouble(lblTotal.Text)); // imprime linea con total
+                Ticket.AgregaTotales("Total", Convert.ToDouble(lblTotal.Text.Substring(1))); // imprime linea con total
                 Ticket.TextoCentro("");
                 Ticket.TextoCentro("Bar Santa");
                 Ticket.TextoCentro("Gracias por Preferirnos!!");
@@ -282,10 +291,9 @@ namespace CapaPresentacion
             }
             else
             {
-                formAlerta = new frmAlerta("Esta mesa esta vacia.",frmAlerta.Alerta.Error);
+                formAlerta = new frmAlerta("Esta mesa esta vacia.", frmAlerta.Alerta.Error);
                 formAlerta.ShowDialog();
             }
-           
         }
 
         private void tablaProductos_SelectionChanged(object sender, EventArgs e)

@@ -19,6 +19,7 @@ namespace CapaEntidades
         private double _Precio_producto;
         private int _Id_usuario;
 
+        private string _Hora_venta;
         private string _Fecha_ini;
         private string _Fecha_fin;
         private string _Comentario;
@@ -34,5 +35,6 @@ namespace CapaEntidades
         public string Fecha_ini { get => _Fecha_ini; set => _Fecha_ini = value; }
         public string Fecha_fin { get => _Fecha_fin; set => _Fecha_fin = value; }
         public string Comentario { get => _Comentario; set => _Comentario = value; }
+        public string Hora_venta { get => _Hora_venta; set => _Hora_venta = value; }
     }
 }

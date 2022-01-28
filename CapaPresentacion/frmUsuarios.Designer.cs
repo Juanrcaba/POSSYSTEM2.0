@@ -59,6 +59,7 @@ namespace CapaPresentacion
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             this.rbHombre = new System.Windows.Forms.RadioButton();
             this.rbMujer = new System.Windows.Forms.RadioButton();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaUsuarios)).BeginInit();
@@ -220,6 +221,7 @@ namespace CapaPresentacion
             this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnExcel.Textcolor = System.Drawing.Color.White;
             this.btnExcel.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnEliminar
             // 
@@ -601,5 +603,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.RadioButton rbMujer;
         private System.Windows.Forms.RadioButton rbHombre;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

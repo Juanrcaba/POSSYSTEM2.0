@@ -23,5 +23,10 @@ namespace CapaNegocio
         {
             return objMesa.BalanceMesa(mesa);
         }
+
+        public void TraspasoMesa(int _IdDesde, int _IdHasta)
+        {
+            objMesa.TraspasoMesa(_IdDesde,_IdHasta);
+        }
     }
 }

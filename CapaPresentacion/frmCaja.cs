@@ -24,10 +24,10 @@ namespace CapaPresentacion
         N_CUADRE_CAJA objN_Cuadrecaja = new N_CUADRE_CAJA();
         N_TURNO objN_Turnos = new N_TURNO();
         N_CUADRE_TURNO objN_cuadreTurno = new N_CUADRE_TURNO();
-        frmAlerta form;
+        frmAlerta alerta;
 
        // int IdTurno = 0;
-        int estado = 0;
+        int estado = 1;
 
         void pantallaOK()
         {
@@ -39,6 +39,7 @@ namespace CapaPresentacion
         {
             pantallaOK();
             CargarTurnos();
+            MostrarCajas();
             if (EstadoCaja())
                 btnAbrirCaja.Enabled = false;
             else
@@ -65,9 +66,9 @@ namespace CapaPresentacion
             {
                 
                 string fecha = dtFecha.Value.ToString("yyyy/MM/dd");
+
                 if (rbtAbierto.Checked)
                     estado = 1;
-
                 if (rbtCerrado.Checked)
                     estado = 0;
                 if (rbtTodas.Checked)
@@ -96,9 +97,9 @@ namespace CapaPresentacion
             objE_CuadreCaja.Id_caja = IdCaja;
             objN_Cuadrecaja.CerrarCajas(objE_CuadreCaja);
 
-            form = new frmAlerta("La Caja fue Cerrada con exito!!",frmAlerta.Alerta.Exitoso);
-            form.ShowDialog();
-            form.Dispose();
+            alerta = new frmAlerta("La Caja fue Cerrada con exito!!",frmAlerta.Alerta.Exitoso);
+            alerta.ShowDialog();
+            alerta.Dispose();
 
         }
         //fin metodos
@@ -127,33 +128,33 @@ namespace CapaPresentacion
 
                     int turno = 0;
 
-                    form = new frmAlerta("Esta apunto de cerrar la caja #" + nCaja + ", esta seguro?", frmAlerta.Alerta.Información);
+                    alerta = new frmAlerta("Esta apunto de cerrar la caja #" + nCaja + ", esta seguro?", frmAlerta.Alerta.Información);
                   
-                    if (form.ShowDialog() == DialogResult.OK)
+                    if (alerta.ShowDialog() == DialogResult.OK)
                     {
                         if (Dt.Rows.Count > 0)
                         {
-                            form = new frmAlerta("Existen turnos abiertos, deseas cerrarlos para continuar?", frmAlerta.Alerta.Información);
-                            if (form.ShowDialog() == DialogResult.OK)
+                            alerta = new frmAlerta("Existen turnos abiertos, deseas cerrarlos para continuar?", frmAlerta.Alerta.Información);
+                            if (alerta.ShowDialog() == DialogResult.OK)
                             {
                                 foreach (DataRow item in Dt.Rows)
                                 {
-                                   turno = Convert.ToInt32(item["ID_TURNO"]);                                    
+                                    turno = Convert.ToInt32(item["ID_TURNO"]);
                                 }
 
-                                if (objN_Turnos.MesasOcupadas() == 0 && turno!= 3)
+                                if (objN_Turnos.MesasOcupadas() > 0 && turno == 3)
                                 {
+                                    alerta = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
+                                    alerta.ShowDialog();
+                                    return;
+                                }
+                                else
+                                {                                  
                                     foreach (DataRow item in Dt.Rows)
                                     {
                                         objE_CuadreTurno.Id_Turno = Convert.ToInt32(item["ID_TURNO"]);
                                         objN_cuadreTurno.CerrarTurno(objE_CuadreTurno);
                                     }
-                                }
-                                else
-                                {
-                                    form = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
-                                    form.ShowDialog();
-                                    return;
                                 }
                                
                             }
@@ -164,8 +165,8 @@ namespace CapaPresentacion
                         }
                         else if (objN_Turnos.MesasOcupadas() != 0)
                         {
-                            form = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
-                            form.ShowDialog();
+                            alerta = new frmAlerta("Existen mesas Ocupadas, no deben existir mesas ocupadas para cerrar caja", frmAlerta.Alerta.Información);
+                            alerta.ShowDialog();
                             return;
                         }
                        
@@ -184,16 +185,16 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    form = new frmAlerta("Ya esta caja esta cerrada.", frmAlerta.Alerta.Información);
-                    form.ShowDialog();
-                    form.Dispose();
+                    alerta = new frmAlerta("Ya esta caja esta cerrada.", frmAlerta.Alerta.Información);
+                    alerta.ShowDialog();
+                    alerta.Dispose();
                 }
             }
             else
             {
-                form = new frmAlerta("Debes Seleccionar una caja a cerrar.", frmAlerta.Alerta.Información);
-                form.ShowDialog();
-                form.Dispose();
+                alerta = new frmAlerta("Debes Seleccionar una caja a cerrar.", frmAlerta.Alerta.Información);
+                alerta.ShowDialog();
+                alerta.Dispose();
             }
 
 

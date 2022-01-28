@@ -57,5 +57,25 @@ namespace CapaDatos
                 throw;
             }
         }
+
+        public void TraspasoMesa(int _IdDesde,int _IdHasta)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_TRASPASO_MESA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@iddesde", _IdDesde);
+                cmd.Parameters.AddWithValue("@idhasta", _IdHasta);
+
+                conexion.Open();
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

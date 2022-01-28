@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.Office.Interop;
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace CapaPresentacion
 {
     public partial class frmUsuarios : Form
@@ -132,7 +135,6 @@ namespace CapaPresentacion
             EntidadUsuario.BUSCAR = buscar;
             tablaUsuarios.DataSource = NegocioUsuario.MostrarUsuario(EntidadUsuario);
             AccionTabla();
-
         }
 
         void AccionTabla()
@@ -298,6 +300,68 @@ namespace CapaPresentacion
             TopItem[1] = "-Select-";
             Dt.Rows.InsertAt(TopItem,0);
             cmbPerfil.DataSource = Dt;
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if(tablaUsuarios.Rows.Count > 0)
+            ExportarDatosExcel(tablaUsuarios);
+        }
+
+        private void ExportarDatosExcel(DataGridView datalistado)
+        {
+
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Open(Application.StartupPath + "\\Reports\\Plantilla_reporte_usuario.xlsx");
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            worksheet = workbook.Sheets[1];
+            worksheet.Name = "Usuario";
+
+            worksheet.Cells[3, 5] = DateTime.Today.ToString("dd-MM-yyyy");
+
+
+            int countCol = 1;
+            int positionCol = 2;
+            int positionRow = 7;
+            foreach (DataGridViewRow row in datalistado.Rows)
+            {
+
+                foreach (DataGridViewColumn column in datalistado.Columns)
+                {
+                    if (countCol > 1 &&  countCol != 5 && countCol != 6 && countCol != 8)
+                    {
+                        worksheet.Cells[positionRow, positionCol] = row.Cells[column.Name].Value;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeLeft].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 2d;
+                        worksheet.Cells[positionRow, positionCol].Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 2d;
+                        positionCol++;
+                    }
+                    countCol++;
+                }
+                positionRow++;
+                positionCol = 2;
+                countCol = 1;
+            }
+
+            //Columns("H:H").EntireColumn.AutoFit
+
+
+            worksheet.Columns.AutoFit();
+            saveFileDialog.Filter = "Libro de Excel|*.xlsx";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.FileName = "Listado Usuario";
+
+
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs("Listado Usuario");
+                app.Visible = true;
+            }
+
+
         }
     }
 }

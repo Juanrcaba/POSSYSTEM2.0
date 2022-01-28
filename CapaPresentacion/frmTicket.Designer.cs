@@ -41,6 +41,7 @@ namespace CapaPresentacion
             this.tablaTickets = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.DragTitulo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.print = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaTickets)).BeginInit();
@@ -99,14 +100,15 @@ namespace CapaPresentacion
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tablaTickets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Delete});
+            this.Delete,
+            this.print});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,6 +151,13 @@ namespace CapaPresentacion
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             // 
+            // print
+            // 
+            this.print.HeaderText = "PRINT";
+            this.print.Image = ((System.Drawing.Image)(resources.GetObject("print.Image")));
+            this.print.Name = "print";
+            this.print.ReadOnly = true;
+            // 
             // frmTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,5 +187,6 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuCustomDataGrid tablaTickets;
         private Bunifu.Framework.UI.BunifuDragControl DragTitulo;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.DataGridViewImageColumn print;
     }
 }

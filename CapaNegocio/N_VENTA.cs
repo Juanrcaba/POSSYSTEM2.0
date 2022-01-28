@@ -31,5 +31,10 @@ namespace CapaNegocio
         {
             objVenta.CancelarTicket(venta);
         }
+
+        public DataTable GenerarTicket(int idVenta)
+        {
+            return objVenta.GenerarTicket(idVenta);
+        }
     }
 }

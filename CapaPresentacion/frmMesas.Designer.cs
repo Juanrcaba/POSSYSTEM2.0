@@ -203,6 +203,7 @@ namespace CapaPresentacion
             this.btnTraspaso.ButtonText = "Traspaso";
             this.btnTraspaso.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTraspaso.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTraspaso.Enabled = false;
             this.btnTraspaso.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.btnTraspaso.Iconcolor = System.Drawing.Color.Transparent;
             this.btnTraspaso.Iconimage = null;
@@ -230,6 +231,7 @@ namespace CapaPresentacion
             this.btnTraspaso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnTraspaso.Textcolor = System.Drawing.Color.White;
             this.btnTraspaso.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTraspaso.Click += new System.EventHandler(this.btnTraspaso_Click);
             // 
             // flowContainer
             // 

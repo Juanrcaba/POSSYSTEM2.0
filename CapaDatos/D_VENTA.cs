@@ -30,6 +30,21 @@ namespace CapaDatos
             return Dt;
         }
 
+        public DataTable GenerarTicket(int idVenta)
+        {
+            DataTable Dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("SP_GENERAR_TICKET", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idventa",idVenta);
+            
+
+            SqlDataAdapter Da = new SqlDataAdapter(cmd);
+            Da.Fill(Dt);
+
+            return Dt;
+        }
+
         public DataTable MostrarTickets()
         {
             DataTable Dt = new DataTable();
@@ -52,6 +67,7 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@id_turno", venta.Id_Turno);
             cmd.Parameters.AddWithValue("@venta_total", venta.Venta_total);
             cmd.Parameters.AddWithValue("@id_mesa", venta.Id_mesa);
+            cmd.Parameters.AddWithValue("@hora_venta", venta.Hora_venta);
             cmd.Parameters.Add("@id_venta", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             try

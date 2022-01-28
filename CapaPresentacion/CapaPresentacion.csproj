@@ -186,6 +186,12 @@
     <Compile Include="frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTraspasoMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTraspasoMesa.Designer.cs">
+      <DependentUpon>frmTraspasoMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTurno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTraspasoMesa.resx">
+      <DependentUpon>frmTraspasoMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurno.resx">
       <DependentUpon>frmTurno.cs</DependentUpon>
