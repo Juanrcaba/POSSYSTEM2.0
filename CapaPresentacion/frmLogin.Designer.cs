@@ -35,6 +35,7 @@ namespace CapaPresentacion
             this.btnCancelar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblMesa = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -42,7 +43,7 @@ namespace CapaPresentacion
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(133, 90);
+            this.txtUsuario.Location = new System.Drawing.Point(62, 72);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(267, 32);
             this.txtUsuario.TabIndex = 22;
@@ -52,7 +53,7 @@ namespace CapaPresentacion
             this.txtCon.BackColor = System.Drawing.Color.White;
             this.txtCon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCon.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCon.Location = new System.Drawing.Point(133, 175);
+            this.txtCon.Location = new System.Drawing.Point(62, 157);
             this.txtCon.Name = "txtCon";
             this.txtCon.PasswordChar = '*';
             this.txtCon.Size = new System.Drawing.Size(267, 32);
@@ -81,7 +82,7 @@ namespace CapaPresentacion
             this.btnAcceder.IconVisible = true;
             this.btnAcceder.IconZoom = 30D;
             this.btnAcceder.IsTab = false;
-            this.btnAcceder.Location = new System.Drawing.Point(133, 229);
+            this.btnAcceder.Location = new System.Drawing.Point(62, 216);
             this.btnAcceder.Margin = new System.Windows.Forms.Padding(6);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -120,7 +121,7 @@ namespace CapaPresentacion
             this.btnCancelar.IconVisible = true;
             this.btnCancelar.IconZoom = 30D;
             this.btnCancelar.IsTab = false;
-            this.btnCancelar.Location = new System.Drawing.Point(284, 229);
+            this.btnCancelar.Location = new System.Drawing.Point(213, 216);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -140,7 +141,7 @@ namespace CapaPresentacion
             // 
             this.lblMesa.AutoSize = true;
             this.lblMesa.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.lblMesa.Location = new System.Drawing.Point(128, 62);
+            this.lblMesa.Location = new System.Drawing.Point(57, 44);
             this.lblMesa.Name = "lblMesa";
             this.lblMesa.Size = new System.Drawing.Size(91, 25);
             this.lblMesa.TabIndex = 47;
@@ -150,17 +151,28 @@ namespace CapaPresentacion
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(138, 147);
+            this.label1.Location = new System.Drawing.Point(67, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 25);
             this.label1.TabIndex = 48;
             this.label1.Text = "Contraseña";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(97, 288);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 354);
+            this.ClientSize = new System.Drawing.Size(385, 359);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblMesa);
             this.Controls.Add(this.btnCancelar);
@@ -171,6 +183,7 @@ namespace CapaPresentacion
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +197,6 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuFlatButton btnCancelar;
         public System.Windows.Forms.Label lblMesa;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

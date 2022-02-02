@@ -72,6 +72,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcceso.Designer.cs">
+      <DependentUpon>frmAcceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,12 @@
     <Compile Include="frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrueba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +216,12 @@
     <Compile Include="frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewProveedores.Designer.cs">
+      <DependentUpon>frmViewProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagePrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +230,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAcceso.resx">
+      <DependentUpon>frmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAlerta.resx">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +284,9 @@
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrueba.resx">
       <DependentUpon>frmPrueba.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewProveedores.resx">
+      <DependentUpon>frmViewProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagePrincipal.resx">
       <DependentUpon>PagePrincipal.cs</DependentUpon>

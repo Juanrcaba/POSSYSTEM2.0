@@ -16,6 +16,8 @@ namespace CapaEntidades
         private int _PERFIL;
         private int _SEXO;
         private string _BUSCAR;
+        private string _SALT;
+        private int _ESTADO;
 
         public int ID_USUARIO { get => _ID_USUARIO; set => _ID_USUARIO = value; }
         public string CODIGO { get => _CODIGO; set => _CODIGO = value; }
@@ -25,5 +27,7 @@ namespace CapaEntidades
         public int PERFIL { get => _PERFIL; set => _PERFIL = value; }
         public int SEXO { get => _SEXO; set => _SEXO = value; }
         public string BUSCAR { get => _BUSCAR; set => _BUSCAR = value; }
+        public string SALT { get => _SALT; set => _SALT = value; }
+        public int ESTADO { get => _ESTADO; set => _ESTADO = value; }
     }
 }

@@ -11,7 +11,7 @@ namespace CapaNegocio
     {
         string ticket = "";
         string parte1, parte2;
-        string impresora = ""; //"\\Microsoft Print to PDF"; // nombre exacto de la impresora como esta en el panel de control
+        string impresora = ""; // nombre exacto de la impresora como esta en el panel de control
         int max, cort;
 
         System.Text.StringBuilder sb = new

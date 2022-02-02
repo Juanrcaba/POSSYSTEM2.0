@@ -206,9 +206,9 @@ namespace CapaPresentacion
                     formAlerta = new frmAlerta("Venta Registrada Satisfactoriamente!!", frmAlerta.Alerta.Exitoso);
                     formAlerta.ShowDialog();
 
-                    ImprimirTicket("");
+                    ImprimirTicket("Venta");
 
-                    VolverAMesa();
+                   // VolverAMesa();
                 }
                 
             }
@@ -254,7 +254,7 @@ namespace CapaPresentacion
 
         private void btnCuenta_Click(object sender, EventArgs e)
         {
-            ImprimirTicket("Bill");
+            ImprimirTicket("Cuenta");
            
         }
 
@@ -268,7 +268,7 @@ namespace CapaPresentacion
                 //Ticket.AbreCajon();  //abre el cajon
                 Ticket.TextoIzquierda(DatosUsuario.Nombre);
                 Ticket.TextoDerecha(lblMesa.Text);
-                Ticket.TextoCentro("Venta mostrador"); // imprime en el centro "Venta mostrador"
+                Ticket.TextoCentro(v); // imprime en el centro "Venta mostrador"
                 Ticket.TextoExtremos("Fecha " + DateTime.Now.ToShortDateString(), "Hora: " + DateTime.Now.ToString("hh:mm:ss tt"));
                 Ticket.LineasGuion(); // imprime una linea de guiones
                 Ticket.EncabezadoVenta(); // imprime encabezados 
@@ -284,8 +284,9 @@ namespace CapaPresentacion
                 Ticket.TextoCentro("Bar Santa");
                 Ticket.TextoCentro("Gracias por Preferirnos!!");
 
-                Ticket.CortaTicket(); // corta el ticket
+                Ticket.Imprimir();
 
+                Ticket.CortaTicket(); // corta el ticket
 
                 VolverAMesa();
             }

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 using Microsoft.Office.Interop;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Security.Cryptography;
 
 namespace CapaPresentacion
 {
@@ -128,6 +129,9 @@ namespace CapaPresentacion
         E_USUARIO EntidadUsuario = new E_USUARIO();
         N_USUARIO NegocioUsuario = new N_USUARIO();
         frmAlerta alerta;
+        string salt, pass;
+
+       
 
         private int _idUsuario = 0;
         public void MostrarBuscarDatos(string buscar)
@@ -147,15 +151,21 @@ namespace CapaPresentacion
             tablaUsuarios.Columns[4].Visible = false;
             tablaUsuarios.Columns[5].Visible = false;        
             tablaUsuarios.Columns[7].Visible = false;
-       
+            tablaUsuarios.Columns[8].Visible = false;
+            tablaUsuarios.Columns[9].Visible = false;
+
             tablaUsuarios.ClearSelection();
         }
 
         public void InsertarDatos()
         {
+             salt = GeneratePassword(10);
+             pass = EncodePassword(txtCon.Text, salt);
+             
             EntidadUsuario.NOMBRE = txtNombre.Text;
             EntidadUsuario.USUARIO = txtUsuario.Text;
-            EntidadUsuario.CONTRASEÑA = txtCon.Text;
+            EntidadUsuario.CONTRASEÑA = pass;
+            EntidadUsuario.SALT = salt;
             EntidadUsuario.PERFIL = Convert.ToInt32(cmbPerfil.SelectedValue);
             if (rbHombre.Checked)
                 EntidadUsuario.SEXO = 1;
@@ -171,12 +181,25 @@ namespace CapaPresentacion
             EntidadUsuario.ID_USUARIO = _idUsuario;
             EntidadUsuario.NOMBRE = txtNombre.Text;
             EntidadUsuario.USUARIO = txtUsuario.Text;
-            EntidadUsuario.CONTRASEÑA = txtCon.Text;
+            if (pass != txtCon.Text)
+            {
+                salt = GeneratePassword(10);
+                pass = EncodePassword(txtCon.Text, salt);
+            }
+            EntidadUsuario.CONTRASEÑA = pass;
+            EntidadUsuario.SALT = salt;
             EntidadUsuario.PERFIL = Convert.ToInt32(cmbPerfil.SelectedValue);
+
             if (rbHombre.Checked)
                 EntidadUsuario.SEXO = 1;
             else
                 EntidadUsuario.SEXO = 2;
+
+            if (rbActivo.Checked)
+                EntidadUsuario.ESTADO = 1;
+            else
+                EntidadUsuario.ESTADO = 0;
+            
 
             NegocioUsuario.EditarDatos(EntidadUsuario);
             
@@ -190,6 +213,8 @@ namespace CapaPresentacion
             cmbPerfil.Enabled = estado;
             rbHombre.Enabled = estado;
             rbMujer.Enabled = estado;
+            rbActivo.Enabled = estado;
+            rbNactivo.Enabled = estado;
             btnGuardar.Enabled = estado;
         }
 
@@ -200,6 +225,7 @@ namespace CapaPresentacion
             txtCon.Clear();
             cmbPerfil.SelectedIndex = 0;
             rbHombre.Checked = true;
+            rbActivo.Checked = true;
             _idUsuario = 0;
 
         }
@@ -219,13 +245,21 @@ namespace CapaPresentacion
                 txtNombre.Text = tablaUsuarios.CurrentRow.Cells[2].Value.ToString();
                 txtUsuario.Text = tablaUsuarios.CurrentRow.Cells[3].Value.ToString();
                 txtCon.Text = tablaUsuarios.CurrentRow.Cells[4].Value.ToString();
+                pass = tablaUsuarios.CurrentRow.Cells[4].Value.ToString();
                 cmbPerfil.SelectedValue = Convert.ToInt32(tablaUsuarios.CurrentRow.Cells[5].Value);
                 int sexo = Convert.ToInt32(tablaUsuarios.CurrentRow.Cells[7].Value);
+                salt = tablaUsuarios.CurrentRow.Cells[8].Value.ToString();
                 if (sexo == 1)
                     rbHombre.Checked = true;
                 else
                     rbMujer.Checked = true;
-               
+
+                int estado = Convert.ToInt32(tablaUsuarios.CurrentRow.Cells[9].Value);
+                if (estado == 1)
+                    rbActivo.Checked = true;
+                else
+                    rbNactivo.Checked = true;
+
                 Componentes(true);
                 txtNombre.Focus();
             }
@@ -361,6 +395,33 @@ namespace CapaPresentacion
                 app.Visible = true;
             }
 
+
+        }
+
+        public static string GeneratePassword(int length) //length of salt    
+        {
+            const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+            var randNum = new Random();
+            var chars = new char[length];
+            var allowedCharCount = allowedChars.Length;
+            for (var i = 0; i <= length - 1; i++)
+            {
+                var random = randNum.NextDouble();
+                var indice = Convert.ToInt32((allowedChars.Length - 1) * random);
+                chars[i] = allowedChars[indice];
+            }
+            return new string(chars);
+        }
+        public static string EncodePassword(string pass, string salt) //encrypt password    
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(pass);
+            byte[] src = Encoding.Unicode.GetBytes(salt);
+            byte[] dst = new byte[src.Length + bytes.Length];
+            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+            HashAlgorithm algorithm = SHA512.Create();
+            byte[] inArray = algorithm.ComputeHash(dst);
+            return Convert.ToBase64String(inArray);
 
         }
     }

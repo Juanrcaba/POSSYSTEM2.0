@@ -35,7 +35,7 @@ namespace CapaPresentacion
             }
             else
             {
-                frmLogin form = new frmLogin();
+                frmAcceso form = new frmAcceso();
                 form.Show();
             }           
             this.Hide();

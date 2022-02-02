@@ -1,36 +1,24 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmLogin : Form
+    public partial class frmProveedores : Form
     {
-        public frmLogin()
+        public frmProveedores()
         {
             InitializeComponent();
-            this.AcceptButton = btnAcceder as System.Windows.Forms.IButtonControl;
-
         }
-
-        string user;
-        string password;
-        //int perfil;
-        //int sexo;
-        //string nombre;
-
-        N_USUARIO objUsuario = new N_USUARIO();
-        E_USUARIO E_objUsuario = new E_USUARIO();
 
         #region Shadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -127,85 +115,95 @@ namespace CapaPresentacion
 
         #endregion
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        public bool IsUpdate = false;
+        public int IdProveedor = 0;
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
-        private void btnAcceder_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            user = txtUsuario.Text.Trim();
-            password = txtCon.Text.Trim();
+            GuardarProveedores();
+        }
 
-            if (user != string.Empty && password != string.Empty)
+        private void GuardarProveedores()
+        {
+            E_PROVEEDORES entidadProveedores = new E_PROVEEDORES();
+            N_PROVEEDORES objProveedores = new N_PROVEEDORES();
+            frmAlerta alerta;
+
+            if (txtRazon.Text != string.Empty)
             {
-                E_objUsuario.USUARIO = user;
-                E_objUsuario.CONTRASEÑA = password;
-
-                DataTable Dt = objUsuario.Login(E_objUsuario);
-
-                if (Dt.Rows.Count > 0)
+                if (cmbTipoDoc.Text != "Seleccionar")
                 {
-                    DatosUsuario.Id_usuario = Convert.ToInt32(Dt.Rows[0][0]);
-                    DatosUsuario.perfil = Convert.ToInt32(Dt.Rows[0][5]);
-                    DatosUsuario.sexo = Convert.ToInt32(Dt.Rows[0][7]);
-                    DatosUsuario.Nombre = Dt.Rows[0][2].ToString();
-
-                    if(DatosUsuario.perfil == 1)
+                    if (txtNoDoc.Text != string.Empty)
                     {
-                        PagePrincipal form = new PagePrincipal();
-                        form.Show();
+                        entidadProveedores.Idproveedor = IdProveedor;
+                        entidadProveedores.RazonSocial = txtRazon.Text.Trim();
+                        entidadProveedores.TipoDocumento = cmbTipoDoc.Text.Trim();
+                        entidadProveedores.NoDocumento = txtNoDoc.Text.Trim();
+                        entidadProveedores.Direccion = txtDireccion.Text.Trim();
+                        entidadProveedores.Telefono = txtTelefono.Text.Trim();
+                        entidadProveedores.Email = txtEmail.Text.Trim();
+
+                        if (IsUpdate)
+                        {                            
+                            objProveedores.EditarProveedor(entidadProveedores);
+                            IsUpdate = false;
+                            alerta = new frmAlerta("El producto se Actualizo Correctamente", frmAlerta.Alerta.Exitoso);
+                            alerta.ShowDialog();
+                            this.Close();
+
+                        }
+                        else
+                        {
+                            objProveedores.InsertarProveedor(entidadProveedores);
+                            alerta = new frmAlerta("El proveedor se guardo Correctamente", frmAlerta.Alerta.Exitoso);
+                            alerta.ShowDialog();
+                            Limpiar();
+                        }
                     }
                     else
                     {
-                        frmMesas form = new frmMesas();
-                        form.Show();
+                        alerta = new frmAlerta("Debe introducir No. documento", frmAlerta.Alerta.Error);
+                        alerta.ShowDialog();
+                        txtNoDoc.Focus();
                     }
-                                     
-                   
-                    this.Hide();
+
 
                 }
+                else
+                {
+                    alerta = new frmAlerta("Debe seleccionar tipo de documento", frmAlerta.Alerta.Error);
+                    alerta.ShowDialog();
+                    cmbTipoDoc.Focus();
+                }
             }
-                
-                
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        public static string GeneratePassword(int length) //length of salt    
-        {
-            const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
-            var randNum = new Random();
-            var chars = new char[length];
-            var allowedCharCount = allowedChars.Length;
-            for (var i = 0; i <= length - 1; i++)
+            else
             {
-                var random = randNum.NextDouble();
-                var indice = Convert.ToInt32((allowedChars.Length - 1) * random);
-                chars[i] = allowedChars[indice];
+                alerta = new frmAlerta("El proveedor debe tener un nombre de razon social", frmAlerta.Alerta.Error);
+                alerta.ShowDialog();
+                txtRazon.Focus();
             }
-            return new string(chars);
-        }
-        public static string EncodePassword(string pass, string salt) //encrypt password    
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(pass);
-            byte[] src = Encoding.Unicode.GetBytes(salt);
-            byte[] dst = new byte[src.Length + bytes.Length];
-            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
-            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
-            HashAlgorithm algorithm = SHA512.Create();
-            byte[] inArray = algorithm.ComputeHash(dst);
-            return Convert.ToBase64String(inArray);
 
+        }
+
+        void Limpiar()
+        {
+            IdProveedor = 0;
+            txtRazon.Clear();
+            cmbTipoDoc.SelectedItem =0;
+            txtNoDoc.Clear();
+            txtDireccion.Clear();
+            txtTelefono.Clear();
+            txtEmail.Clear();
+            cmbTipoDoc.SelectedIndex = 0;
+        }
+
+        private void frmProveedores_Load(object sender, EventArgs e)
+        {
+            cmbTipoDoc.SelectedIndex = 0;
         }
     }
 }

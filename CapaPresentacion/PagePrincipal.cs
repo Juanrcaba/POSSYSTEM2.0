@@ -43,7 +43,7 @@ namespace CapaPresentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            frmLogin form = new frmLogin();
+            frmAcceso form = new frmAcceso();
             form.Show();
             this.Hide();
         }
@@ -70,6 +70,7 @@ namespace CapaPresentacion
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            container.Controls.Clear();
         }
 
         private void btnProducto_Click(object sender, EventArgs e)
@@ -106,6 +107,7 @@ namespace CapaPresentacion
         private void btnProveedor_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            OpenForm(new frmViewProveedores());
         }
 
         private void btnGanancia_Click(object sender, EventArgs e)

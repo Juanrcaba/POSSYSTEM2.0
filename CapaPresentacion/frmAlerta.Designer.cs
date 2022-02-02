@@ -33,16 +33,16 @@ namespace CapaPresentacion
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlerta));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlFranja = new System.Windows.Forms.Panel();
-            this.lstImage = new System.Windows.Forms.ImageList(this.components);
+            this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
             this.lbltitulo = new System.Windows.Forms.Label();
             this.icon = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
+            this.lstImage = new System.Windows.Forms.ImageList(this.components);
             this.DragForm = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.btnAceptar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnlFranja.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -62,13 +62,20 @@ namespace CapaPresentacion
             this.pnlFranja.Size = new System.Drawing.Size(264, 104);
             this.pnlFranja.TabIndex = 4;
             // 
-            // lstImage
+            // btnCerrar
             // 
-            this.lstImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("lstImage.ImageStream")));
-            this.lstImage.TransparentColor = System.Drawing.Color.Transparent;
-            this.lstImage.Images.SetKeyName(0, "successful.png");
-            this.lstImage.Images.SetKeyName(1, "Error.png");
-            this.lstImage.Images.SetKeyName(2, "Information.png");
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.ImageActive = null;
+            this.btnCerrar.Location = new System.Drawing.Point(233, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(19, 18);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 8;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Zoom = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lbltitulo
             // 
@@ -92,20 +99,13 @@ namespace CapaPresentacion
             this.icon.TabIndex = 5;
             this.icon.TabStop = false;
             // 
-            // btnCerrar
+            // lstImage
             // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(233, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(19, 18);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCerrar.TabIndex = 8;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Zoom = 10;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.lstImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("lstImage.ImageStream")));
+            this.lstImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.lstImage.Images.SetKeyName(0, "successful.png");
+            this.lstImage.Images.SetKeyName(1, "Error.png");
+            this.lstImage.Images.SetKeyName(2, "Information.png");
             // 
             // DragForm
             // 
@@ -116,10 +116,12 @@ namespace CapaPresentacion
             // 
             // txtMensaje
             // 
+            this.txtMensaje.BackColor = System.Drawing.Color.White;
             this.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMensaje.Enabled = false;
             this.txtMensaje.Font = new System.Drawing.Font("Calisto MT", 9.75F);
-            this.txtMensaje.Location = new System.Drawing.Point(36, 110);
+            this.txtMensaje.ForeColor = System.Drawing.Color.Black;
+            this.txtMensaje.Location = new System.Drawing.Point(36, 123);
             this.txtMensaje.Multiline = true;
             this.txtMensaje.Name = "txtMensaje";
             this.txtMensaje.Size = new System.Drawing.Size(194, 88);
@@ -179,8 +181,8 @@ namespace CapaPresentacion
             this.Load += new System.EventHandler(this.frmAlerta_Load);
             this.pnlFranja.ResumeLayout(false);
             this.pnlFranja.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

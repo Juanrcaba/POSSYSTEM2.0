@@ -31,8 +31,8 @@ namespace CapaPresentacion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -60,12 +60,18 @@ namespace CapaPresentacion
             this.rbHombre = new System.Windows.Forms.RadioButton();
             this.rbMujer = new System.Windows.Forms.RadioButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.rbNactivo = new System.Windows.Forms.RadioButton();
+            this.rbActivo = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -110,7 +116,7 @@ namespace CapaPresentacion
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(463, 215);
+            this.txtUsuario.Location = new System.Drawing.Point(461, 189);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(265, 32);
             this.txtUsuario.TabIndex = 63;
@@ -120,7 +126,7 @@ namespace CapaPresentacion
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(463, 156);
+            this.txtNombre.Location = new System.Drawing.Point(461, 130);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(267, 32);
             this.txtNombre.TabIndex = 62;
@@ -130,7 +136,7 @@ namespace CapaPresentacion
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(466, 193);
+            this.label5.Location = new System.Drawing.Point(464, 167);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 18);
             this.label5.TabIndex = 60;
@@ -141,7 +147,7 @@ namespace CapaPresentacion
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(466, 133);
+            this.label6.Location = new System.Drawing.Point(464, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 18);
             this.label6.TabIndex = 59;
@@ -150,6 +156,7 @@ namespace CapaPresentacion
             // btnGuardar
             // 
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.BorderRadius = 7;
@@ -169,7 +176,7 @@ namespace CapaPresentacion
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 30D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(463, 414);
+            this.btnGuardar.Location = new System.Drawing.Point(463, 474);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -226,6 +233,7 @@ namespace CapaPresentacion
             // btnEliminar
             // 
             this.btnEliminar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminar.BorderRadius = 7;
@@ -245,7 +253,7 @@ namespace CapaPresentacion
             this.btnEliminar.IconVisible = true;
             this.btnEliminar.IconZoom = 30D;
             this.btnEliminar.IsTab = false;
-            this.btnEliminar.Location = new System.Drawing.Point(313, 414);
+            this.btnEliminar.Location = new System.Drawing.Point(313, 474);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -263,6 +271,7 @@ namespace CapaPresentacion
             // btnEditar
             // 
             this.btnEditar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditar.BorderRadius = 7;
@@ -282,7 +291,7 @@ namespace CapaPresentacion
             this.btnEditar.IconVisible = true;
             this.btnEditar.IconZoom = 30D;
             this.btnEditar.IsTab = false;
-            this.btnEditar.Location = new System.Drawing.Point(161, 414);
+            this.btnEditar.Location = new System.Drawing.Point(161, 474);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -348,6 +357,7 @@ namespace CapaPresentacion
             // btnNuevo
             // 
             this.btnNuevo.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNuevo.BorderRadius = 7;
@@ -367,7 +377,7 @@ namespace CapaPresentacion
             this.btnNuevo.IconVisible = true;
             this.btnNuevo.IconZoom = 30D;
             this.btnNuevo.IsTab = false;
-            this.btnNuevo.Location = new System.Drawing.Point(8, 414);
+            this.btnNuevo.Location = new System.Drawing.Point(8, 474);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -393,30 +403,30 @@ namespace CapaPresentacion
             this.tablaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tablaUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tablaUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calisto MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calisto MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaUsuarios.DefaultCellStyle = dataGridViewCellStyle4;
             this.tablaUsuarios.Location = new System.Drawing.Point(12, 133);
             this.tablaUsuarios.Name = "tablaUsuarios";
             this.tablaUsuarios.ReadOnly = true;
             this.tablaUsuarios.RowHeadersVisible = false;
             this.tablaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaUsuarios.Size = new System.Drawing.Size(424, 261);
+            this.tablaUsuarios.Size = new System.Drawing.Size(424, 323);
             this.tablaUsuarios.TabIndex = 52;
             // 
             // txtBuscar
@@ -455,8 +465,9 @@ namespace CapaPresentacion
             this.txtCon.BackColor = System.Drawing.Color.White;
             this.txtCon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCon.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCon.Location = new System.Drawing.Point(463, 271);
+            this.txtCon.Location = new System.Drawing.Point(461, 245);
             this.txtCon.Name = "txtCon";
+            this.txtCon.PasswordChar = '*';
             this.txtCon.Size = new System.Drawing.Size(265, 32);
             this.txtCon.TabIndex = 67;
             // 
@@ -465,7 +476,7 @@ namespace CapaPresentacion
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(466, 250);
+            this.label7.Location = new System.Drawing.Point(464, 224);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 18);
             this.label7.TabIndex = 66;
@@ -476,7 +487,7 @@ namespace CapaPresentacion
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DimGray;
-            this.label9.Location = new System.Drawing.Point(466, 306);
+            this.label9.Location = new System.Drawing.Point(464, 280);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 18);
             this.label9.TabIndex = 68;
@@ -486,7 +497,7 @@ namespace CapaPresentacion
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(463, 324);
+            this.pictureBox3.Location = new System.Drawing.Point(461, 298);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(265, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -499,7 +510,7 @@ namespace CapaPresentacion
             this.cmbPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbPerfil.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
             this.cmbPerfil.FormattingEnabled = true;
-            this.cmbPerfil.Location = new System.Drawing.Point(469, 327);
+            this.cmbPerfil.Location = new System.Drawing.Point(467, 301);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(252, 26);
             this.cmbPerfil.TabIndex = 72;
@@ -509,7 +520,7 @@ namespace CapaPresentacion
             this.rbHombre.AutoSize = true;
             this.rbHombre.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
             this.rbHombre.ForeColor = System.Drawing.Color.DimGray;
-            this.rbHombre.Location = new System.Drawing.Point(469, 372);
+            this.rbHombre.Location = new System.Drawing.Point(24, 20);
             this.rbHombre.Name = "rbHombre";
             this.rbHombre.Size = new System.Drawing.Size(81, 22);
             this.rbHombre.TabIndex = 73;
@@ -522,7 +533,7 @@ namespace CapaPresentacion
             this.rbMujer.AutoSize = true;
             this.rbMujer.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
             this.rbMujer.ForeColor = System.Drawing.Color.DimGray;
-            this.rbMujer.Location = new System.Drawing.Point(591, 372);
+            this.rbMujer.Location = new System.Drawing.Point(134, 20);
             this.rbMujer.Name = "rbMujer";
             this.rbMujer.Size = new System.Drawing.Size(66, 22);
             this.rbMujer.TabIndex = 73;
@@ -530,14 +541,62 @@ namespace CapaPresentacion
             this.rbMujer.Text = "Mujer";
             this.rbMujer.UseVisualStyleBackColor = true;
             // 
+            // rbNactivo
+            // 
+            this.rbNactivo.AutoSize = true;
+            this.rbNactivo.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
+            this.rbNactivo.ForeColor = System.Drawing.Color.DimGray;
+            this.rbNactivo.Location = new System.Drawing.Point(134, 23);
+            this.rbNactivo.Name = "rbNactivo";
+            this.rbNactivo.Size = new System.Drawing.Size(81, 22);
+            this.rbNactivo.TabIndex = 74;
+            this.rbNactivo.TabStop = true;
+            this.rbNactivo.Text = "Inactivo";
+            this.rbNactivo.UseVisualStyleBackColor = true;
+            // 
+            // rbActivo
+            // 
+            this.rbActivo.AutoSize = true;
+            this.rbActivo.Font = new System.Drawing.Font("Calisto MT", 11F, System.Drawing.FontStyle.Bold);
+            this.rbActivo.ForeColor = System.Drawing.Color.DimGray;
+            this.rbActivo.Location = new System.Drawing.Point(24, 23);
+            this.rbActivo.Name = "rbActivo";
+            this.rbActivo.Size = new System.Drawing.Size(71, 22);
+            this.rbActivo.TabIndex = 75;
+            this.rbActivo.TabStop = true;
+            this.rbActivo.Text = "Activo";
+            this.rbActivo.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbHombre);
+            this.groupBox1.Controls.Add(this.rbMujer);
+            this.groupBox1.Location = new System.Drawing.Point(461, 336);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(271, 56);
+            this.groupBox1.TabIndex = 76;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sexo";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbActivo);
+            this.groupBox2.Controls.Add(this.rbNactivo);
+            this.groupBox2.Location = new System.Drawing.Point(461, 398);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(271, 58);
+            this.groupBox2.TabIndex = 77;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Estado";
+            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(759, 464);
-            this.Controls.Add(this.rbMujer);
-            this.Controls.Add(this.rbHombre);
+            this.ClientSize = new System.Drawing.Size(759, 527);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label9);
@@ -570,6 +629,10 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,5 +667,9 @@ namespace CapaPresentacion
         private System.Windows.Forms.RadioButton rbMujer;
         private System.Windows.Forms.RadioButton rbHombre;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbActivo;
+        private System.Windows.Forms.RadioButton rbNactivo;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

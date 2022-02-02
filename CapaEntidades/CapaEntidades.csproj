@@ -50,6 +50,7 @@
     <Compile Include="E_MARCA.cs" />
     <Compile Include="E_MESAS.cs" />
     <Compile Include="E_PRODUCTO.cs" />
+    <Compile Include="E_PROVEEDORES.cs" />
     <Compile Include="E_TURNO.cs" />
     <Compile Include="E_USUARIO.cs" />
     <Compile Include="E_VENTA.cs" />
