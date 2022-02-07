@@ -70,7 +70,7 @@ namespace CapaPresentacion
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            container.Controls.Clear();
+          
         }
 
         private void btnProducto_Click(object sender, EventArgs e)

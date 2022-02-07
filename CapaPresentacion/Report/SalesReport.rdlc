@@ -135,7 +135,11 @@
                       <ChartDataLabel>
                         <Style />
                       </ChartDataLabel>
-                      <Style />
+                      <Style>
+                        <Color>#037acc</Color>
+                        <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                        <BackgroundGradientEndColor>PaleTurquoise</BackgroundGradientEndColor>
+                      </Style>
                       <ChartMarker>
                         <Style />
                       </ChartMarker>
@@ -435,7 +439,7 @@
             <DataSetName>VentasNetasPorPeriodo</DataSetName>
             <Top>0.5802in</Top>
             <Left>0.59055in</Left>
-            <Height>2.78125in</Height>
+            <Height>2.07292in</Height>
             <Width>7.08661in</Width>
             <Style>
               <Border>
@@ -504,7 +508,6 @@
                                   <Value>Ventas Netas</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>Turquoise</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -519,6 +522,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -587,8 +591,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>VentasNetasPorPeriodo</DataSetName>
-            <Top>3.51292in</Top>
-            <Left>5.4571in</Left>
+            <Top>2.8519in</Top>
+            <Left>5.48966in</Left>
             <Height>0.5in</Height>
             <Width>2.1875in</Width>
             <ZIndex>2</ZIndex>
@@ -641,7 +645,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -676,7 +680,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -711,7 +715,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -846,8 +850,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>VentasNetasPorPeriodo</DataSetName>
-            <Top>3.51292in</Top>
-            <Left>0.55799in</Left>
+            <Top>2.8519in</Top>
+            <Left>0.59055in</Left>
             <Height>0.5in</Height>
             <Width>2.80208in</Width>
             <ZIndex>3</ZIndex>
@@ -877,8 +881,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.19478in</Top>
-            <Left>2.99192in</Left>
+            <Top>3.53376in</Top>
+            <Left>3.02448in</Left>
             <Height>0.28125in</Height>
             <Width>2.21875in</Width>
             <ZIndex>4</ZIndex>
@@ -941,7 +945,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -976,7 +980,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1011,7 +1015,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1046,7 +1050,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1081,7 +1085,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Turquoise</BackgroundColor>
+                            <BackgroundColor>#037acc</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1276,8 +1280,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ListadoVentas</DataSetName>
-            <Top>4.86709in</Top>
-            <Left>0.55799in</Left>
+            <Top>4.20607in</Top>
+            <Left>0.59055in</Left>
             <Height>0.5in</Height>
             <Width>7.08661in</Width>
             <ZIndex>5</ZIndex>
@@ -1307,8 +1311,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.52811in</Top>
-            <Left>0.55799in</Left>
+            <Top>4.86709in</Top>
+            <Left>0.59055in</Left>
             <Height>0.28125in</Height>
             <Width>2.21875in</Width>
             <ZIndex>6</ZIndex>
@@ -1322,8 +1326,44 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!VentasNetas.Value, "VentasNetasPorPeriodo")</Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                      <Format>'$'#,0.00;('$'#,0.00)</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>4.86709in</Top>
+            <Left>5.45841in</Left>
+            <Height>0.28125in</Height>
+            <Width>2.21875in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+              <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>15.84667cm</Height>
+        <Height>14.28563cm</Height>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1333,7 +1373,7 @@
       <Width>21cm</Width>
       <Page>
         <PageHeader>
-          <Height>4cm</Height>
+          <Height>3.76188cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1407,7 +1447,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.655in</Top>
+              <Top>0.47411in</Top>
               <Left>2.86333in</Left>
               <Height>0.40625in</Height>
               <Width>2.21875in</Width>
@@ -1442,7 +1482,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>1.13069in</Top>
+              <Top>1.00569in</Top>
               <Left>0.59055in</Left>
               <Height>0.32639in</Height>
               <Width>18cm</Width>
@@ -1462,7 +1502,7 @@
             <Border>
               <Style>None</Style>
             </Border>
-            <BackgroundColor>SlateBlue</BackgroundColor>
+            <BackgroundColor>#037acc</BackgroundColor>
           </Style>
         </PageHeader>
         <PageFooter>
