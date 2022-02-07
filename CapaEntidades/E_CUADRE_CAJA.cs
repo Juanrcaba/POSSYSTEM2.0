@@ -24,5 +24,7 @@ namespace CapaEntidades
         public double Saldo_cierre { get => _Saldo_cierre; set => _Saldo_cierre = value; }
         public double Ventas_totales { get => _Ventas_totales; set => _Ventas_totales = value; }
         public string Fecha { get => _Fecha; set => _Fecha = value; }
+
+        
     }
 }

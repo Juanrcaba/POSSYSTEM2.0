@@ -51,6 +51,7 @@
     <Compile Include="D_MESAS.cs" />
     <Compile Include="D_PRODUCTO.cs" />
     <Compile Include="D_PROVEEDORES.cs" />
+    <Compile Include="D_REPORTES.cs" />
     <Compile Include="D_TURNO.cs" />
     <Compile Include="D_USUARIO.cs" />
     <Compile Include="D_VENTA.cs" />

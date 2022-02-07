@@ -113,6 +113,7 @@ namespace CapaPresentacion
         private void btnGanancia_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            OpenForm(new frmReportes());
         }
 
         private Form ActiveForm = null;
