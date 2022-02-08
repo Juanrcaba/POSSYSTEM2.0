@@ -90,160 +90,160 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAcceso.cs">
+    <Compile Include="Acceso\frmAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAcceso.Designer.cs">
+    <Compile Include="Acceso\frmAcceso.Designer.cs">
       <DependentUpon>frmAcceso.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAlerta.cs">
+    <Compile Include="Alertas\frmAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAlerta.Designer.cs">
+    <Compile Include="Alertas\frmAlerta.Designer.cs">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAperturaCaja.cs">
+    <Compile Include="Alertas\frmNotification.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAperturaCaja.Designer.cs">
+    <Compile Include="Alertas\frmNotification.Designer.cs">
+      <DependentUpon>frmNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmViewClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmViewClientes.Designer.cs">
+      <DependentUpon>frmViewClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmAperturaCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmAperturaCaja.Designer.cs">
       <DependentUpon>frmAperturaCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAperturaTurno.cs">
+    <Compile Include="Ventas\frmAperturaTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAperturaTurno.Designer.cs">
+    <Compile Include="Ventas\frmAperturaTurno.Designer.cs">
       <DependentUpon>frmAperturaTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCaja.cs">
+    <Compile Include="Ventas\frmCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaja.Designer.cs">
+    <Compile Include="Ventas\frmCaja.Designer.cs">
       <DependentUpon>frmCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCancelarTicket.cs">
+    <Compile Include="Ventas\frmCancelarTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCancelarTicket.Designer.cs">
+    <Compile Include="Ventas\frmCancelarTicket.Designer.cs">
       <DependentUpon>frmCancelarTicket.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCategoria.cs">
+    <Compile Include="Categories\frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCategoria.Designer.cs">
+    <Compile Include="Categories\frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmComanda.cs">
+    <Compile Include="Ventas\frmComanda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmComanda.Designer.cs">
+    <Compile Include="Ventas\frmComanda.Designer.cs">
       <DependentUpon>frmComanda.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControlCategorias.cs">
+    <Compile Include="Categories\frmControlCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControlCategorias.Designer.cs">
+    <Compile Include="Categories\frmControlCategorias.Designer.cs">
       <DependentUpon>frmControlCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControlMesa.cs">
+    <Compile Include="Ventas\frmControlMesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControlMesa.Designer.cs">
+    <Compile Include="Ventas\frmControlMesa.Designer.cs">
       <DependentUpon>frmControlMesa.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControlProductos.cs">
+    <Compile Include="Products\frmControlProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControlProductos.Designer.cs">
+    <Compile Include="Products\frmControlProductos.Designer.cs">
       <DependentUpon>frmControlProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditar_Comanda.cs">
+    <Compile Include="Ventas\frmEditar_Comanda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditar_Comanda.Designer.cs">
+    <Compile Include="Ventas\frmEditar_Comanda.Designer.cs">
       <DependentUpon>frmEditar_Comanda.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Products\frmMantenimientoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMantenimientoProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMantenimientoProducto.Designer.cs">
+    <Compile Include="Products\frmMantenimientoProducto.Designer.cs">
       <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMarca.cs">
+    <Compile Include="Marcas\frmMarca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMarca.Designer.cs">
+    <Compile Include="Marcas\frmMarca.Designer.cs">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMesas.cs">
+    <Compile Include="Ventas\frmMesas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMesas.Designer.cs">
+    <Compile Include="Ventas\frmMesas.Designer.cs">
       <DependentUpon>frmMesas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
+    <Compile Include="Products\frmProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmProductos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProductos.Designer.cs">
+    <Compile Include="Products\frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProveedores.cs">
+    <Compile Include="Proveedores\frmProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProveedores.Designer.cs">
+    <Compile Include="Proveedores\frmProveedores.Designer.cs">
       <DependentUpon>frmProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrueba.cs">
+    <Compile Include="Report\frmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrueba.Designer.cs">
-      <DependentUpon>frmPrueba.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmReportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReportes.Designer.cs">
+    <Compile Include="Report\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTicket.cs">
+    <Compile Include="Ventas\frmTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTicket.Designer.cs">
+    <Compile Include="Ventas\frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTraspasoMesa.cs">
+    <Compile Include="Ventas\frmTraspasoMesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTraspasoMesa.Designer.cs">
+    <Compile Include="Ventas\frmTraspasoMesa.Designer.cs">
       <DependentUpon>frmTraspasoMesa.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTurno.cs">
+    <Compile Include="Ventas\frmTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTurno.Designer.cs">
+    <Compile Include="Ventas\frmTurno.Designer.cs">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuarios.cs">
+    <Compile Include="usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUsuarios.Designer.cs">
+    <Compile Include="usuarios\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewProveedores.cs">
+    <Compile Include="Proveedores\frmViewProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewProveedores.Designer.cs">
+    <Compile Include="Proveedores\frmViewProveedores.Designer.cs">
       <DependentUpon>frmViewProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="PagePrincipal.cs">
@@ -255,82 +255,82 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="frmAcceso.resx">
+    <EmbeddedResource Include="Acceso\frmAcceso.resx">
       <DependentUpon>frmAcceso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAlerta.resx">
+    <EmbeddedResource Include="Alertas\frmAlerta.resx">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAperturaCaja.resx">
+    <EmbeddedResource Include="Alertas\frmNotification.resx">
+      <DependentUpon>frmNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmViewClientes.resx">
+      <DependentUpon>frmViewClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmAperturaCaja.resx">
       <DependentUpon>frmAperturaCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAperturaTurno.resx">
+    <EmbeddedResource Include="Ventas\frmAperturaTurno.resx">
       <DependentUpon>frmAperturaTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCaja.resx">
+    <EmbeddedResource Include="Ventas\frmCaja.resx">
       <DependentUpon>frmCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCancelarTicket.resx">
+    <EmbeddedResource Include="Ventas\frmCancelarTicket.resx">
       <DependentUpon>frmCancelarTicket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCategoria.resx">
+    <EmbeddedResource Include="Categories\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmComanda.resx">
+    <EmbeddedResource Include="Ventas\frmComanda.resx">
       <DependentUpon>frmComanda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControlCategorias.resx">
+    <EmbeddedResource Include="Categories\frmControlCategorias.resx">
       <DependentUpon>frmControlCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControlMesa.resx">
+    <EmbeddedResource Include="Ventas\frmControlMesa.resx">
       <DependentUpon>frmControlMesa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControlProductos.resx">
+    <EmbeddedResource Include="Products\frmControlProductos.resx">
       <DependentUpon>frmControlProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEditar_Comanda.resx">
+    <EmbeddedResource Include="Ventas\frmEditar_Comanda.resx">
       <DependentUpon>frmEditar_Comanda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMantenimientoProducto.resx">
+    <EmbeddedResource Include="Products\frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMarca.resx">
+    <EmbeddedResource Include="Marcas\frmMarca.resx">
       <DependentUpon>frmMarca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMesas.resx">
+    <EmbeddedResource Include="Ventas\frmMesas.resx">
       <DependentUpon>frmMesas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProductos.resx">
+    <EmbeddedResource Include="Products\frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProveedores.resx">
+    <EmbeddedResource Include="Proveedores\frmProveedores.resx">
       <DependentUpon>frmProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrueba.resx">
-      <DependentUpon>frmPrueba.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReportes.resx">
+    <EmbeddedResource Include="Report\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTicket.resx">
+    <EmbeddedResource Include="Ventas\frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTraspasoMesa.resx">
+    <EmbeddedResource Include="Ventas\frmTraspasoMesa.resx">
       <DependentUpon>frmTraspasoMesa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTurno.resx">
+    <EmbeddedResource Include="Ventas\frmTurno.resx">
       <DependentUpon>frmTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuarios.resx">
+    <EmbeddedResource Include="usuarios\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewProveedores.resx">
+    <EmbeddedResource Include="Proveedores\frmViewProveedores.resx">
       <DependentUpon>frmViewProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagePrincipal.resx">
@@ -396,6 +396,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Pruebas\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

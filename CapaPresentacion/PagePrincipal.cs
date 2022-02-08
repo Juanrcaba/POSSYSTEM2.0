@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocio;
+using CapaPresentacion.Clientes;
 
 namespace CapaPresentacion
 {
@@ -67,15 +68,35 @@ namespace CapaPresentacion
             lblTitulo.Text = sender.Text;
         }
 
+        private void PnlReport()
+        {
+            if (pnlReportes.Height == 96)
+            {
+                pnlReportes.Visible = false;
+                pnlReportes.Height = 0;                
+                AnimationPnlRpt.ShowSync(pnlReportes);
+               
+            }                
+            else
+            {
+                pnlReportes.Visible = false;
+                pnlReportes.Height = 96;
+                AnimationPnlRpt.ShowSync(pnlReportes);
+            }
+                
+        }
+
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-          
+            PnlReport();
+
         }
 
         private void btnProducto_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            PnlReport();
             OpenForm(new frmProductos());
         }
 
@@ -90,11 +111,13 @@ namespace CapaPresentacion
         private void btnCompras_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            PnlReport();
         }
 
         private void btnTrabajador_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            PnlReport();
             frmUsuarios form = new frmUsuarios();
             form.ShowDialog();
         }
@@ -102,18 +125,21 @@ namespace CapaPresentacion
         private void btnClientes_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            OpenForm(new frmViewClientes());
+            PnlReport();
         }
 
         private void btnProveedor_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             OpenForm(new frmViewProveedores());
+            PnlReport();
         }
 
         private void btnGanancia_Click(object sender, EventArgs e)
         {
-            SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            OpenForm(new frmReportes());
+            //SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            PnlReport();
         }
 
         private Form ActiveForm = null;
@@ -163,6 +189,12 @@ namespace CapaPresentacion
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVentasActivas_Click(object sender, EventArgs e)
+        {
+            SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            OpenForm(new frmReportes());
         }
     }
 }

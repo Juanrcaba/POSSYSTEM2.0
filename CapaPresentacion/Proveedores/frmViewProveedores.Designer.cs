@@ -29,11 +29,13 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewProveedores));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tablaProveedores = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
@@ -43,6 +45,7 @@ namespace CapaPresentacion
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.AnimationCard = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -60,10 +63,11 @@ namespace CapaPresentacion
             this.panel9.Controls.Add(this.txtBuscar);
             this.panel9.Controls.Add(this.pictureBox5);
             this.panel9.Controls.Add(this.pictureBox6);
+            this.AnimationCard.SetDecoration(this.panel9, BunifuAnimatorNS.DecorationType.None);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1010, 712);
+            this.panel9.Size = new System.Drawing.Size(996, 778);
             this.panel9.TabIndex = 3;
             // 
             // tablaProveedores
@@ -92,6 +96,7 @@ namespace CapaPresentacion
             this.tablaProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Edit});
+            this.AnimationCard.SetDecoration(this.tablaProveedores, BunifuAnimatorNS.DecorationType.None);
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,7 +125,7 @@ namespace CapaPresentacion
             this.tablaProveedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaProveedores.RowHeadersVisible = false;
             this.tablaProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.tablaProveedores.Size = new System.Drawing.Size(976, 557);
+            this.tablaProveedores.Size = new System.Drawing.Size(962, 623);
             this.tablaProveedores.TabIndex = 37;
             this.tablaProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProveedores_CellContentClick);
             // 
@@ -140,6 +145,7 @@ namespace CapaPresentacion
             this.btnExcel.BorderRadius = 7;
             this.btnExcel.ButtonText = "&Excel";
             this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnimationCard.SetDecoration(this.btnExcel, BunifuAnimatorNS.DecorationType.None);
             this.btnExcel.DisabledColor = System.Drawing.Color.Gray;
             this.btnExcel.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.btnExcel.Iconcolor = System.Drawing.Color.Transparent;
@@ -154,7 +160,7 @@ namespace CapaPresentacion
             this.btnExcel.IconVisible = true;
             this.btnExcel.IconZoom = 30D;
             this.btnExcel.IsTab = false;
-            this.btnExcel.Location = new System.Drawing.Point(822, 87);
+            this.btnExcel.Location = new System.Drawing.Point(800, 87);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(193)))), ((int)(((byte)(135)))));
@@ -178,6 +184,7 @@ namespace CapaPresentacion
             this.btnImprimir.BorderRadius = 7;
             this.btnImprimir.ButtonText = "&Imprimir";
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnimationCard.SetDecoration(this.btnImprimir, BunifuAnimatorNS.DecorationType.None);
             this.btnImprimir.DisabledColor = System.Drawing.Color.Gray;
             this.btnImprimir.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.Iconcolor = System.Drawing.Color.Transparent;
@@ -192,7 +199,7 @@ namespace CapaPresentacion
             this.btnImprimir.IconVisible = true;
             this.btnImprimir.IconZoom = 30D;
             this.btnImprimir.IsTab = false;
-            this.btnImprimir.Location = new System.Drawing.Point(635, 87);
+            this.btnImprimir.Location = new System.Drawing.Point(613, 87);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(95)))), ((int)(((byte)(225)))));
@@ -213,8 +220,9 @@ namespace CapaPresentacion
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNuevo.BorderRadius = 7;
-            this.btnNuevo.ButtonText = "&Nuevo Producto";
+            this.btnNuevo.ButtonText = "&Nuevo Proveedor";
             this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AnimationCard.SetDecoration(this.btnNuevo, BunifuAnimatorNS.DecorationType.None);
             this.btnNuevo.DisabledColor = System.Drawing.Color.Gray;
             this.btnNuevo.Font = new System.Drawing.Font("Calisto MT", 16F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.Iconcolor = System.Drawing.Color.Transparent;
@@ -236,10 +244,10 @@ namespace CapaPresentacion
             this.btnNuevo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
             this.btnNuevo.OnHoverTextColor = System.Drawing.Color.White;
             this.btnNuevo.selected = false;
-            this.btnNuevo.Size = new System.Drawing.Size(149, 35);
+            this.btnNuevo.Size = new System.Drawing.Size(192, 35);
             this.btnNuevo.TabIndex = 36;
             this.btnNuevo.TabStop = false;
-            this.btnNuevo.Text = "&Nuevo Producto";
+            this.btnNuevo.Text = "&Nuevo Proveedor";
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNuevo.Textcolor = System.Drawing.Color.White;
             this.btnNuevo.TextFont = new System.Drawing.Font("Calisto MT", 12F, System.Drawing.FontStyle.Bold);
@@ -248,6 +256,7 @@ namespace CapaPresentacion
             // txtBuscar
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AnimationCard.SetDecoration(this.txtBuscar, BunifuAnimatorNS.DecorationType.None);
             this.txtBuscar.Font = new System.Drawing.Font("Calisto MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(60, 48);
             this.txtBuscar.Name = "txtBuscar";
@@ -256,6 +265,7 @@ namespace CapaPresentacion
             // 
             // pictureBox5
             // 
+            this.AnimationCard.SetDecoration(this.pictureBox5, BunifuAnimatorNS.DecorationType.None);
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(21, 41);
             this.pictureBox5.Name = "pictureBox5";
@@ -268,6 +278,7 @@ namespace CapaPresentacion
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.White;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.AnimationCard.SetDecoration(this.pictureBox6, BunifuAnimatorNS.DecorationType.None);
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(10, 36);
             this.pictureBox6.Name = "pictureBox6";
@@ -276,12 +287,34 @@ namespace CapaPresentacion
             this.pictureBox6.TabIndex = 33;
             this.pictureBox6.TabStop = false;
             // 
+            // AnimationCard
+            // 
+            this.AnimationCard.AnimationType = BunifuAnimatorNS.AnimationType.Leaf;
+            this.AnimationCard.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 1F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.AnimationCard.DefaultAnimation = animation1;
+            // 
             // frmViewProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 712);
+            this.ClientSize = new System.Drawing.Size(996, 778);
             this.Controls.Add(this.panel9);
+            this.AnimationCard.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmViewProveedores";
             this.Text = "frmViewProveedores";
@@ -306,5 +339,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.DataGridViewImageColumn Edit;
+        private BunifuAnimatorNS.BunifuTransition AnimationCard;
     }
 }

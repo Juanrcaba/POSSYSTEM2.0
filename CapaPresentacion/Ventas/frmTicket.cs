@@ -147,7 +147,7 @@ namespace CapaPresentacion
         {
             if (tablaTickets.CurrentRow.Cells["Delete"].Selected)
             {
-                int id_venta = Convert.ToInt32(tablaTickets.CurrentRow.Cells[1].Value);
+                int id_venta = Convert.ToInt32(tablaTickets.CurrentRow.Cells[2].Value);
                 var formAlert = new frmAlerta("Deseas Cancelar este ticket?", frmAlerta.Alerta.Información);
                 if (formAlert.ShowDialog() == DialogResult.OK)
                 {

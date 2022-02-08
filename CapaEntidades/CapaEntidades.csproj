@@ -44,6 +44,7 @@
     <Compile Include="DatosUsuario.cs" />
     <Compile Include="E_CAJA.cs" />
     <Compile Include="E_CATEGORIA.cs" />
+    <Compile Include="E_CLIENTES.cs" />
     <Compile Include="E_CUADRE_CAJA.cs" />
     <Compile Include="E_CUADRE_TURNO.cs" />
     <Compile Include="E_DETALLE_MESA.cs" />

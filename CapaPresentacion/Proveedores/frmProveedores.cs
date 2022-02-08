@@ -159,9 +159,11 @@ namespace CapaPresentacion
                         else
                         {
                             objProveedores.InsertarProveedor(entidadProveedores);
-                            alerta = new frmAlerta("El proveedor se guardo Correctamente", frmAlerta.Alerta.Exitoso);
-                            alerta.ShowDialog();
                             Limpiar();
+                            this.DialogResult = DialogResult.OK;
+                            //alerta = new frmAlerta("El proveedor se guardo Correctamente", frmAlerta.Alerta.Exitoso);
+                            //alerta.ShowDialog();
+                            
                         }
                     }
                     else

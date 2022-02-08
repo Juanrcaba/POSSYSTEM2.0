@@ -1,37 +1,24 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocio;
 
-namespace CapaPresentacion
+namespace CapaPresentacion.Clientes
 {
-    public partial class frmLogin : Form
+    public partial class frmClientes : Form
     {
-        public frmLogin()
+        public frmClientes()
         {
             InitializeComponent();
-            this.AcceptButton = btnAcceder as System.Windows.Forms.IButtonControl;
-
         }
-
-        string user;
-        string password;
-        //int perfil;
-        //int sexo;
-        //string nombre;
-
-        N_USUARIO objUsuario = new N_USUARIO();
-        E_USUARIO E_objUsuario = new E_USUARIO();
-
         #region Shadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -126,86 +113,90 @@ namespace CapaPresentacion
         }
 
         #endregion
-
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            GuardarClientes();
         }
+        public bool IsUpdate = false;
+        public int IdCliente = 0;
 
-        private void btnAcceder_Click(object sender, EventArgs e)
+        private void GuardarClientes()
         {
-            user = txtUsuario.Text.Trim();
-            password = txtCon.Text.Trim();
+            E_CLIENTES entidadClientes = new E_CLIENTES();
+            N_CLIENTES objClientes = new N_CLIENTES();
+            frmAlerta alerta;
 
-            if (user != string.Empty && password != string.Empty)
+            if (txtNombre.Text != string.Empty)
             {
-                E_objUsuario.USUARIO = user;
-                E_objUsuario.CONTRASEÑA = password;
-
-                DataTable Dt = objUsuario.Login(E_objUsuario);
-
-                if (Dt.Rows.Count > 0)
+                if (cmbTipoDoc.Text != "Seleccionar")
                 {
-                    DatosUsuario.Id_usuario = Convert.ToInt32(Dt.Rows[0][0]);
-                    DatosUsuario.perfil = Convert.ToInt32(Dt.Rows[0][5]);
-                    DatosUsuario.sexo = Convert.ToInt32(Dt.Rows[0][7]);
-                    DatosUsuario.Nombre = Dt.Rows[0][2].ToString();
-
-                    if(DatosUsuario.perfil == 1)
+                    if (txtNoDoc.Text != string.Empty)
                     {
-                        PagePrincipal form = new PagePrincipal();
-                        form.Show();
+                        entidadClientes.Idcliente = IdCliente;
+                        entidadClientes.Nombrecliente = txtNombre.Text.Trim();
+                        entidadClientes.TipoDocumento = cmbTipoDoc.Text.Trim();
+                        entidadClientes.NoDocumento = txtNoDoc.Text.Trim();
+                        entidadClientes.Direccion = txtDireccion.Text.Trim();
+                        entidadClientes.Telefono = txtTelefono.Text.Trim();
+                        entidadClientes.Email = txtEmail.Text.Trim();
+
+                        if (IsUpdate)
+                        {
+                            objClientes.EditarProveedor(entidadClientes);
+                            IsUpdate = false;
+                            alerta = new frmAlerta("El producto se Actualizo Correctamente", frmAlerta.Alerta.Exitoso);
+                            alerta.ShowDialog();
+                            this.Close();
+
+                        }
+                        else
+                        {
+                            objClientes.InsertarProveedor(entidadClientes);
+                            alerta = new frmAlerta("El clientes se guardo Correctamente", frmAlerta.Alerta.Exitoso);
+                            alerta.ShowDialog();
+                            Limpiar();
+                        }
                     }
                     else
                     {
-                        frmMesas form = new frmMesas();
-                        form.Show();
+                        alerta = new frmAlerta("Debe introducir No. documento", frmAlerta.Alerta.Error);
+                        alerta.ShowDialog();
+                        txtNoDoc.Focus();
                     }
-                                     
-                   
-                    this.Hide();
+
 
                 }
+                else
+                {
+                    alerta = new frmAlerta("Debe seleccionar tipo de documento", frmAlerta.Alerta.Error);
+                    alerta.ShowDialog();
+                    cmbTipoDoc.Focus();
+                }
             }
-                
-                
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        public static string GeneratePassword(int length) //length of salt    
-        {
-            const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
-            var randNum = new Random();
-            var chars = new char[length];
-            var allowedCharCount = allowedChars.Length;
-            for (var i = 0; i <= length - 1; i++)
+            else
             {
-                var random = randNum.NextDouble();
-                var indice = Convert.ToInt32((allowedChars.Length - 1) * random);
-                chars[i] = allowedChars[indice];
+                alerta = new frmAlerta("El clientes debe tener un nombre.", frmAlerta.Alerta.Error);
+                alerta.ShowDialog();
+                txtNombre.Focus();
             }
-            return new string(chars);
-        }
-        public static string EncodePassword(string pass, string salt) //encrypt password    
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(pass);
-            byte[] src = Encoding.Unicode.GetBytes(salt);
-            byte[] dst = new byte[src.Length + bytes.Length];
-            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
-            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
-            HashAlgorithm algorithm = SHA512.Create();
-            byte[] inArray = algorithm.ComputeHash(dst);
-            return Convert.ToBase64String(inArray);
 
+        }
+
+        void Limpiar()
+        {
+            IdCliente = 0;
+            txtNombre.Clear();
+            cmbTipoDoc.SelectedItem = 0;
+            txtNoDoc.Clear();
+            txtDireccion.Clear();
+            txtTelefono.Clear();
+            txtEmail.Clear();
+            cmbTipoDoc.SelectedIndex = 0;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

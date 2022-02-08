@@ -104,7 +104,7 @@ namespace CapaPresentacion
 
                         indexFila = item.Index;
                         item.Cells[2].Value = Convert.ToInt32(item.Cells[2].Value) + 1;
-                        carga = 2;
+                        //carga = 2;
                         item.Cells[3].Value = precio;
                         item.Cells[4].Value = Convert.ToInt32(item.Cells[2].Value) * precio;
 
@@ -206,9 +206,7 @@ namespace CapaPresentacion
                     formAlerta = new frmAlerta("Venta Registrada Satisfactoriamente!!", frmAlerta.Alerta.Exitoso);
                     formAlerta.ShowDialog();
 
-                    ImprimirTicket("Venta");
-
-                   // VolverAMesa();
+                    ImprimirTicket("Venta");                   
                 }
                 
             }
@@ -336,29 +334,29 @@ namespace CapaPresentacion
         private void tablaProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             
-            if (carga == 2)
-            {
-                carga = 0;
-                objE_detalle_mesa.Id_mesa = idmesa;
-                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["idProducto"].Value);
-                objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
-                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value);
-                tablaProductos.Rows[indexFila].Cells["Total"].Value = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
-                objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Total"].Value);
-                objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
-                CargarComanda();
+            //if (carga == 2)
+            //{
+            //    carga = 0;
+            //    objE_detalle_mesa.Id_mesa = idmesa;
+            //    objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["idProducto"].Value);
+            //    objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
+            //    objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value);
+            //    tablaProductos.Rows[indexFila].Cells["Total"].Value = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.Rows[indexFila].Cells["Cantidad"].Value);
+            //    objE_detalle_mesa.Total = Convert.ToDouble(tablaProductos.Rows[indexFila].Cells["Total"].Value);
+            //    objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+            //    CargarComanda();
 
-            }
-            if (tablaProductos.SelectedRows.Count > 0)
-            {
-                objE_detalle_mesa.Id_mesa = idmesa;
-                objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells["idProducto"].Value);
-                objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value);
-                objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value);
-                objE_detalle_mesa.Total = Convert.ToDouble(Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value));
-                objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
-                CargarComanda();
-            }       
+            //}
+            //if (tablaProductos.SelectedRows.Count > 0)
+            //{
+            //    objE_detalle_mesa.Id_mesa = idmesa;
+            //    objE_detalle_mesa.Id_producto = Convert.ToInt32(tablaProductos.CurrentRow.Cells["idProducto"].Value);
+            //    objE_detalle_mesa.Cantidad = Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value);
+            //    objE_detalle_mesa.Precio = Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value);
+            //    objE_detalle_mesa.Total = Convert.ToDouble(Convert.ToDouble(tablaProductos.CurrentRow.Cells["Precio"].Value) * Convert.ToInt32(tablaProductos.CurrentRow.Cells["Cantidad"].Value));
+            //    objDetalle_mesa.EditarDetalleMesa(objE_detalle_mesa);
+            //    CargarComanda();
+            //}       
            
         }
 

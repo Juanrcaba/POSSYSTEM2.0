@@ -45,6 +45,7 @@
     <Compile Include="CreaTicket.cs" />
     <Compile Include="N_CAJAS.cs" />
     <Compile Include="N_CATEGORIA.cs" />
+    <Compile Include="N_CLIENTES.cs" />
     <Compile Include="N_CUADRE_CAJA.cs" />
     <Compile Include="N_CUADRE_TURNO.cs" />
     <Compile Include="N_DETALLE_MESA.cs" />

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="D_CAJA.cs" />
     <Compile Include="D_CATEGORIA.cs" />
+    <Compile Include="D_CLIENTES.cs" />
     <Compile Include="D_CUADRE_CAJA.cs" />
     <Compile Include="D_CUADRE_TURNO.cs" />
     <Compile Include="D_DETALLE_MESA.cs" />

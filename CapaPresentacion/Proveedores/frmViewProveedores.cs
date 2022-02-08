@@ -1,5 +1,6 @@
 ﻿using CapaEntidades;
 using CapaNegocio;
+using CapaPresentacion.Alertas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,12 +20,17 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+      
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             frmProveedores formProveedores = new frmProveedores();
-            formProveedores.ShowDialog();
-            MostrarProveedores("");
+            if (formProveedores.ShowDialog() == DialogResult.OK)
+            {
+                frmNotification oNotification = new frmNotification("Datos Guardados Satisfactoriamente.",Color.Lime);
+                oNotification.Show();
+                MostrarProveedores("");
+            }  
         }
 
         private void frmViewProveedores_Load(object sender, EventArgs e)
@@ -35,13 +42,14 @@ namespace CapaPresentacion
         {
             N_PROVEEDORES objDatos = new N_PROVEEDORES();
             E_PROVEEDORES eProveedor = new E_PROVEEDORES();
+            
 
             eProveedor.Buscar = buscar;
             tablaProveedores.DataSource = objDatos.MostrarProveedores(eProveedor);          
 
             tablaProveedores.Columns[0].DisplayIndex = 8;
             tablaProveedores.Columns[1].Visible = false;
-            Alineamiento(); 
+            Alineamiento();
             
 
             //ContarTotalProducto();
@@ -81,6 +89,8 @@ namespace CapaPresentacion
             }
             
         }
+
+       
 
     }
 }
