@@ -33,9 +33,9 @@ namespace CapaPresentacion
         {
             pantallaOK();
             if(_Image == 1)
-                LogoPic.Load(Application.StartupPath + "\\image\\user-female.png");
+                LogoPic.Image = Properties.Resources.user_female;
             else
-                LogoPic.Load(Application.StartupPath + "\\image\\user-male.png");
+                LogoPic.Image = Properties.Resources.user_male;
             LogoPic.SizeMode = PictureBoxSizeMode.Zoom;
             lblUsuario.Text = DatosUsuario.Nombre;
 
@@ -68,35 +68,36 @@ namespace CapaPresentacion
             lblTitulo.Text = sender.Text;
         }
 
-        private void PnlReport()
+        private void PnlReport(bool valor)
         {
-            if (pnlReportes.Height == 96)
+          
+            if (valor)
             {
-                pnlReportes.Visible = false;
-                pnlReportes.Height = 0;                
-                AnimationPnlRpt.ShowSync(pnlReportes);
-               
-            }                
+                if(pnlReportes.Height == 96)
+                    pnlReportes.Height = 0;
+                else
+                    pnlReportes.Height = 96;
+            }               
             else
-            {
-                pnlReportes.Visible = false;
-                pnlReportes.Height = 96;
-                AnimationPnlRpt.ShowSync(pnlReportes);
-            }
-                
+                pnlReportes.Height = 0;
+
+            pnlReportes.Visible = valor;
+            AnimationPnlRpt.ShowSync(pnlReportes);
+            
+
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            PnlReport();
+            PnlReport(false);
 
         }
 
         private void btnProducto_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            PnlReport();
+            PnlReport(false);
             OpenForm(new frmProductos());
         }
 
@@ -111,13 +112,13 @@ namespace CapaPresentacion
         private void btnCompras_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            PnlReport();
+            PnlReport(false);
         }
 
         private void btnTrabajador_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            PnlReport();
+            PnlReport(false);
             frmUsuarios form = new frmUsuarios();
             form.ShowDialog();
         }
@@ -126,20 +127,20 @@ namespace CapaPresentacion
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             OpenForm(new frmViewClientes());
-            PnlReport();
+            PnlReport(false);
         }
 
         private void btnProveedor_Click(object sender, EventArgs e)
         {
             SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             OpenForm(new frmViewProveedores());
-            PnlReport();
+            PnlReport(false);
         }
 
         private void btnGanancia_Click(object sender, EventArgs e)
         {
             //SeleccionarBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            PnlReport();
+            PnlReport(true);
         }
 
         private Form ActiveForm = null;
