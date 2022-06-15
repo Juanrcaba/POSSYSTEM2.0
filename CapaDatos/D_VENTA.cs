@@ -67,7 +67,7 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@id_turno", venta.Id_Turno);
             cmd.Parameters.AddWithValue("@venta_total", venta.Venta_total);
             cmd.Parameters.AddWithValue("@id_mesa", venta.Id_mesa);
-            cmd.Parameters.AddWithValue("@hora_venta", venta.Hora_venta);
+         
             cmd.Parameters.Add("@id_venta", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             try
